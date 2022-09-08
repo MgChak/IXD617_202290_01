@@ -4,6 +4,22 @@
     right:0;
     top:0;
 }
+.welcomeContainer{
+    width:100%;
+    height:58vh;
+    position:relative;
+    right:0;
+    top:0;
+}
+.welcomeContainer > h1{
+    font-size: 594%;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    right: auto;
+    left: auto;
+    top: 5%;
+}
 .frontContainer{
     position:absolute;
     left:0;
