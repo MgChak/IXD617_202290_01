@@ -11,7 +11,7 @@
     top:0;
     width: 280px;
     height: 280px;
-    background-image: url(/src/assets/imgs/about/myPic.jpg);
+    background-image: url("./imgs/myPic.jpg");
     background-size: 136%;
     border-radius: 100%;
     background-position: -54px -28px;
