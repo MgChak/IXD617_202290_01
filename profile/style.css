@@ -1,3 +1,15 @@
+.mainContainer{
+    width:100%;
+    position:relative;
+    right:0;
+    left:0;
+}
+.frontContainer{
+    position:absolute;
+    left:0;
+    right:0;
+    z-index: 3;
+}
 .container{
     width:100%;
     display: flex;
@@ -60,6 +72,12 @@ h4{
     text-align: center;
     font-weight: 400;
 }
+
+.backgroundContainer{
+    
+}
+
+
 
 @media (max-width:414px){
     .container{
