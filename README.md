@@ -7,3 +7,4 @@ IXD 617 Advanced Tech: Mobile Web
 
 ### Assignment Links
 - http://chakshing.com/aau/ixd617/profile
+- http://chakshing.com/aau/ixd617/csszengarden/
