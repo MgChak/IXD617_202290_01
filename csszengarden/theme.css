@@ -1,3 +1,217 @@
-.explanation > h3 {
-    color:blue;
+*{
+    margin:0;
 }
+abbr{
+    display: inline-block;
+}
+.page-wrapper{
+    position:relative;
+    left:0;
+    right:0;
+    width:100%;
+    height: fit-content;
+    display:grid;
+    grid-template-areas: 
+    "header header header"
+    "main main sidebar";
+    background-image: url("./img/pic_main.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+.intro{
+    grid-area: header;
+
+    width:80%;
+    height:80vh;
+    background-image: url("./img/pic_header.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:50px 10% 0 10%;
+}
+    .intro > header {
+        /* width:90%; */
+        /* margin: 0 auto; */
+    }
+        .intro > header > h1 {
+            font-size: 8vw;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 900;
+            color: #cb712c;
+            filter: blur(0px);
+            animation:headerAnimation 8s linear infinite;
+        }
+            @keyframes headerAnimation {
+                0%{filter: blur(0px);}
+                50%{filter: blur(15px);}
+                100%{filter: blur(0px);}
+            }
+        .intro > header > h2{
+            text-align: center;
+            font-size: 5vw;
+            text-transform: uppercase;
+            font-weight: 900;
+            color: #cb712c;
+            animation:headerAnimation2 8s linear infinite;
+        }
+            @keyframes headerAnimation2 {
+                0%{filter: blur(15px);}
+                50%{filter: blur(0px);}
+                100%{filter: blur(15px);}
+            }
+
+    .intro > .summary{
+        color: aliceblue;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+        text-shadow: 0 0 black;
+        text-shadow: 0px 0px 10px #000000ba;
+    }
+        .intro > .summary > p:first-child{
+            width: 25vw;
+        }
+        .intro > .summary > p:last-child{
+            width: 25vw;
+        }
+            .intro > .summary > p > a{
+                width: fit-content;
+                display: inline-flex;
+                background-color: #cb712c;
+                align-items: center;
+                color: white;
+                text-decoration: none;
+                padding: 0px 15px;
+                border-radius: 10px;
+                font-size:13px;
+                gap: 4px;
+                text-transform: uppercase;
+
+            }
+            .intro > .summary > p > a::after{
+                content: "";
+                background-image: url(./img/download.svg);
+                width: 20px;
+                height: 20px;
+                background-size: cover;
+                background-position: center;
+            }
+    .intro > .preamble {
+        width: 100%;
+        height: fit-content;
+        background: #00000061;
+        color: white;
+        padding: 30px 0;
+        border-radius: 100px 100px 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        backdrop-filter: blur(11px);
+        /* gap:8px; */
+        text-align: center;
+        
+    }
+        .intro > .preamble > h3{
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: #cb712c;
+        }
+        .intro > .preamble > p{
+            font-size: 10px;
+            margin: 0 25px;
+        }
+        
+.main{
+    grid-area: main;
+    margin-left:10vw;
+    margin-right:2.5vw;
+    margin-top:5vw;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    gap:20px
+
+}   
+    .main > div{
+        background-color: rgba(0, 0, 0, 0.466);
+        backdrop-filter: blur(10px);
+        padding:20px;
+        border-radius: 15px;
+        box-shadow:0 0 black;
+        position:relative;
+        right:0;
+        top:0;
+    }
+        .main > div >h3{
+            display: flex;
+            flex-direction: column;
+            font-size: 60px;
+            color: #cb712c;
+            text-transform:uppercase ;
+        }
+            .main > div >h3::after{
+                content:"";
+                width:100%;
+                height:300px;
+                background-image:url("./img/3.jpg");
+                background-size: cover;
+            }
+        .main > div > p{
+            /* display: flex; */
+            position:relative;
+            left:0;
+            top:0;
+            margin-top: 26px;
+
+        }
+            .main > div > p::before{
+                content: '';
+                width:80px;
+                height:2px;
+                background-color: #cb712c;
+
+                position:absolute;
+                left:0;
+                top:-13px;
+
+            }
+                @keyframes lineAnimation {
+                    0%{width:0}
+                    50%{width:100%}
+                    100%{width:0}
+                }
+                @keyframes lineAnimation2 {
+                    0%{width:100%}
+                    50%{width:0%}
+                    100%{width:100%}
+                }
+                    .main > div > p:nth-child(2):before{
+                        animation: lineAnimation 5s linear infinite;
+                    }
+                    .main > div > p:nth-child(3):before{
+                        animation: lineAnimation2 5s  linear infinite;
+                    }
+                    .main > div > p:nth-child(4):before{
+                        animation: lineAnimation 5s linear infinite;
+                    }
+                    .main > div > p:nth-child(5):before{
+                        animation: lineAnimation2 5s  linear infinite;
+                    }
+.sidebar{
+    grid-area: sidebar;
+    margin-right:10vw;
+    margin-left:2.5vw;
+    margin-top:5vw;
+    padding:20px;
+    background-color: rgba(240, 248, 255, 0.21);
+    height:fit-content;
+} 
