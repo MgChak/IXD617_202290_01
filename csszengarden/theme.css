@@ -4,6 +4,14 @@
 abbr{
     display: inline-block;
 }
+ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+li{
+    margin:0;
+}
 .page-wrapper{
     position:relative;
     left:0;
@@ -49,8 +57,11 @@ abbr{
         }
             @keyframes headerAnimation {
                 0%{filter: blur(0px);}
+                10%{filter: blur(0px);}
                 50%{filter: blur(15px);}
+                90%{filter: blur(0px);}
                 100%{filter: blur(0px);}
+
             }
         .intro > header > h2{
             text-align: center;
@@ -62,7 +73,8 @@ abbr{
         }
             @keyframes headerAnimation2 {
                 0%{filter: blur(15px);}
-                50%{filter: blur(0px);}
+                40%{filter: blur(0px);}
+                60%{filter: blur(0px);}
                 100%{filter: blur(15px);}
             }
 
@@ -158,13 +170,39 @@ abbr{
             color: #cb712c;
             text-transform:uppercase ;
         }
-            .main > div >h3::after{
+            .main > div:nth-child(1) >h3::after{
+                content:"";
+                width:100%;
+                height:300px;
+                background-image:url("./img/1.jpg");
+                background-size: cover;
+                background-position: center;
+            }
+            .main > div:nth-child(2) >h3::after{
+                content:"";
+                width:100%;
+                height:300px;
+                background-image:url("./img/2.jpg");
+                background-size: cover;
+                background-position: center;
+            }
+            .main > div:nth-child(3) >h3::after{
                 content:"";
                 width:100%;
                 height:300px;
                 background-image:url("./img/3.jpg");
                 background-size: cover;
+                background-position: center;
             }
+            .main > div:nth-child(4) >h3::after{
+                content:"";
+                width:100%;
+                height:300px;
+                background-image:url("./img/4.jpg");
+                background-size: cover;
+                background-position: center;
+            }
+
         .main > div > p{
             /* display: flex; */
             position:relative;
@@ -206,12 +244,136 @@ abbr{
                     .main > div > p:nth-child(5):before{
                         animation: lineAnimation2 5s  linear infinite;
                     }
+                    .main > div > p > a{
+                        width: fit-content;
+                        display: inline-flex;
+                        background-color: #cb712c;
+                        align-items: center;
+                        color: white;
+                        text-decoration: none;
+                        padding: 0px 15px;
+                        border-radius: 10px;
+                        font-size:13px;
+                        gap: 4px;
+                        text-transform: uppercase;
+        
+                    }
+                    .main > div > p > a::after{
+                        content: "";
+                        background-image: url(./img/download.svg);
+                        width: 20px;
+                        height: 20px;
+                        background-size: cover;
+                        background-position: center;
+                    }
+                    .participation > p:nth-child(2) > a::after{
+                        background-image: url(./img/double_arrow.svg);
+                    }
+                    .participation > p:nth-child(4) > a:last-child:after{
+                        background-image: url(./img/forward_to_inbox.svg);
+                    }
+                    .requirements > p:nth-child(5) > a::after{
+                        background-image: url(./img/double_arrow.svg);
+                    }
+                    .requirements > p:nth-child(6) > a{
+                        padding:0;
+                        margin:0;
+                        text-decoration: underline;
+                       background-color: transparent;
+                       color:#cb712c
+                    }
+                    .requirements > p:nth-child(6) > a::after{
+                        
+                        display:none;
+                    }
+
 .sidebar{
     grid-area: sidebar;
     margin-right:10vw;
     margin-left:2.5vw;
     margin-top:5vw;
-    padding:20px;
-    background-color: rgba(240, 248, 255, 0.21);
-    height:fit-content;
+
+
+    position:sticky;
+    top:100px;
 } 
+    .sidebar > div{
+        display: flex;
+        flex-direction: column;
+        gap:16px;
+    }
+        .sidebar > div > div{
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding:20px;
+            height:fit-content;
+            border-radius: 16px;
+            color:white;
+            display: flex;
+            flex-direction: column;
+            gap:20px;
+            height:30px;
+            overflow: hidden;
+            cursor: pointer;
+            transition:all 0.3s;
+        }
+        .sidebar > div > div:hover{
+            height:fit-content;
+            transition:all 0.3s;
+            background-color: rgba(0, 0, 0, 0.744);
+        }     
+            .sidebar > div > div > h3{
+                font-size: 30px;
+                color:white;
+                text-align: center;
+            } 
+            .sidebar > div > div > nav > ul {
+                flex-direction: column;
+                display: flex;
+                align-items: center;
+                gap:4px;
+            } 
+            .sidebar > div > div > ul {
+                flex-direction: column;
+                display: flex;
+                align-items: center;
+                gap:4px;
+            } 
+            .sidebar a{
+                color:#cb712c;
+                text-transform: uppercase;
+
+            }
+footer{
+    background-color: rgba(0, 0, 0, 0.466);
+    backdrop-filter: blur(10px);
+    padding:20px;
+    border-radius: 15px;
+    box-shadow:0 0 black;
+    margin-bottom: 30px;
+
+    display:flex;
+    justify-content: space-around;
+}
+    footer > a{
+        width: fit-content;
+        display: inline-flex;
+        background-color: #cb712c;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        padding: 0px 15px;
+        border-radius: 10px;
+        font-size:13px;
+        gap: 4px;
+        text-transform: uppercase;
+
+    }
+    footer > a::after{
+        content: "";
+        background-image: url(./img/double_arrow.svg);
+        width: 20px;
+        height: 20px;
+        background-size: cover;
+        background-position: center;
+    }
