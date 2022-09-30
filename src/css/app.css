@@ -1,25 +1,30 @@
 *,*::after,*::before{
     box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    margin:0;
+    padding:0;
+
+    color:var(--color-font-dark);
 }
 
 :root{
-    --font-header:sans-serif;
-    --font-body:serif;
-
-    --header-height:3rem;
-
     --color-main-rgb: 101,186,183;
-    --color-main-light:rgba(var(--color-main-rgb))
+    --color-main-light:rgba(var(--color-main-rgb));
+
+
+    --color-pageTage-border:black;
+    --color-pageTage-background:white;
+
+    --color-font-dark:rgb(37, 36, 46);
 }
 
-body{
-    margin:0;
-    font-family:var(--font-body);
-}
+ 
 
 a{
     color:black;
     text-decoration: none;
+    font-size:15px;
+    display: inline-block;
 }
 
 /* ============================[APP STRUCTURE]======================== */
@@ -50,12 +55,63 @@ a{
 
 [data-role="main"]{
     pointer-events: auto;
+    display:flex;
+    flex-direction: column;
+    gap:0;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+
+
 }
 
 
 
 /* ============================[Comps]======================== */
+.pageTag{
 
+    width:fit-content;
+
+    position:absolute;
+    top:-10px;
+    left:0;
+    right:0;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background:var(--color-pageTage-background);
+    border:var(--color-pageTage-border) 2px solid;
+    border-radius: 50px;
+    padding:1px 10px;
+    
+}
+    .pageTag > h1{
+        font-size: 15px;
+    }
+
+.catEarsContainer{
+    width:100%;
+    height:10%;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.catEar{
+    height:100%;
+    width:30%;
+    
+    background-image: url("../img/catEar.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.catEarRight{
+    transform:scaleX(-1);
+}
 
 /* ============================[Signin Page]======================== */
 
@@ -65,16 +121,10 @@ a{
     width:100%;
     height:80px;
     background:rgb(96, 95, 95);
-
-    display:flex;
-    justify-content: center;
-    align-items: center;
-
-    position:absolute;
     bottom:-80px;
     left:0;
 }
-.mainNavigationContainer{
+.mainNavContainer{
     width:100%;
     display:flex;
     justify-content: space-around;
@@ -86,17 +136,28 @@ a{
 /* ============================[List Page]======================== */
 .list-page > div{
     width:100%;
-    height:85%;
-    background:rgb(167, 150, 150);
+    height:95%;
 
-    display:flex;
-    justify-content: center;
-    align-items: center;
-
-    position:absolute;
     bottom:-95%;
     left:0;
 }
+    .list-page > div > .pageContentContainer{
+        width:100%;
+        flex:1;
+        background:rgb(167, 150, 150);
+        position:relative;
+
+    }
+        .list-page > div > .pageContentContainer > .listNavConatiner{
+            width:90%;
+            display: flex;
+            justify-content: space-between;
+
+            margin:0 auto;
+        }
+            .list-page > div > .pageContentContainer > .listNavConatiner > .listNav > h1{
+                font-size: 15px;
+            }
 
 
 /* ============================[Google Map]======================== */
