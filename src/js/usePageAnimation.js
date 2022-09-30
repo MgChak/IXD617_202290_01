@@ -1,11 +1,13 @@
 export default function(){
 
-    $('#main-page').on('pagebeforehide',function(){
+    $('[data-role="page"]').on('pagebeforehide',function(){
 
         var theHeight = $(this).find('#animation-default').css('height')
 
         var theHigherHeight = $(this).find('#animation-default').outerHeight() + 10 +"px"
 
+
+        console.log(theHeight,theHigherHeight)
         //div stretch
         $(this).find('#animation-default').animate({height: theHigherHeight},200)
         $(this).find('#animation-default').animate({height: theHeight},50)
@@ -15,12 +17,16 @@ export default function(){
     
     })
 
-    $('#main-page').on('pageshow',function(){
+    $('[data-role="page"]').on('pageshow',function(){
+
+       
 
         var theHeight = $(this).find('#animation-default').css('height')
 
         var theHigherHeight = $(this).find('#animation-default').outerHeight() + 10 +"px"
- 
+        console.log(theHeight,theHigherHeight)
+
+
         //div slidein
         $(this).find('#animation-default').animate({bottom:'0%'},300)
 
