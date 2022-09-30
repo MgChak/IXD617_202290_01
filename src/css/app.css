@@ -16,3 +16,39 @@ body{
     margin:0;
     font-family:var(--font-body);
 }
+
+
+/* ============================[APP STRUCTURE]======================== */
+
+.ui-loader{
+    display:none;
+}
+
+[data-role="page"]{
+    width:100%;
+    height:100%;
+
+    position:fixed;
+    bottom:0;
+    left:0;
+    
+    display:none;
+    overflow:hidden;
+}
+
+[data-role="page"].ui-page-active{
+    display:flex;
+    flex-direction: column;
+}
+
+[data-role="main"].ui-page-active{
+    flex:1 1 100%;
+    position:relative;
+}
+
+[data-role="header"].ui-page-active,
+[data-role="header"].ui-page-active{
+    flex:1 1 100%
+}
+
+/* ============================[Comps]======================== */
