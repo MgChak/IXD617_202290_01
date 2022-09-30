@@ -1,0 +1,18 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+
+:root{
+    --font-header:sans-serif;
+    --font-body:serif;
+
+    --header-height:3rem;
+
+    --color-main-rgb: 101,186,183;
+    --color-main-light:rgba(var(--color-main-rgb))
+}
+
+body{
+    margin:0;
+    font-family:var(--font-body);
+}

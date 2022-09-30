@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link rel="stylesheet" href="./lib/css/jquery.mobile.structure-1.4.5.min.css"> -->
+    <link rel="stylesheet" href="./src/css/app.css">
+
+    <script src="./lib/js/jquery-2.2.4.min.js"></script>
+    <script src="./src/js/app.js"></script>
+    <script src="./lib/js/jquery.mobile-1.4.5.min.js"></script>
+    
+
     <title>Color Cats</title>
 </head>
 <body>
-    <h1>Hello!!</h1>
+    <section data-role="page" id="signin-page">
+        <div data-role="main">
+            <form >
+                <input type="text">
+                <input type="password">
+                <button class="form-botton">signin</button>
+            </form>
+            <div>
+                <a href="#recent-page">Sign In</a>
+            </div>
+        </div>
+    </section>
+    <section data-role="page" id="resent-page">
+        <div data-role="main">
+           MAP!
+        </div>
+        <footer>
+            <h1>navigation</h1>
+        </footer>
+    </section>
 </body>
 </html>
