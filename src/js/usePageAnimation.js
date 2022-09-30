@@ -1,14 +1,17 @@
 export default function(){
 
-    $('.main-page').on('pagebeforehide',function(){
+    $('#main-page').on('pagebeforehide',function(){
 
-        $(this).animate({bottom:'-100%'},300)
+        var theHeight = $(this).find('#animation-default').css('height')
+        
+        $(this).find('#animation-default').animate({bottom:'-'+ theHeight},300)
+
         
     })
 
-    $('.main-page').on('pageshow',function(){
+    $('#main-page').on('pageshow',function(){
 
-        $(this).animate({bottom:'-90%'},300)
+        $(this).find('#animation-default').animate({bottom:'0%'},300)
         
     })
 
