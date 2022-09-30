@@ -8,7 +8,7 @@ export default function(){
 
         //div stretch
         $(this).find('#animation-default').animate({height: theHigherHeight},200)
-        $(this).find('#animation-default').animate({height: theHeight},100)
+        $(this).find('#animation-default').animate({height: theHeight},50)
 
         //div slideout
         $(this).find('#animation-default').animate({bottom:'-'+ theHeight},300)
@@ -25,7 +25,7 @@ export default function(){
         $(this).find('#animation-default').animate({bottom:'0%'},300)
 
         //div stretch
-        $(this).find('#animation-default').animate({height: theHigherHeight},100)
+        $(this).find('#animation-default').animate({height: theHigherHeight},50)
         $(this).find('#animation-default').animate({height: theHeight},200)
         
         
