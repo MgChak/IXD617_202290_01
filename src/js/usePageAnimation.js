@@ -1,20 +1,17 @@
 export default function(){
 
-    $('[data-role="page"]').on('pagebeforehide',function(){
+    $('[data-role="page"]').on('pagebeforehide',function(e,ui){
 
         var theHeight = $(this).find('#animation-default').css('height')
 
         var theHigherHeight = $(this).find('#animation-default').outerHeight() + 10 +"px"
 
-
-        console.log(theHeight,theHigherHeight)
         //div stretch
         $(this).find('#animation-default').animate({height: theHigherHeight},200)
         $(this).find('#animation-default').animate({height: theHeight},50)
 
         //div slideout
-        $(this).find('#animation-default').animate({bottom:'-'+ theHeight},300)
-    
+        $(this).find('#animation-default').animate({bottom:'-'+ theHeight},300)   
     })
 
     $('[data-role="page"]').on('pageshow',function(){
@@ -24,8 +21,6 @@ export default function(){
         var theHeight = $(this).find('#animation-default').css('height')
 
         var theHigherHeight = $(this).find('#animation-default').outerHeight() + 10 +"px"
-        console.log(theHeight,theHigherHeight)
-
 
         //div slidein
         $(this).find('#animation-default').animate({bottom:'0%'},300)
@@ -33,8 +28,10 @@ export default function(){
         //div stretch
         $(this).find('#animation-default').animate({height: theHigherHeight},50)
         $(this).find('#animation-default').animate({height: theHeight},200)
+
         
         
     })
 
+    
 }

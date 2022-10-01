@@ -29,6 +29,8 @@ a{
 
 /* ============================[APP STRUCTURE]======================== */
 
+.animation-default.out,.animation-default.in{animation-duration:1ms}
+
 .ui-loader{
     display:none;
 }
@@ -204,3 +206,16 @@ a{
 
     z-index:-2;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
