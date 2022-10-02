@@ -44,8 +44,8 @@
     <section data-role="page" id="main-page" class="main-page">
         <div data-role="main" id="animation-default">
             <div class="mainNavContainer">
-                <div class="navigation"><a href="#list-page" data-transition="animation-default">list</a></div>
-                <div class="navigation"><a href="#adding-new-cat-page" data-transition="animation-default">adding</a></div>
+                <div class="navigation"><a href="#color-list-page" data-transition="animation-default">list</a></div>
+                <div class="navigation"><a href="#adding-page" data-transition="animation-default">adding</a></div>
                 <div class="navigation"><a href="#user-profil-page" data-transition="animation-default">profile</a></div>
             </div>
         </div>
@@ -53,108 +53,139 @@
 
     
     
-    <!-- google map -->
-    <section data-role="page" id="list-page" class="list-page">
+    <!-- Color List-->
+    <section data-role="page" id="color-list-page" class="list-page">
         <div data-role="main" id="animation-default">
             <div class="catEarsContainer">
                 <div class="catEar catEarLeft"></div>
                 <div class="catEar catEarRight"></div>
             </div>
-            <div class="pageContentContainer">
+            <div class="pageContentContainer pageBackground_default">
                 <div class="pageTag"><h1>COLORS</h1></div>
-                <div class="listNavConatiner">
+                <div class="listNavConatiner listNavConatiner_default">
                     <div class=listNav><a href="#main-page" data-transition="animation-default">Back</a></div>
                     <div class=listNav><a href="#main-page" data-transition="animation-default">close</a></div>
                     
                 </div>
-                <ul class="ListContainer">
+                <ul class="ListContainer ListContainer_default">
                     <div class=listNav><h1>filter</h1></div>    
-                    <li class="listItem">
+                    <a class="listItem" href="#cat-list-page" data-transition="animation-default">
                         <div class="pic"></div>
                         <div class="informationContainer">
                             <h1> WHITE</h1>
                             <h2> 10 cats</h2>
                             <h2> last update : sep 30 </h2>
                         </div>
-                    </li>
-                    <li class="listItem">
+                    </a>
+                    <a class="listItem" href="#cat-list-page" data-transition="animation-default">
                         <div class="pic"></div>
                         <div class="informationContainer">
                             <h1> WHITE</h1>
                             <h2> 10 cats</h2>
                             <h2> last update : sep 30 </h2>
                         </div>
-                    </li>
-                    <li class="listItem">
-                        <div class="pic"></div>
-                        <div class="informationContainer">
-                            <h1> WHITE</h1>
-                            <h2> 10 cats</h2>
-                            <h2> last update : sep 30 </h2>
-                        </div>
-                    </li>
-                    <li class="listItem">
-                        <div class="pic"></div>
-                        <div class="informationContainer">
-                            <h1> WHITE</h1>
-                            <h2> 10 cats</h2>
-                            <h2> last update : sep 30 </h2>
-                        </div>
-                    </li>
-                    <li class="listItem">
-                        <div class="pic"></div>
-                        <div class="informationContainer">
-                            <h1> WHITE</h1>
-                            <h2> 10 cats</h2>
-                            <h2> last update : sep 30 </h2>
-                        </div>
-                    </li>
-                    <li class="listItem">
-                        <div class="pic"></div>
-                        <div class="informationContainer">
-                            <h1> WHITE</h1>
-                            <h2> 10 cats</h2>
-                            <h2> last update : sep 30 </h2>
-                        </div>
-                    </li>
-                    <li class="listItem">
-                        <div class="pic"></div>
-                        <div class="informationContainer">
-                            <h1> WHITE</h1>
-                            <h2> 10 cats</h2>
-                            <h2> last update : sep 30 </h2>
-                        </div>
-                    </li>
-                    <li class="listItem">
-                        <div class="pic"></div>
-                        <div class="informationContainer">
-                            <h1> WHITE</h1>
-                            <h2> 10 cats</h2>
-                            <h2> last update : sep 30 </h2>
-                        </div>
-                    </li>
-                    <li class="listItem">
-                        <div class="pic"></div>
-                        <div class="informationContainer">
-                            <h1> WHITE</h1>
-                            <h2> 10 cats</h2>
-                            <h2> last update : sep 30 </h2>
-                        </div>
-                    </li>
-                    <li class="listItem">
-                        <div class="pic"></div>
-                        <div class="informationContainer">
-                            <h1> WHITE</h1>
-                            <h2> 10 cats</h2>
-                            <h2> last update : sep 30 </h2>
-                        </div>
-                    </li>
+                    </a>
                 </ul>
             </div>
         </div>
     </section>
 
 
+
+    <!-- Cat list -->
+    <section data-role="page" id="cat-list-page" class="list-page">
+        <div data-role="main" id="animation-default">
+            <div class="catEarsContainer">
+                <div class="catEar catEarLeft"></div>
+                <div class="catEar catEarRight"></div>
+            </div>
+            <div class="pageContentContainer pageBackground_default">
+                <div class="pageTag"><h1>WHITE</h1></div>
+                <div class="listNavConatiner listNavConatiner_default">
+                    <div class=listNav><a href="#color-list-page" data-transition="animation-default">Back</a></div>
+                    <div class=listNav><a href="#main-page" data-transition="animation-default">close</a></div>
+                        
+                </div>
+                <ul class="ListContainer ListContainer_default">
+                    <div class=listNav><h1>filter</h1></div>    
+                    <a class="listItem" href="#cat-detail-page" data-transition="animation-default">
+                        <div class="pic"></div>
+                        <div class="informationContainer">
+                            <h2> date: sep 30</h2>
+                            <h2> position: abcd bskjhd...</h2>
+                        </div>
+                    </a>
+                    <a class="listItem" href="#cat-detail-page" data-transition="animation-default">
+                        <div class="pic"></div>
+                        <div class="informationContainer">
+                            <h2> date: sep 30</h2>
+                            <h2> position: abcd bskjhd...</h2>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Cat detail page -->
+    <section data-role="page" id="cat-detail-page" class="cat-detail-page">
+        <div data-role="main" id="animation-default">
+            <div class="catEarsContainer">
+                <div class="catEar catEarLeft"></div>
+                <div class="catEar catEarRight"></div>
+            </div>
+            <div class="pageContentContainer pageBackground_default">
+                <div class="pageTag"><h1>WHITE</h1></div>
+                <div class="listNavConatiner listNavConatiner_default">
+                    <div class=listNav><a href="#color-list-page" data-transition="animation-default">Back</a></div>
+                    <div class=listNav><a href="#main-page" data-transition="animation-default">close</a></div>        
+                </div>
+                <div class="inforContainer">
+                    <div class="pic"></div>
+                    <div class="inforBox">
+                        <h1>note:jshdakshdasda</h1>
+                        <h1>date: sep 30</h1>
+                        <h1>position: abcd bskjhd...</h1>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ADDING -->
+    <section data-role="page" id="adding-page" class="adding-page">
+        <div data-role="main" id="animation-default">
+            <div class="catEarsContainer">
+                <div class="catEar catEarLeft"></div>
+                <div class="catEar catEarRight"></div>
+            </div>
+            <div class="pageContentContainer pageBackground_default">
+                <div class="pageTag"><h1>ADDING</h1></div>
+                <div class="listNavConatiner listNavConatiner_default">
+                    <div class=listNav><a href="#color-list-page" data-transition="animation-default">Back</a></div>
+                    <div class=listNav><a href="#main-page" data-transition="animation-default">close</a></div>
+                        
+                </div>
+                <div class="container">
+                    <div class="pic"> add new image</div>
+                    <div><h1>Date</h1><input type="date"></div>
+                    <div><h1>Color</h1><input type="text"></div>
+                    <div><h1>position</h1><input type="text"></div>
+                    <div><h1>Note</h1><input type="text"></div>
+
+                    <a href="#cat-detail-page" data-transition="animation-default">SAVE</a>
+                    <a href="#main-page" data-transition="animation-default">CANSEL</a>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
 
     <!-- google map -->
     <div class="googleMapContainer">

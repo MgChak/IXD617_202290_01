@@ -7,11 +7,11 @@ export default function(){
         var theHigherHeight = $(this).find('#animation-default').outerHeight() + 10 +"px"
 
         //div stretch
-        $(this).find('#animation-default').animate({height: theHigherHeight},200)
+        $(this).find('#animation-default').animate({height: theHigherHeight},100)
         $(this).find('#animation-default').animate({height: theHeight},50)
 
         //div slideout
-        $(this).find('#animation-default').animate({bottom:'-'+ theHeight},300)   
+        $(this).find('#animation-default').animate({bottom:'-'+ theHeight},200)   
     })
 
     $('[data-role="page"]').on('pageshow',function(){
@@ -27,7 +27,7 @@ export default function(){
 
         //div stretch
         $(this).find('#animation-default').animate({height: theHigherHeight},50)
-        $(this).find('#animation-default').animate({height: theHeight},200)
+        $(this).find('#animation-default').animate({height: theHeight},100)
 
         
         
