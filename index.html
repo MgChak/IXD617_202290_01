@@ -26,31 +26,88 @@
     <!-- signin page -->
     <section data-role="page" id="signin-page" class="signin-page">
         <div data-role="main">
-            <form class="form" id="signin-form" data-ajax="false">
-                <div class="form-control">
-                    <label class="form-label" for="signin-username" >Username</label>
-                    <input class="form-input" type="text" id="signin-username" data-role="none" placeholder="type your username">
+
+            <img src="./src/img/iconCat.svg" class="sign_cat" style="width:100%">
+
+            <div class="sign_mainContainer">
+                <div class="sign_darkSideConatiner">
+                    <div class="catEarsContainer">
+                        <div class="catEar catEarLeft"></div>
+                        <div class="catEar catEarRight"></div>
+                    </div>
+                    <div class="sign_darkSideInfor">
+                        <div class="pageTag"><h1>SIGN IN</h1></div>
+                        <div class="signIn-note"><h1 id="signInPageError_slot">Hi! Welcome to Color Cats</h1></div>
+                        <form class="form" id="signin-form" data-ajax="false">
+                            <div class="form-control">
+                                <label class="form-label" for="signin-username" >Username</label>
+                                <input class="form-input" type="text" id="signin-username" data-role="none" placeholder="Type your username">
+                            </div>
+                            <div class="form-control">
+                                <label class="form-label" for="signin-username" >Password</label>
+                                <input class="form-input" type="password" id="signin-password" data-role="none" placeholder="Type your password">
+                            </div>
+                            <div class="sign_buttonContainer">
+                                <a href="#main-page" class="form-botton">signin</a>
+                                <div>
+                                    Don't have an account? <a href="#signup-page" data-transition="none">Sign up now!</a>
+                                </div>
+                            </div>               
+                        </form>
+                    </div>                  
                 </div>
-                <div class="form-control">
-                    <label class="form-label" for="signin-username" >Password</label>
-                    <input class="form-input" type="password" id="signin-password" data-role="none" placeholder="type your password">
+                <div class="sign_lightSide">
+                    <h1>&copy;Chakshing Lam 2022</h1>
                 </div>
-                <div class="form-control">
-                    <a href="#main-page" class="form-botton">signin</a>
-                </div>               
-            </form>
-            <div>
-                <a href="#signup-page" data-transition="none">Sign In</a>
             </div>
+            
         </div>
     </section>
 
 
 
     <!-- signup page -->
-    <section data-role="page" id="signup-page" class="signin-page">
-        <div data-role="main">
-            <a href="#signin-page" data-transition="none">Sign up</a>
+    <section data-role="page" id="signup-page" class="signup-page">
+        <div data-role="main" >
+            <img src="./src/img/iconCatNoColor.svg" class="sign_welcome" style="width:100%">
+
+            <div class="signup_mainContainer">
+                <div class="signup_darkSideConatiner">
+                    <div class="catEarsContainer">
+                        <div class="catEar catEarLeft"></div>
+                        <div class="catEar catEarRight"></div>
+                    </div>
+                    <div class="signup_darkSideInfor">
+                        <div class="pageTag"><h1>SIGN UP</h1></div>
+                        <div class="signUp-note"><h1>Hi! Welcome to Color Cats. Pless do not use any mark in your password and username</h1></div>
+                        <form class="form" id="signup-form" data-ajax="false">
+                            <div class="form-control">
+                                <label class="form-label" for="signup-username" >Username</label>
+                                <input class="form-input" type="text" id="signup-username" data-role="none" placeholder="Type your username">
+                            </div>
+                            <div class="form-control">
+                                <label class="form-label" for="signup-username" >Password</label>
+                                <input class="form-input" type="password" id="signup-password" data-role="none" placeholder="Type your password">
+                            </div>
+                            <h1 id="signUpPageError_slot"></h1>
+                            <div class="form-control">
+                                <label class="form-label" for="signup-username" >Re-Enter Password</label>
+                                <input class="form-input" type="password" id="signup-repassword" data-role="none" placeholder="Re-Enter your password">
+                            </div>
+                            <div class="signup_buttonContainer">
+                                <a href="#signin-page" class="form-botton">SING UP</a>
+                                <div>
+                                    Don't have an account? <a href="#signin-page" data-transition="none">Sign in now!</a>
+                                </div>
+                            </div>               
+                        </form>
+                    </div>                  
+                </div>
+                <div class="signup_lightSide signup_lightSide">
+                    <h1>&copy;Chakshing Lam 2022</h1>
+                </div>
+            </div>
+            
         </div>
     </section>
     
@@ -58,7 +115,7 @@
 
     <!-- main page -->
     <section data-role="page" id="main-page" class="main-page">
-        <div data-role="main" id="animation-default" class="main-page-main">
+        <div data-role="main" class="animation-default main-page-main">
             <div class="mainNavContainer">
                 <div class="navigation"><a href="#color-list-page" data-transition="animation-default">list</a></div>
                 <div class="navigation"><a href="#adding-page" data-transition="animation-default">adding</a></div>
@@ -71,7 +128,7 @@
     
     <!-- Color List-->
     <section data-role="page" id="color-list-page" class="list-page">
-        <div data-role="main" id="animation-default">
+        <div data-role="main" class="animation-default">
             <div class="catEarsContainer">
                 <div class="catEar catEarLeft"></div>
                 <div class="catEar catEarRight"></div>
@@ -109,7 +166,7 @@
 
     <!-- Cat list -->
     <section data-role="page" id="cat-list-page" class="list-page">
-        <div data-role="main" id="animation-default">
+        <div data-role="main" class="animation-default">
             <div class="catEarsContainer">
                 <div class="catEar catEarLeft"></div>
                 <div class="catEar catEarRight"></div>
@@ -145,7 +202,7 @@
 
     <!-- Cat detail page -->
     <section data-role="page" id="cat-detail-page" class="cat-detail-page">
-        <div data-role="main" id="animation-default">
+        <div data-role="main" class="animation-default">
             <div class="catEarsContainer">
                 <div class="catEar catEarLeft"></div>
                 <div class="catEar catEarRight"></div>
@@ -172,7 +229,7 @@
 
     <!-- ADDING -->
     <section data-role="page" id="adding-page" class="adding-page">
-        <div data-role="main" id="animation-default">
+        <div data-role="main" class="animation-default">
             <div class="catEarsContainer">
                 <div class="catEar catEarLeft"></div>
                 <div class="catEar catEarRight"></div>

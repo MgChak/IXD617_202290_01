@@ -12,10 +12,17 @@
     --color-main-light:rgba(var(--color-main-rgb));
 
 
-    --color-pageTage-border:black;
+    --color-pageTage-border:rgb(37, 36, 46);
     --color-pageTage-background:white;
 
+    --color-page-dark:#2E3336;
+    --color-page-light:#D1D9D8;
+
     --color-font-dark:rgb(37, 36, 46);
+    --color-font-light-v:#BE9BF7;
+    --color-font-alert:#CF6767;
+
+    --color-button-v:#7D46D7;
 }
 
  
@@ -45,6 +52,7 @@ a{
     left:0;
     
     display:none;
+    justify-content: end;
     overflow:hidden;
 
     pointer-events: none;
@@ -56,11 +64,12 @@ a{
 } 
 
 [data-role="main"]{
+    width:100%;
     pointer-events: auto;
     display:flex;
     flex-direction: column;
     gap:0;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     position:absolute;
 
@@ -92,6 +101,7 @@ a{
 }
     .pageTag > h1{
         font-size: 15px;
+        color:var(--color-page-dark);
     }
 /* ------------------------------------ */
 .ImgContainer_default{
@@ -119,7 +129,7 @@ a{
 /* ------------------------------------ */
 .catEarsContainer{
     width:100%;
-    height:50px;
+    height:65px;
     
     display: flex;
     justify-content: space-between;
@@ -168,7 +178,225 @@ a{
         overflow: scroll;
     }
 
+/* ------------------------------------ */
+
+.form{
+    width:80%;
+    margin:20px auto 56px auto;
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+}
+    .form-control{
+        width:100%;
+        position:relative; 
+        left:0;
+        top:0;   
+    }
+    .form-label{
+        display:inline-block;
+        width:fit-content;
+        height:fit-content;
+
+        position:absolute;
+        left:0;
+        bottom:0;
+        top:-40px;
+        right:0;
+
+        margin: auto auto;
+        padding: 0 4px;
+
+        color:white;
+        background-color: #2E3336;
+
+        font-size:15px;
+    }
+    .form-input{
+        width:100%;
+        background:transparent;
+        border: white 1px solid;
+        border-radius: 6px;
+        font-size: 15px;
+        padding:10px 5px;
+        text-align: center;
+    }
+    .form-botton{
+        width:90%;
+        background: var(--color-button-v);
+        border-radius: 30px;
+        text-align: center;
+        margin:0 auto;
+        padding:10px 0;
+        color:white;
+        box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+    }
+
 /* ============================[Signin Page]======================== */
+/* .signin-page{
+    justify-content: end;
+} */
+.sign_cat{
+    position:absolute;
+    top:0;
+    z-index: -1;
+}
+.signin-page > div{
+    width:100%;
+    height:100%;
+    max-height: 720px;
+    bottom:0;
+}
+.sign_mainContainer{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    margin-top: -40%;
+}
+    .sign_darkSideConatiner{
+        display: flex;
+        flex-direction: column;
+        gap:0;
+    }
+        .sign_darkSideInfor{
+            position:relative;
+            background-color: var(--color-page-dark);
+            border-radius: 0px 0px 40px 40px;
+        }
+        .sign_buttonContainer{
+            width:70%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position:absolute;
+            left: 0;
+            bottom:-25%;
+            right:0;
+            margin:0 auto;
+            
+        }
+        .sign_buttonContainer>div{
+            font-size:12px;
+            margin-top:8px;
+        }
+        .sign_buttonContainer>div >a{
+            font-size:12px;
+            margin-top:8px;
+            color:var(--color-button-v);
+            text-decoration: underline;
+        }
+    .sign_lightSide{
+        margin-top: -10vh;
+        height:23vh;
+        background-color:var(--color-page-light) ;
+        display: flex;
+        width:100%;
+        justify-content: center;
+        align-items: flex-end;
+    }
+        .sign_lightSide>h1{
+            font-size: 12px;
+            font-weight: 200;
+            padding:8px;
+            color:black;
+            opacity: 0.3;
+        }
+    .signIn-note{
+        width:80%;
+        margin:30px auto 0 auto;
+    }
+    .signIn-note > h1{
+        font-size: 12px;
+        font-weight: 500;
+        color:var(--color-font-light-v);
+        text-align: center;
+    }
+/* ============================[Signup Page]======================== */
+/* .signin-page{
+    justify-content: end;
+} */
+.sign_welcome{
+    position:absolute;
+    top:0;
+    z-index: -1;
+}
+.signup-page > div{
+    width:100%;
+    height:100%;
+    max-height: 800px;
+    bottom:0;
+}
+.signup_mainContainer{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    /* margin-top: -60%; */
+}
+    .signup_darkSideConatiner{
+        display: flex;
+        flex-direction: column;
+        gap:0;
+    }
+        .signup_darkSideInfor{
+            position:relative;
+            background-color: var(--color-page-dark);
+            border-radius: 0px 0px 40px 40px;
+        }
+        .signup_buttonContainer{
+            width:70%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position:absolute;
+            left: 0;
+            bottom:-50px;
+            right:0;
+            margin:0 auto;
+            
+        }
+        .signup_buttonContainer>div{
+            font-size:12px;
+            margin-top:8px;
+        }
+        .signup_buttonContainer>div >a{
+            font-size:12px;
+            margin-top:8px;
+            color:var(--color-button-v);
+            text-decoration: underline;
+        }
+    .signup_lightSide{
+        margin-top: -10vh;
+        height:22vh;
+        background-color:var(--color-page-light) ;
+        display: flex;
+        width:100%;
+        justify-content: center;
+        align-items: flex-end;
+    }
+        .signup_lightSide>h1{
+            font-size: 12px;
+            font-weight: 200;
+            padding:8px;
+            color:black;
+            opacity: 0.3;
+        }
+    .signUp-note{
+        width:80%;
+        margin:30px auto 0 auto;
+    }
+    .signUp-note > h1{
+       font-size: 12px;
+       font-weight: 500;
+       color:var(--color-font-light-v);
+       text-align: center;
+    }
+    #signUpPageError_slot{
+        font-size: 12px;
+        font-weight: 500;
+        color:var(--color-font-alert);
+        display:none;
+    }
+
 
 /* ============================[Main Page]======================== */
 
@@ -246,9 +474,7 @@ a{
                 width:150px;
                 height:90%;                                                   
             }
-            .cat-detail-page > div > .pageContentContainer > .inforContainer > .inforBox{
-                                                                  
-            }
+
                 .cat-detail-page > div > .pageContentContainer > .inforContainer > .inforBox{
                     font-size:10px;                                                
                 }
