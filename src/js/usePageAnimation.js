@@ -1,23 +1,21 @@
-import useBackgroundCtrl from "./useBackgroundCtrl.js"
+function PageAnimationDefaultIn(tar){
 
-export default function(){
+    $(tar).find('#animation-default').css('bottom', 0)
 
-    $('[data-role="page"]').on('pagebeforehide',function(){
+}
 
-        useBackgroundCtrl()//Ctrl background of the app: switch bettwen google map and color background
 
-        var theHeight = $(this).find('#animation-default').css('height')
+function PageAnimationDefaultOut(tar){
 
-        $(this).find('#animation-default').css('bottom', '-' + theHeight)
+    var theHeight = $(tar).find('#animation-default').css('height')
 
-    })
+    $(tar).find('#animation-default').css('bottom', '-' + theHeight)
 
-    $('[data-role="page"]').on('pageshow',function(){
-        
-        useBackgroundCtrl()//Ctrl background of the app: switch bettwen google map and color background
+}
 
-        $(this).find('#animation-default').css('bottom', 0)
-    })
 
-    
+
+export{
+    PageAnimationDefaultIn,
+    PageAnimationDefaultOut
 }

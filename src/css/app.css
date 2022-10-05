@@ -64,7 +64,7 @@ a{
     align-items: center;
     position:absolute;
 
-    transition:all 0.3s ease-in-out;
+    transition:all 0.3s cubic-bezier(0.45, 0.86, 0.8, 1);
 }
 
 
