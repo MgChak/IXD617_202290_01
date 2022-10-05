@@ -3,17 +3,23 @@ import useBackgroundCtrl from "./useBackgroundCtrl.js"
 
 
 $(()=>{
+
     useBackgroundCtrl()//Ctrl background of the app: switch bettwen google map and color background
    
     $(document)
 
-    .on("pagebeforehide", '[data-role="page"]', function(){
-        PageAnimationDefaultOut(this)
+    .on("pagebeforehide", '[data-role="page"]', function(){//page trasit event : before hide
+        
+        PageAnimationDefaultOut(this)//call page transition animation : slide out 
+
     })
 
-    .on("pageshow", '[data-role="page"]', function(){
-        useBackgroundCtrl()
-        PageAnimationDefaultIn(this)
+    .on("pageshow", '[data-role="page"]', function(){//page trasit event : after show
+
+        useBackgroundCtrl()//Ctrl background of the app: switch bettwen google map and color background
+        
+        PageAnimationDefaultIn(this)//call page transition animation : slide in 
+
     })
 
     .on("submit", "#signin-form", function(e) {
