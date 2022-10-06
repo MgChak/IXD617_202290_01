@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no;" >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,9 +117,18 @@
     <section data-role="page" id="main-page" class="main-page">
         <div data-role="main" class="animation-default main-page-main">
             <div class="mainNavContainer">
-                <div class="navigation"><a href="#color-list-page" data-transition="animation-default">list</a></div>
-                <div class="navigation"><a href="#adding-page" data-transition="animation-default">adding</a></div>
-                <div class="navigation"><a href="#user-profil-page" data-transition="animation-default">profile</a></div>
+                <a href="#color-list-page" data-transition="animation-default" class="navConatiner">
+                    <img src="./src/img/icons/list.svg" alt="" class="mainNavIcon">
+                    <h1>CAT LIST</h1>
+                </a>
+                <a href="#adding-page" data-transition="animation-default" class="navConatiner">
+                    <img src="./src/img/icons/add.svg" alt="" class="mainNavIcon2">
+                    <h1>ADD NEW</h1>
+                </a>
+                <a href="#signin-page" data-transition="animation-default" class="navConatiner">
+                    <img src="./src/img/icons/profile.svg" alt="" class="mainNavIcon">
+                    <h1>PROFILE</h1>
+                </a>
             </div>
         </div>
     </section>
@@ -258,7 +267,7 @@
     <!-- background container -->
     <div class="backgroundContainer" id="backgroundContainer">
         <div class="signinAndSignupPageBackground" id="signinAndSignupPageBackground"></div>
-        <svg width="50" height="50" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- <svg width="50" height="50" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_42_200)">
             <path d="M59.6099 28.5099C60.3299 33.8399 59.4999 39.4399 56.8999 44.6099C50.0299 58.2599 33.3999 63.7599 19.7399 56.8999C6.07988 50.0399 0.589879 33.3999 7.45988 19.7399C14.3299 6.07988 30.9599 0.589879 44.6099 7.45988" stroke="#231815" stroke-width="9" stroke-miterlimit="10" stroke-linecap="round"/>
             <path d="M18.2798 28.58L30.0398 42.31L59.8598 10.98" stroke="#231815" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
@@ -269,7 +278,8 @@
             </clipPath>
             </defs>
         </svg>
-        <a href="#signin-page" id="text">GOOGLE MAP [Back to Signin page]</a>
+        <a href="#signin-page" id="text">GOOGLE MAP [Back to Signin page]</a> -->
+        <div class="googleMapContainer"></div>
     </div>
 </body>
 </html>

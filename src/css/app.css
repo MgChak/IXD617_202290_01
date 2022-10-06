@@ -12,13 +12,13 @@
     --color-main-light:rgba(var(--color-main-rgb));
 
 
-    --color-pageTage-border:rgb(37, 36, 46);
+    --color-pageTage-border:#2C2F32;
     --color-pageTage-background:white;
 
-    --color-page-dark:#2E3336;
+    --color-page-dark:#2C2F32;
     --color-page-light:#D1D9D8;
 
-    --color-font-dark:rgb(37, 36, 46);
+    --color-font-dark:#2C2F32;
     --color-font-light-v:#BE9BF7;
     --color-font-alert:#CF6767;
 
@@ -36,7 +36,7 @@ a{
 
 /* ============================[APP STRUCTURE]======================== */
 
-.animation-default.out,.animation-default.in{animation-duration:2ms}
+.animation-default.out,.animation-default.in{animation-duration:5ms}
 
 .ui-loader{
     display:none;
@@ -231,6 +231,7 @@ a{
         color:white;
         box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
         border:none;
+        font-size:20px;
     }
 
 /* ============================[Signin Page]======================== */
@@ -403,19 +404,43 @@ a{
 
 .main-page-main{
     width:100%;
-    height:80px;
-    background:rgb(96, 95, 95);
-    bottom:-80px;
+    height:120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;    
+    bottom:-120px;
     left:0;
 }
 .mainNavContainer{
+    background:var(--color-page-dark);
     width:100%;
+    height:80px;
     display:flex;
     justify-content: space-around;
+    align-items: flex-end;
     padding:15px 0;
     margin: auto auto;
+    padding:0 8% 16px 8%;
+    margin:0;
 
 }
+    .navConatiner{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:10px;
+    }
+    .mainNavIcon{
+        width:25px;
+    }
+    .mainNavIcon2{
+        width:80px;
+        margin-bottom: -8px;
+    }
+    .navConatiner > h1{
+        color:white;
+        font-size:12px;
+    }
 
 /* ============================[List Page]======================== */
 .list-page > div{
@@ -526,9 +551,13 @@ a{
 .backgroundContainer{
     width:100%;
     height:100vh;
+    height:calc(100vh);
     display: flex;
     justify-content: center;
-
+    position:fixed;
+    top:0;
+    right:0;
+    overflow: hidden;
     pointer-events: all;
     align-items: center;
     z-index: -2;
@@ -538,7 +567,7 @@ a{
 }
 .signinAndSignupPageBackground{
     width:100vw;
-    height:100vh;
+    height:100%;
     background-image: url("../img/signInUpBackground.svg");
     background-size: cover;
     background-position: center;
@@ -554,6 +583,14 @@ a{
 .signinAndSignupPageBackground_active{
     display: block;
     pointer-events: all;
+}
+/* -------------------------- */
+.googleMapContainer{
+    width:100%;
+    height:100%;
+    background-image: url("../img/map.png");
+    background-size: cover;
+    background-position: center;
 }
 
 /* ============================[SVG]======================== */
