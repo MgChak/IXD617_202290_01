@@ -221,7 +221,7 @@ a{
         padding:10px 5px;
         text-align: center;
     }
-    .form-botton{
+    .form-button{
         width:90%;
         background: var(--color-button-v);
         border-radius: 30px;
@@ -230,6 +230,7 @@ a{
         padding:10px 0;
         color:white;
         box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+        border:none;
     }
 
 /* ============================[Signin Page]======================== */
@@ -270,7 +271,7 @@ a{
             align-items: center;
             position:absolute;
             left: 0;
-            bottom:-25%;
+            bottom:-22%;
             right:0;
             margin:0 auto;
             

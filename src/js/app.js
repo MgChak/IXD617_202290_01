@@ -1,30 +1,36 @@
 import {PageAnimationDefaultIn,PageAnimationDefaultOut} from "./usePageAnimation.js"
-import useBackgroundCtrl from "./useBackgroundCtrl.js"
+import {checkSigninForm,checkSignupForm} from "./useCheckForm.js"
+import usePathCheck from "./usePathCheck.js"
 
 
 $(()=>{
 
-    useBackgroundCtrl()//Ctrl background of the app: switch bettwen google map and color background
+    usePathCheck()//Ctrl background of the app: switch bettwen google map and color background
    
     $(document)
 
-    .on("pagebeforehide", '[data-role="page"]', function(){//page trasit event : before hide
+    .on("pagebeforehide", '[data-role="page"]', function(){//页面切换前
         
         PageAnimationDefaultOut(this)//call page transition animation : slide out 
 
     })
 
-    .on("pageshow", '[data-role="page"]', function(){//page trasit event : after show
+    .on("pagebeforeshow", '[data-role="page"]', function(){//页面切换后，还未展示前
 
-        useBackgroundCtrl()//Ctrl background of the app: switch bettwen google map and color background
-        
+        usePathCheck()//
+
+    })
+
+    .on("pageshow", '[data-role="page"]', function(){////页面切换后
+
         PageAnimationDefaultIn(this)//call page transition animation : slide in 
 
     })
 
-    .on("submit", "#signin-form", function(e) {
-        // e.preventDefault();
-        // checkSigninForm();
+    .on("submit", "#signin-form", function(e) {//sign in 表单提交
+        e.preventDefault()
+        checkSigninForm()//检测提交
+        usePathCheck()//检测路径
     })
 
     .on("click", ".js-logout", function(e) {
