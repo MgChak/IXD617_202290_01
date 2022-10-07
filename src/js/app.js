@@ -2,9 +2,11 @@ import {PageAnimationDefaultIn,PageAnimationDefaultOut} from "./usePageAnimation
 import {checkSigninForm,checkSignupForm} from "./useCheckForm.js"//表单提交与检查
 import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background} from "./useCtrlListMenu.js"//list二级菜单控制
-import {eSortHandle} from "./userListSort.js"
+import {eSortHandle} from "./userListSort.js" //处理列表排列
 
 $(()=>{
+
+    let loginActionLock = false
 
     usePathCheck()//Ctrl background of the app: switch bettwen google map and color background
    
@@ -24,8 +26,13 @@ $(()=>{
 
     .on("submit", "#signin-form", function(e) {//sign in 表单提交
         e.preventDefault()
-        checkSigninForm()//检测提交
-        usePathCheck()//检测路径
+        if(!loginActionLock){ //检测行为锁
+            loginActionLock=true//行为锁锁定
+            checkSigninForm()//检测提交
+            usePathCheck()//检测路径
+            setTimeout(()=>{loginActionLock=false},1000)//行为锁解锁
+        }else{ return } //行为锁锁定，拒绝执行
+
     })
 
     .on("click", ".js-logout", function(e) {
