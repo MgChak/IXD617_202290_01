@@ -37,8 +37,15 @@ function closeListMenu_background(tar){
     setTimeout(()=>{isMenuOpen = false},300)//打开行为锁
 }
 
+function eSortHandle(tar){
+
+    $(tar).addClass("sortItem_active")
+        .siblings().removeClass("sortItem_active")
+}
+
 export{
     openListMenu,
     closeListMenu_icon,
-    closeListMenu_background
+    closeListMenu_background,
+    eSortHandle
 }

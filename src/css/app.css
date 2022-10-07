@@ -377,6 +377,42 @@ a{
         background:#2e333663;
         pointer-events: all;
     }
+
+/* ------------------------------------ */
+.fullSreenCoverPopContainer{
+    /* display:none; */
+    opacity: 0;
+    position:fixed;
+    left:0;
+    bottom:0;
+    height:100vh;
+    width:100vw;
+    z-index: 2;
+    pointer-events: none;
+    transition: all 0.3s;
+}
+    .fullSreenCoverPopBox{
+        width:90%;
+        height:100%;
+        margin:0 auto;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+    .fullSreenCoverPopBackground {
+        width:100%;
+        height:100vh;
+        backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        background:#2e3336c6;  
+        position:absolute;
+        left:0;
+        bottom:0; 
+        z-index: 1;  
+        pointer-events: none;
+    }
 /* ============================[Signin Page]======================== */
 /* .signin-page{
     justify-content: end;
@@ -642,29 +678,92 @@ a{
 /* ============================[Cat Detail Page]======================== */
 .cat-detail-page > div{
     width:100%;
-    height:30%;
+    /* height:30%; */
 
     bottom:-100%;
     left:0;
 }
-
-        .cat-detail-page > div > .pageContentContainer > .inforContainer {
-            display: flex;  
+.catDetail_listNav{
+    padding:16px 0;
+}
+        .catDetail_inforContainer {
+            display: flex; 
+            flex-direction: column; 
+            align-items: left;
             width:100%;
             padding:0 5%;
             flex:1;   
-            align-items: center;  
+            align-items: flex-start;  
             gap:10px;                                    
         }
-            .cat-detail-page > div > .pageContentContainer > .inforContainer >.pic{
-                background:rgb(0, 0, 0); 
-                width:150px;
-                height:90%;                                                   
+            .catDetail_pic{
+                background-image: url("../img/testCat.webp");
+                background-position: center;
+                background-size: cover;
+                width:100%;
+                height:18vh;  
+                border-radius: 10px;  
+                margin-bottom: 16px;
+                position:relative;                                               
             }
-
-                .cat-detail-page > div > .pageContentContainer > .inforContainer > .inforBox{
-                    font-size:10px;                                                
+                .catDetail_fullScreenIcon{
+                    width:30px;
+                    position:absolute;
+                    right:4px;
+                    bottom:4px;
                 }
+
+            .catDetail_inforBox{
+                  width:80%; 
+                  display: flex;
+                  flex-direction: column;
+                  gap:4px;
+                  margin-bottom:24px;                       
+            }
+                .catDetail_inforBox > h2{
+                    font-size:12px;  
+                    color:white;                                         
+                }
+                    .catDetail_inforBox > h2 >img{
+                        width:12px;
+                        position:relative;
+                        bottom:-2px;
+                    }
+    .catDetail_editContainer{
+        width:60px;
+        height:60px;
+        position:absolute;
+        right:0;
+        bottom: 0;
+        background: var(--color-button-v);
+        border-radius: 100px 0 0 0;
+    }
+        .catDetail_edit{
+            width:20px;
+            height:20px;
+            position:absolute;
+            right:15px;
+            bottom:15px;
+
+        }
+
+.catDetail_fullScreenPicContainer_active{
+    display:inline;
+    opacity: 1;
+    pointer-events: all;
+    transition: all 0.3s;
+}
+    .catDetail_fullScreenPic{
+        width:100%;
+        max-height: 75vh;
+        z-index: 2;
+    }
+    .catDetail_fullScreenPicNavConatiner{
+        z-index: 2;
+        display: flex;
+        width:100%;
+        justify-content: space-between;
+    }
 
 /* ============================[Adding Page]======================== */
 .adding-page > div{

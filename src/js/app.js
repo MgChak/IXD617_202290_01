@@ -1,8 +1,9 @@
 import {PageAnimationDefaultIn,PageAnimationDefaultOut} from "./usePageAnimation.js"//页面转换的动画
 import {checkSigninForm,checkSignupForm} from "./useCheckForm.js"//表单提交与检查
 import usePathCheck from "./usePathCheck.js"//路径检测
-import {openListMenu,closeListMenu_icon,closeListMenu_background} from "./useCtrlListMenu.js"//list二级菜单控制
-import {eSortHandle} from "./userListSort.js" //处理列表排列
+import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
+import {openFullSreenPic,closeFullSreenPic} from "./usePopupCtrl.js"
+
 
 $(()=>{
 
@@ -55,6 +56,12 @@ $(()=>{
     })
     .on("click", ".sortItem", function() {//sort选项被点击
         eSortHandle(this)
+    })
+    .on("click", ".catDetail_fullScreenIcon", function() {//全屏图片icon被点击
+        openFullSreenPic(this)
+    })
+    .on("click", ".clossFullScreenPicIcon", function() {//关闭全屏图片icon被点击
+        closeFullSreenPic(this)
     })
     
     
