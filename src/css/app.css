@@ -39,7 +39,7 @@ a{
 
 /* ============================[APP STRUCTURE]======================== */
 
-.animation-default.out,.animation-default.in{animation-duration:5ms}
+.animation-default.out,.animation-default.in{animation-duration:5ms;animation-timing-function:linear;}
 
 .ui-loader{
     display:none;

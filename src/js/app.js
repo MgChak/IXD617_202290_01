@@ -12,17 +12,13 @@ $(()=>{
    
     $(document)
 
-    .on("pagebeforehide", '[data-role="page"]', function(){//页面切换前
-        PageAnimationDefaultOut(this)//call page transition animation : slide out 
-    })
-
     .on("pagebeforeshow", '[data-role="page"]', function(){//页面切换后，还未展示前
         usePathCheck()//
     })
-
     .on("pageshow", '[data-role="page"]', function(){////页面切换后
         PageAnimationDefaultIn(this)//call page transition animation : slide in 
     })
+
 
     .on("submit", "#signin-form", function(e) {//sign in 表单提交
         e.preventDefault()
@@ -35,9 +31,18 @@ $(()=>{
 
     })
 
+
     .on("click", ".js-logout", function(e) {
         // sessionStorage.removeItem("userId");
         // checkUserId();
+    })
+    .on("click", ".aTag", function(e) {//代理a标签执行动画
+        e.preventDefault()
+        var tar = $(this).parents('[data-role="page"]')//获取页面
+        var tarPage = $(this).attr('href')//获取目标链接
+        PageAnimationDefaultOut(tar)//执行动画函数
+        setTimeout(()=>{ $.mobile.navigate(tarPage,{transition: "none"})},400)//等待400毫秒后导航到目标页面,关闭动画
+        
     })
     .on("click", ".listPageMenuConatiner", function() {//点击打开列表的二级菜单
         openListMenu(this)

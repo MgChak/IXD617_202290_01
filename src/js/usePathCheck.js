@@ -23,7 +23,7 @@ export default function(){
         backgroundControl('hide')//关闭背景
     }else{
         //其他未注册路径
-        $.mobile.navigate("#signin-page");//返回登陆界面
+        $.mobile.navigate("#signin-page",{transition: "none"});//返回登陆界面
         backgroundControl('show')//开启背景
         
     }
@@ -45,12 +45,12 @@ export default function(){
         
         if(val == "preLogin"){// 处在登陆前页面
             if (sessionStorage.userId == 3){ //拥有正确的令牌
-                $.mobile.navigate("#main-page")//导航到主页面
+                $.mobile.navigate("#main-page",{transition: "none"})//导航到主页面
                 console.log("luyou1")
             }
         }else if(val == "Login"){// 处在登陆后页面
             if (sessionStorage.userId == undefined){ //没有令牌
-                $.mobile.navigate("#signin-page")//导航到登录页面
+                $.mobile.navigate("#signin-page",{transition: "none"})//导航到登录页面
             }
         }
     }
