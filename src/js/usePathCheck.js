@@ -10,7 +10,8 @@ export default function(){
         "#adding-page",
         "#color-list-page",
         "#cat-list-page",
-        "#cat-detail-page", 
+        "#cat-detail-page",
+        "#editing-page" 
     ];
 
     if (preLoginPages.some(p => p === window.location.hash)) {

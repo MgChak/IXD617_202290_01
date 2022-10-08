@@ -1,6 +1,6 @@
 function renderColorPopUp(val,tar){//渲染页面
 
-    let tarPage = $(tar).parents('[data-role="main"]')
+    var tarPage = $(tar).parents('[data-role="main"]')
 
     if(val==0){//初始界面
 
@@ -86,7 +86,31 @@ function renderColorPopUp(val,tar){//渲染页面
     }
 }
 
+function renderPopup(val,tar){
+
+    var tarPage = $(tar).parents('[data-role="main"]')
+
+    if(val=="img"){
+        
+        $(tarPage).find(".popContentConatiner_v").hide()//颜色选择
+            .siblings(".fullScreenNavConatiner").hide()//底部导航
+            .siblings(".popContentConatiner_imgChose").show()//照片选择
+            .siblings(".popContentConatiner_delete").hide()//删除确认
+    }else if (val=="colors"){
+        $(tarPage).find(".popContentConatiner_v").show()//颜色选择
+            .siblings(".fullScreenNavConatiner").show()//底部导航
+            .siblings(".popContentConatiner_imgChose").hide()//照片选择
+            .siblings(".popContentConatiner_delete").hide()//删除确认
+    }else if (val=="delete"){
+        $(tarPage).find(".popContentConatiner_v").hide()//颜色选择
+            .siblings(".fullScreenNavConatiner").hide()//底部导航
+            .siblings(".popContentConatiner_imgChose").hide()//照片选择
+            .siblings(".popContentConatiner_delete").show()//删除确认
+    }
+}
+
 export{
 
-    renderColorPopUp
+    renderColorPopUp,
+    renderPopup
 }

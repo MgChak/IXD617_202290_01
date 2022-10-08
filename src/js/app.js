@@ -4,7 +4,7 @@ import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
 import{starsCtrl,handleColorSelect} from "./useAddingEditPageFunctions.js" //添加和修改页面的控制
-import{renderColorPopUp} from "./useRenderColorPopup.js"
+import{renderColorPopUp,renderPopup} from "./useRenderPopup.js"
 
 $(()=>{
 
@@ -16,6 +16,7 @@ $(()=>{
    
     $(document)
 
+    //====================================================================================生命周期
     .on("pagebeforeshow", '[data-role="page"]', function(){//页面切换后，还未展示前
         usePathCheck()//
     })
@@ -23,7 +24,7 @@ $(()=>{
         PageAnimationDefaultIn(this)//call page transition animation : slide in 
     })
 
-
+    //====================================================================================表单提交检查/登录登出
     .on("submit", "#signin-form", function(e) {//sign in 表单提交
         e.preventDefault()
         if(!loginActionLock){ //检测行为锁
@@ -33,12 +34,13 @@ $(()=>{
             setTimeout(()=>{loginActionLock=false},1000)//行为锁解锁
         }else{ return } //行为锁锁定，拒绝执行
     })
-
-
     .on("click", ".js-logout", function(e) {
         // sessionStorage.removeItem("userId");
         // checkUserId();
     })
+
+    //====================================================================================a标签劫持
+    
     .on("click", ".aTag", function(e) {//代理a标签执行动画
         e.preventDefault()
         var tar = $(this).parents('[data-role="page"]')//获取页面
@@ -47,6 +49,8 @@ $(()=>{
         setTimeout(()=>{ $.mobile.navigate(tarPage,{transition: "none"})},400)//等待400毫秒后导航到目标页面,关闭动画
         
     })
+
+    //====================================================================================list page /二级菜单
     .on("click", ".listPageMenuConatiner", function() {//点击打开列表的二级菜单
         openListMenu(this)
     })
@@ -60,7 +64,7 @@ $(()=>{
         eSortHandle(this)
     })
 
-
+    //====================================================================================detail page 
     .on("click", ".catDetail_fullScreenIcon", function() {//全屏图片icon被点击
         openFullSreenPop(this)
     })
@@ -68,32 +72,41 @@ $(()=>{
         closeFullSreenPop(this)
     })
 
-
-
+    //====================================================================================adding/edit page
     .on("click", ".friendlyStar", function() {//友好等级星星被点击
         starsCtrl(this)
     })
-    .on("click", ".adding_color_conatiner", function() {//打开颜色选择popup页面
+    
+    .on("click", ".form-input-img", function() {//上传/修改图片，被点击
+        openFullSreenPop(this) 
+        renderPopup('img',this)
+    })
+    .on("click", ".deleteCat", function() {//删除
+        openFullSreenPop(this) 
+        renderPopup('delete',this)
+    })
+    .on("click", ".editingAdding_color_conatiner", function() {//颜色弹出——打开颜色选择popup页面
         choseColorPagePosition = 0 //保存定位
         openFullSreenPop(this) 
+        renderPopup('colors',this)
         renderColorPopUp(choseColorPagePosition,this)     
     })
-    .on("click", ".popContent_ChosseColor_colorlist_itemLine", function() {//颜色选择
+    .on("click", ".popContent_ChosseColor_colorlist_itemLine", function() {//颜色弹出——颜色选择
         handleColorSelect(this)      
     })
-    .on("click", ".editColorListIcon", function() {//编辑颜色列表
+    .on("click", ".editColorListIcon", function() {//颜色弹出——编辑颜色列表
         choseColorPagePosition = 1
         renderColorPopUp(choseColorPagePosition,this)      
     })
-    .on("click", ".popContent_ChosseColor_addColor", function() {//添加颜色
+    .on("click", ".popContent_ChosseColor_addColor", function() {//颜色弹出——添加颜色
         choseColorPagePosition = 2 
         renderColorPopUp(choseColorPagePosition,this)      
     })
-    .on("click", ".popContent_ChosseColor_colorlist_edit", function() {//编辑颜色
+    .on("click", ".popContent_ChosseColor_colorlist_edit", function() {//颜色弹出——编辑颜色
         choseColorPagePosition = 3
         renderColorPopUp(choseColorPagePosition,this)      
-    })
-    .on("click", ".fullScreenNav_Left", function() {//左icon被点击
+    })    
+    .on("click", ".fullScreenNav_Left", function() {//颜色弹出——左icon被点击
         if(choseColorPagePosition == 0){
             return
         }else if(choseColorPagePosition == 1 || choseColorPagePosition == 2){
@@ -104,7 +117,7 @@ $(()=>{
             renderColorPopUp(choseColorPagePosition,this)
         }    
     })
-    .on("click", ".fullScreenNav_Right", function() {//右icon被点击
+    .on("click", ".fullScreenNav_Right", function() {//颜色弹出——右icon被点击
         if(choseColorPagePosition == 0){
             return
         }else if(choseColorPagePosition == 1 || choseColorPagePosition == 2){
