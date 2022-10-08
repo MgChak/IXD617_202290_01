@@ -1,10 +1,10 @@
 function openFullSreenPop(tar){
-    $(tar).parents('[data-role="page"]').find('.fullSreenCoverPopContainer')
+    $('.fullSreenCoverPopContainer')
         .addClass('fullSreenCoverPopContainer_active')
 }
 
 function closeFullSreenPop(tar){
-    $(tar).parents('.fullSreenCoverPopContainer')
+    $('.fullSreenCoverPopContainer')
         .removeClass('fullSreenCoverPopContainer_active')
 }
 

@@ -1,6 +1,8 @@
-function renderColorPopUp(val,tar){//渲染页面
 
-    var tarPage = $(tar).parents('[data-role="main"]')
+let tarPage = $('.fullSreenCoverPopContainer')
+
+
+function renderColorPopUp(val,tar){//渲染页面
 
     if(val==0){//初始界面
 
@@ -88,7 +90,6 @@ function renderColorPopUp(val,tar){//渲染页面
 
 function renderPopup(val,tar){
 
-    var tarPage = $(tar).parents('[data-role="main"]')
 
     if(val=="img"){
         
