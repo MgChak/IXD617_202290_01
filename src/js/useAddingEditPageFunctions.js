@@ -12,16 +12,7 @@ function starsCtrl(tar){
 }
 
 
-function handleColorSelect(tar){
-    $(tar).find('.popContent_ChosseColor_colorlist_item').addClass('popContent_ChosseColor_colorlist_item_active')
-    $(tar).siblings().find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')
-    
-    var tarColor = $(tar).find('h1').text()//获取目标的文字内容
-    
-    $(tar).parents('[data-role="main"]').find('.editingAdding_color').val(tarColor)//将颜色赋值给表单
-        .siblings('div').text(tarColor)//将颜色显示在表单中
-    // console.log($('#adding-color').val())
-}
+
 
 
 
@@ -29,6 +20,5 @@ function handleColorSelect(tar){
 
 export{
     starsCtrl,
-    handleColorSelect,
 
 }

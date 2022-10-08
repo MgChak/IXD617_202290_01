@@ -1,8 +1,29 @@
 
 let tarPage = $('.fullSreenCoverPopContainer')
 
+function renderPopup(val,tar){ //渲染不同的弹出页面
 
-function renderColorPopUp(val,tar){//渲染页面
+
+    if(val=="img"){
+        
+        $(tarPage).find(".popContentConatiner_v").hide()//颜色选择
+            .siblings(".fullScreenNavConatiner").hide()//底部导航
+            .siblings(".popContentConatiner_imgChose").show()//照片选择
+            .siblings(".popContentConatiner_delete").hide()//删除确认
+    }else if (val=="colors"){
+        $(tarPage).find(".popContentConatiner_v").show()//颜色选择
+            .siblings(".fullScreenNavConatiner").show()//底部导航
+            .siblings(".popContentConatiner_imgChose").hide()//照片选择
+            .siblings(".popContentConatiner_delete").hide()//删除确认
+    }else if (val=="delete"){
+        $(tarPage).find(".popContentConatiner_v").hide()//颜色选择
+            .siblings(".fullScreenNavConatiner").hide()//底部导航
+            .siblings(".popContentConatiner_imgChose").hide()//照片选择
+            .siblings(".popContentConatiner_delete").show()//删除确认
+    }
+}
+
+function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页面
 
     if(val==0){//初始界面
 
@@ -88,30 +109,23 @@ function renderColorPopUp(val,tar){//渲染页面
     }
 }
 
-function renderPopup(val,tar){
+function handleColorSelect(tar){ //处理颜色选择页面的点击事件
 
+    let currentPage = window.location.hash //定位
 
-    if(val=="img"){
-        
-        $(tarPage).find(".popContentConatiner_v").hide()//颜色选择
-            .siblings(".fullScreenNavConatiner").hide()//底部导航
-            .siblings(".popContentConatiner_imgChose").show()//照片选择
-            .siblings(".popContentConatiner_delete").hide()//删除确认
-    }else if (val=="colors"){
-        $(tarPage).find(".popContentConatiner_v").show()//颜色选择
-            .siblings(".fullScreenNavConatiner").show()//底部导航
-            .siblings(".popContentConatiner_imgChose").hide()//照片选择
-            .siblings(".popContentConatiner_delete").hide()//删除确认
-    }else if (val=="delete"){
-        $(tarPage).find(".popContentConatiner_v").hide()//颜色选择
-            .siblings(".fullScreenNavConatiner").hide()//底部导航
-            .siblings(".popContentConatiner_imgChose").hide()//照片选择
-            .siblings(".popContentConatiner_delete").show()//删除确认
-    }
+    $(tar).find('.popContent_ChosseColor_colorlist_item').addClass('popContent_ChosseColor_colorlist_item_active')
+    $(tar).siblings().find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')
+    
+    var tarColor = $(tar).find('h1').text()//获取目标的文字内容
+    
+    $(currentPage).find('.editingAdding_color').val(tarColor)//将颜色赋值给表单
+        .siblings('div').text(tarColor)//将颜色显示在表单中
+    // console.log($('#adding-color').val())
 }
 
 export{
 
     renderColorPopUp,
-    renderPopup
+    renderPopup,
+    handleColorSelect
 }

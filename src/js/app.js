@@ -3,8 +3,8 @@ import {checkSigninForm,checkSignupForm} from "./useCheckForm.js"//表单提交�
 import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
-import{starsCtrl,handleColorSelect} from "./useAddingEditPageFunctions.js" //添加和修改页面的控制
-import{renderColorPopUp,renderPopup} from "./useRenderPopup.js"
+import{starsCtrl} from "./useAddingEditPageFunctions.js" //添加和修改页面的控制
+import{renderColorPopUp,renderPopup,handleColorSelect} from "./useRenderPopup.js"
 
 $(()=>{
 
