@@ -518,6 +518,9 @@ a{
     padding:24px;
     transition:all 0.3s;
 }
+.popContentConatiner_color{
+    width:100%;
+}
 .popContentConatiner_imgChose{
     width:100%;
     display: flex;

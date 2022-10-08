@@ -322,22 +322,6 @@
                     </div>
                 </div>
             </div>
-            <div class="fullSreenCoverPopContainer">
-                <div class="fullSreenCoverPopBox">
-                    <img src="./src/img/testCat.webp" alt="" class="catDetail_fullScreenPic">
-                    <div class="catDetail_fullScreenPicNavConatiner">
-                        <a href="#adding-page" class="listNav clossFullScreenPicIcon aTag" >
-                            <img src="./src/img/icons/edit.svg" alt="">
-                            <h1>EDIT</h1>
-                        </a>
-                        <div  class="listNav clossFullScreenPicIcon" >
-                            <img src="./src/img/icons/close.svg"  alt="">
-                            <h1>CLOSE</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="fullSreenCoverPopBackground"></div>
-            </div>
             <a class="catDetail_editContainer aTag" href="#editing-page" >
                 <img src="./src/img/icons/edit.svg" alt="" class="catDetail_edit">
             </a>
@@ -491,66 +475,68 @@
     <!-- fullscreen pop container -->
     <div class="fullSreenCoverPopContainer">
         <div class="fullSreenCoverPopBox">
-            <div class="popContentConatiner_v">
-                <div class="popContent_ChosseColor popContent_ChosseColor_active">
-                    <div class="popContent_ChosseColor_nav">
-                        <h1 class="popContent_ChosseColor_nav_title">CHOOSE A COLOR</h1>
-                        <a class="listNav editColorListIcon" style="padding:0">
-                            <img src="./src/img/icons/edit.svg" alt="">
-                            <h1>EDIT</h1>
-                        </a>
-                    </div>
-                    <div class="popContent_ChosseColor_lists">
-                        <div class="popContent_ChosseColor_colorlist">
-                            <div class="popContent_ChosseColor_colorlist_itemLine">
-                                <div class="popContent_ChosseColor_colorlist_item">
-                                    <h1>ORANGE</h1>
-                                    <img class="popContent_ChosseColor_colorlist_itemcheck" src="./src/img/icons/check.svg" alt="">
-                                </div>
-                                <div class="popContent_ChosseColor_colorlist_edit">
-                                    <img src="./src/img/icons/edit.svg" alt="">
-                                </div>
-                            </div>
-                            <div class="popContent_ChosseColor_colorlist_itemLine">
-                                <div class="popContent_ChosseColor_colorlist_item">
-                                    <h1>BLACK</h1>
-                                    <img class="popContent_ChosseColor_colorlist_itemcheck" src="./src/img/icons/check.svg" alt="">
-                                </div>
-                                <div class="popContent_ChosseColor_colorlist_edit">
-                                    <img src="./src/img/icons/edit.svg" alt="">
-                                </div>
-                            </div>
-                            <div class="popContent_ChosseColor_colorlist_itemLine">
-                                <div class="popContent_ChosseColor_colorlist_item">
-                                    <h1>GRAY</h1>
-                                    <img class="popContent_ChosseColor_colorlist_itemcheck" src="./src/img/icons/check.svg" alt="">
-                                </div>
-                                <div class="popContent_ChosseColor_colorlist_edit">
-                                    <img src="./src/img/icons/edit.svg" alt="">
-                                </div>
-                            </div>
-                            
+            <div class="popContentConatiner_color">
+                <div class="popContentConatiner_v">
+                    <div class="popContent_ChosseColor popContent_ChosseColor_active">
+                        <div class="popContent_ChosseColor_nav">
+                            <h1 class="popContent_ChosseColor_nav_title">CHOOSE A COLOR</h1>
+                            <a class="listNav editColorListIcon" style="padding:0">
+                                <img src="./src/img/icons/edit.svg" alt="">
+                                <h1>EDIT</h1>
+                            </a>
                         </div>
-                        <div class= "popContent_ChosseColor_breakLine"style="height:1px; width:40%;background:var(--color-font-dark);opacity: 0.3;"></div>
-                        <div class="popContent_ChosseColor_addColor">
-                            <h1>+ ADD NEW COLOR</h1> 
+                        <div class="popContent_ChosseColor_lists">
+                            <div class="popContent_ChosseColor_colorlist">
+                                <div class="popContent_ChosseColor_colorlist_itemLine">
+                                    <div class="popContent_ChosseColor_colorlist_item">
+                                        <h1>ORANGE</h1>
+                                        <img class="popContent_ChosseColor_colorlist_itemcheck" src="./src/img/icons/check.svg" alt="">
+                                    </div>
+                                    <div class="popContent_ChosseColor_colorlist_edit">
+                                        <img src="./src/img/icons/edit.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="popContent_ChosseColor_colorlist_itemLine">
+                                    <div class="popContent_ChosseColor_colorlist_item">
+                                        <h1>BLACK</h1>
+                                        <img class="popContent_ChosseColor_colorlist_itemcheck" src="./src/img/icons/check.svg" alt="">
+                                    </div>
+                                    <div class="popContent_ChosseColor_colorlist_edit">
+                                        <img src="./src/img/icons/edit.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="popContent_ChosseColor_colorlist_itemLine">
+                                    <div class="popContent_ChosseColor_colorlist_item">
+                                        <h1>GRAY</h1>
+                                        <img class="popContent_ChosseColor_colorlist_itemcheck" src="./src/img/icons/check.svg" alt="">
+                                    </div>
+                                    <div class="popContent_ChosseColor_colorlist_edit">
+                                        <img src="./src/img/icons/edit.svg" alt="">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class= "popContent_ChosseColor_breakLine"style="height:1px; width:40%;background:var(--color-font-dark);opacity: 0.3;"></div>
+                            <div class="popContent_ChosseColor_addColor">
+                                <h1>+ ADD NEW COLOR</h1> 
+                            </div>
+                            <div class="form-control newColorInput">
+                                <label class="form-label" style="background:var(--color-button-v)">COLOR</label>
+                                <input class="form-input newColorInputSlot" type="text" data-role="none" value="">                    
+                            </div>                    
                         </div>
-                        <div class="form-control newColorInput">
-                            <label class="form-label" style="background:var(--color-button-v)">COLOR</label>
-                            <input class="form-input newColorInputSlot" type="text" data-role="none" value="">                    
-                        </div>                    
-                    </div>
-                </div> 
-            </div>
-            <div class="fullScreenNavConatiner">
-                <div  class="listNav clossFullScreenPicIcon fullScreenNav_Left" >
-                    <img src="./src/img/icons/close.svg"  alt="">
-                    <h1>CLOSE</h1>
+                    </div> 
                 </div>
-                <a  class="listNav clossFullScreenPicIcon fullScreenNav_Right" >
-                    <img src="./src/img/icons/check.svg" alt="">
-                    <h1>COMFIRM</h1>
-                </a>
+                <div class="fullScreenNavConatiner">
+                    <div  class="listNav clossFullScreenPicIcon fullScreenNav_Left" >
+                        <img src="./src/img/icons/close.svg"  alt="">
+                        <h1>CLOSE</h1>
+                    </div>
+                    <a  class="listNav clossFullScreenPicIcon fullScreenNav_Right" >
+                        <img src="./src/img/icons/check.svg" alt="">
+                        <h1>COMFIRM</h1>
+                    </a>
+                </div>
             </div>
 
             <div class="popContentConatiner_imgChose">
@@ -565,6 +551,20 @@
                 <h2>Once deleted, data can NEVER be recovered</h2>
                 <div class="form-button_s_redline form-button_s_deleteTimer">DELETE</div>
                 <div class="form-button_s clossFullScreenPicIcon">CANCEL</div>
+            </div>
+
+            <div class="popContentConatiner_fullimg">
+                <img src="./src/img/testCat.webp" alt="" class="catDetail_fullScreenPic">
+                <div class="fullScreenNavConatiner">
+                    <a href="#editing-page" class="listNav clossFullScreenPicIcon aTag" >
+                        <img src="./src/img/icons/edit.svg" alt="">
+                        <h1>EDIT</h1>
+                    </a>
+                    <div  class="listNav clossFullScreenPicIcon" >
+                        <img src="./src/img/icons/close.svg"  alt="">
+                        <h1>CLOSE</h1>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="fullSreenCoverPopBackground catDetail_fullScreenPicBackground"></div>

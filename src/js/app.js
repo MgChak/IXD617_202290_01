@@ -43,8 +43,8 @@ $(()=>{
     
     .on("click", ".aTag", function(e) {//代理a标签执行动画
         e.preventDefault()
-        var tar = $(this).parents('[data-role="page"]')//获取页面
-        var tarPage = $(this).attr('href')//获取目标链接
+        var tar = window.location.hash//获取当前页面
+        var tarPage = $(this).attr('href')//获取目标页面
         PageAnimationDefaultOut(tar)//执行动画函数
         setTimeout(()=>{ $.mobile.navigate(tarPage,{transition: "none"})},400)//等待400毫秒后导航到目标页面,关闭动画
         
@@ -67,6 +67,7 @@ $(()=>{
     //====================================================================================detail page 
     .on("click", ".catDetail_fullScreenIcon", function() {//全屏图片icon被点击
         openFullSreenPop(this)
+        renderPopup('fullimg',this)
     })
     .on("click", ".clossFullScreenPicIcon", function() {//关闭全屏图片icon被点击
         closeFullSreenPop(this)

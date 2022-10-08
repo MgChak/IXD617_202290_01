@@ -6,20 +6,17 @@ function renderPopup(val,tar){ //渲染不同的弹出页面
 
     if(val=="img"){
         
-        $(tarPage).find(".popContentConatiner_v").hide()//颜色选择
-            .siblings(".fullScreenNavConatiner").hide()//底部导航
-            .siblings(".popContentConatiner_imgChose").show()//照片选择
-            .siblings(".popContentConatiner_delete").hide()//删除确认
+        $(tarPage).find(".popContentConatiner_imgChose").show()
+            .siblings().hide()
     }else if (val=="colors"){
-        $(tarPage).find(".popContentConatiner_v").show()//颜色选择
-            .siblings(".fullScreenNavConatiner").show()//底部导航
-            .siblings(".popContentConatiner_imgChose").hide()//照片选择
-            .siblings(".popContentConatiner_delete").hide()//删除确认
+        $(tarPage).find(".popContentConatiner_color").show()
+            .siblings("").hide()
     }else if (val=="delete"){
-        $(tarPage).find(".popContentConatiner_v").hide()//颜色选择
-            .siblings(".fullScreenNavConatiner").hide()//底部导航
-            .siblings(".popContentConatiner_imgChose").hide()//照片选择
-            .siblings(".popContentConatiner_delete").show()//删除确认
+        $(tarPage).find(".popContentConatiner_delete").show()
+            .siblings().hide()
+    }else if (val=="fullimg"){
+        $(tarPage).find(".popContentConatiner_fullimg").show()
+            .siblings().hide()
     }
 }
 
