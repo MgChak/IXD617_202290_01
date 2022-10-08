@@ -4,7 +4,7 @@ import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
 import{starsCtrl} from "./useAddingEditPageFunctions.js" //添加和修改页面的控制
-import{renderColorPopUp,renderPopup,handleColorSelect} from "./useRenderPopup.js"
+import{renderColorPopUp,renderPopup,handleColorSelect,handlePagePositionChange} from "./useRenderPopup.js"
 
 $(()=>{
 
@@ -18,7 +18,8 @@ $(()=>{
 
     //====================================================================================生命周期
     .on("pagebeforeshow", '[data-role="page"]', function(){//页面切换后，还未展示前
-        usePathCheck()//
+        closeFullSreenPop(this)
+        usePathCheck()//   
     })
     .on("pageshow", '[data-role="page"]', function(){////页面切换后
         PageAnimationDefaultIn(this)//call page transition animation : slide in 
@@ -63,6 +64,12 @@ $(()=>{
     .on("click", ".sortItem", function() {//sort选项被点击
         eSortHandle(this)
     })
+    .on("click", ".colorListEditColor", function() {//打开颜色列表编辑
+        choseColorPagePosition = "listPageOri" //保存定位
+        openFullSreenPop(this) 
+        renderPopup('colors',this)
+        renderColorPopUp(choseColorPagePosition,this)
+    })
 
     //====================================================================================detail page 
     .on("click", ".catDetail_fullScreenIcon", function() {//全屏图片icon被点击
@@ -87,7 +94,7 @@ $(()=>{
         renderPopup('delete',this)
     })
     .on("click", ".editingAdding_color_conatiner", function() {//颜色弹出——打开颜色选择popup页面
-        choseColorPagePosition = 0 //保存定位
+        choseColorPagePosition = 'ori' //保存定位
         openFullSreenPop(this) 
         renderPopup('colors',this)
         renderColorPopUp(choseColorPagePosition,this)     
@@ -96,38 +103,24 @@ $(()=>{
         handleColorSelect(this)      
     })
     .on("click", ".editColorListIcon", function() {//颜色弹出——编辑颜色列表
-        choseColorPagePosition = 1
+        choseColorPagePosition = 'editColorList'
         renderColorPopUp(choseColorPagePosition,this)      
     })
     .on("click", ".popContent_ChosseColor_addColor", function() {//颜色弹出——添加颜色
-        choseColorPagePosition = 2 
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'ColorAdd')
         renderColorPopUp(choseColorPagePosition,this)      
     })
     .on("click", ".popContent_ChosseColor_colorlist_edit", function() {//颜色弹出——编辑颜色
-        choseColorPagePosition = 3
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'ColorChange')
         renderColorPopUp(choseColorPagePosition,this)      
     })    
     .on("click", ".fullScreenNav_Left", function() {//颜色弹出——左icon被点击
-        if(choseColorPagePosition == 0){
-            return
-        }else if(choseColorPagePosition == 1 || choseColorPagePosition == 2){
-            choseColorPagePosition = 0
-            renderColorPopUp(choseColorPagePosition,this)
-        }else if(choseColorPagePosition == 3){
-            choseColorPagePosition = 1
-            renderColorPopUp(choseColorPagePosition,this)
-        }    
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'Left')
+        renderColorPopUp(choseColorPagePosition,this)
     })
     .on("click", ".fullScreenNav_Right", function() {//颜色弹出——右icon被点击
-        if(choseColorPagePosition == 0){
-            return
-        }else if(choseColorPagePosition == 1 || choseColorPagePosition == 2){
-            choseColorPagePosition = 0
-            renderColorPopUp(choseColorPagePosition,this)
-        }else if(choseColorPagePosition == 3){
-            choseColorPagePosition = 1
-            renderColorPopUp(choseColorPagePosition,this)
-        }    
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'Left')
+        renderColorPopUp(choseColorPagePosition,this) 
     })
     
 
