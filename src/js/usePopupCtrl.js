@@ -1,14 +1,14 @@
-function openFullSreenPic(tar){
-    $(tar).parents('[data-role="page"]').find('.catDetail_fullScreenPicContainer')
-        .addClass('catDetail_fullScreenPicContainer_active')
+function openFullSreenPop(tar){
+    $(tar).parents('[data-role="page"]').find('.fullSreenCoverPopContainer')
+        .addClass('fullSreenCoverPopContainer_active')
 }
 
-function closeFullSreenPic(tar){
-    $(tar).parents('.catDetail_fullScreenPicContainer')
-        .removeClass('catDetail_fullScreenPicContainer_active')
+function closeFullSreenPop(tar){
+    $(tar).parents('.fullSreenCoverPopContainer')
+        .removeClass('fullSreenCoverPopContainer_active')
 }
 
 export {
-    openFullSreenPic,
-    closeFullSreenPic
+    openFullSreenPop,
+    closeFullSreenPop
 }

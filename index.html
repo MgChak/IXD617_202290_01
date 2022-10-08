@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no;" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -322,8 +322,8 @@
                     </div>
                 </div>
             </div>
-            <div class="fullSreenCoverPopContainer catDetail_fullScreenPicContainer">
-                <div class="fullSreenCoverPopBox catDetail_fullScreenPicBox">
+            <div class="fullSreenCoverPopContainer">
+                <div class="fullSreenCoverPopBox">
                     <img src="./src/img/testCat.webp" alt="" class="catDetail_fullScreenPic">
                     <div class="catDetail_fullScreenPicNavConatiner">
                         <a href="#adding-page" class="listNav clossFullScreenPicIcon aTag" >
@@ -336,7 +336,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="fullSreenCoverPopBackground catDetail_fullScreenPicBackground"></div>
+                <div class="fullSreenCoverPopBackground"></div>
             </div>
             <div class="catDetail_editContainer">
                 <img src="./src/img/icons/edit.svg" alt="" class="catDetail_edit">
@@ -356,24 +356,125 @@
             <div class="pageContentContainer pageBackground_default">
                 <div class="pageTag"><h1>ADDING</h1></div>
                 <div class="pageNavConatiner pageNavConatiner_default">
-                    <a href="#main-page" class="listNav aTag" >
+                    <a href="#main-page" class="catDetail_listNav listNav aTag" >
                         <img src="./src/img/icons/back.svg" alt="">
                         <h1>BACK</h1>
                     </a>
-                    <a href="#main-page" class="listNav aTag" >
+                    <a href="#main-page" class="catDetail_listNav listNav aTag" >
                         <img src="./src/img/icons/close.svg"  alt="">
                         <h1>CLOSE</h1>
                     </a>
                 </div>
-                <div class="container">
-                    <div class="pic"> add new image</div>
-                    <div><h1>Date</h1><input type="date"></div>
-                    <div><h1>Color</h1><input type="text"></div>
-                    <div><h1>Location</h1><input type="text"></div>
-                    <div><h1>Note</h1><input type="text"></div>
-                    <a href="#cat-detail-page" class="aTag">SAVE</a>
-                    <a href="#main-page" class="aTag">CANSEL</a>
+                <div class="adding_container">
+                    <form class="form noMargin" id="adding-form" data-ajax="false">
+                    
+                        <div class="form-control">
+                            <input type="hidden" id="adding-img" data-role="none" value="">
+                            <div class="form-input-img">
+                                <img src="./src/img/icons/addPicture.svg" alt="">
+                            </div>
+                        </div>
+
+                        <div class="form-control">
+                            <label class="form-label" for="adding-color" >COLOR</label>
+                            <input type="hidden" id="adding-color" data-role="none" value="">
+                            <div class="form-input adding_color_conatiner">. . .</div>
+                        </div>
+
+                        <div class="form-control">
+                            <label class="form-label" for="adding-friendly" >FRIENDLY</label>
+                            <input type="hidden" id="adding-friendly" data-role="none" value="">
+                            <div class="form-input adding_friendly_conatiner"> 
+                                <img class="friendlyStar" src="./src/img/icons/starActive.svg" alt="">
+                                <img class="friendlyStar" src="./src/img/icons/starActive.svg" alt="">
+                                <img class="friendlyStar" src="./src/img/icons/starActive.svg" alt="">
+                                <img class="friendlyStar" src="./src/img/icons/starUnactive.svg" alt="">
+                                <img class="friendlyStar" src="./src/img/icons/starUnactive.svg" alt="">
+                            </div>                     
+                        </div>
+
+                        <div class="form-control">
+                            <label class="form-label" for="adding-date" >DATE</label>
+                            <input class="form-input" type="date" id="adding-date" data-role="none" value="">                    
+                        </div>
+
+                        <div class="form-control">
+                            <label class="form-label" for="adding-location" >Location</label>
+                            <input class="form-input" type="text" id="adding-location" data-role="none" value="">                    
+                        </div>
+
+                        <div class="adding_buttonContainer">
+                            <a href="#main-page" class="form-button_s_dark aTag" style="line-height: 30px;" >CANCEL</a>
+                            <input type="submit" class="form-button_s" value="SAVE" data-role="none">
+                        </div>               
+                    </form>
                 </div>
+            </div>
+            <div class="fullSreenCoverPopContainer">
+                <div class="fullSreenCoverPopBox">
+                    <div class="popContentConatiner_v">
+                        <div class="popContent_ChosseColor popContent_ChosseColor_active">
+                            <div class="popContent_ChosseColor_nav">
+                                <h1 class="popContent_ChosseColor_nav_title">CHOOSE A COLOR</h1>
+                                <a class="listNav editColorListIcon" style="padding:0">
+                                    <img src="./src/img/icons/edit.svg" alt="">
+                                    <h1>EDIT</h1>
+                                </a>
+                            </div>
+                            <div class="popContent_ChosseColor_lists">
+                                <div class="popContent_ChosseColor_colorlist">
+                                    <div class="popContent_ChosseColor_colorlist_itemLine">
+                                        <div class="popContent_ChosseColor_colorlist_item">
+                                            <h1>ORANGE</h1>
+                                            <img class="popContent_ChosseColor_colorlist_itemcheck" src="./src/img/icons/check.svg" alt="">
+                                        </div>
+                                        <div class="popContent_ChosseColor_colorlist_edit">
+                                            <img src="./src/img/icons/edit.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="popContent_ChosseColor_colorlist_itemLine">
+                                        <div class="popContent_ChosseColor_colorlist_item">
+                                            <h1>BLACK</h1>
+                                            <img class="popContent_ChosseColor_colorlist_itemcheck" src="./src/img/icons/check.svg" alt="">
+                                        </div>
+                                        <div class="popContent_ChosseColor_colorlist_edit">
+                                            <img src="./src/img/icons/edit.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="popContent_ChosseColor_colorlist_itemLine">
+                                        <div class="popContent_ChosseColor_colorlist_item">
+                                            <h1>GRAY</h1>
+                                            <img class="popContent_ChosseColor_colorlist_itemcheck" src="./src/img/icons/check.svg" alt="">
+                                        </div>
+                                        <div class="popContent_ChosseColor_colorlist_edit">
+                                            <img src="./src/img/icons/edit.svg" alt="">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class= "popContent_ChosseColor_breakLine"style="height:1px; width:40%;background:var(--color-font-dark);opacity: 0.3;"></div>
+                                <div class="popContent_ChosseColor_addColor">
+                                    <h1>+ ADD NEW COLOR</h1> 
+                                </div>
+                                <div class="form-control newColorInput">
+                                    <label class="form-label" for="adding-location" style="background:var(--color-button-v)">COLOR</label>
+                                    <input class="form-input newColorInputSlot" type="text" id="adding-location" data-role="none" value="">                    
+                                </div>   
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="fullScreenNavConatiner">
+                        <div  class="listNav clossFullScreenPicIcon fullScreenNav_Left" >
+                            <img src="./src/img/icons/close.svg"  alt="">
+                            <h1>CLOSE</h1>
+                        </div>
+                        <a  class="listNav clossFullScreenPicIcon fullScreenNav_Right" >
+                            <img src="./src/img/icons/check.svg" alt="">
+                            <h1>COMFIRM</h1>
+                        </a>
+                    </div>
+                </div>
+                <div class="fullSreenCoverPopBackground catDetail_fullScreenPicBackground"></div>
             </div>
         </div>
     </section>

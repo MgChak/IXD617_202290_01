@@ -184,7 +184,7 @@ a{
             width:10px;
         }
         .listNav > h1 {
-            font-size: 12px;
+            font-size: 13px;
             color:white;
         }
 
@@ -241,31 +241,70 @@ a{
         margin: auto auto;
         padding: 0 4px;
 
-        color:white;
-        background-color: #2E3336;
+        color:rgba(255, 255, 255, 0.543);
+        background-color: var(--color-font-dark);
 
         font-size:15px;
     }
     .form-input{
         width:100%;
+        height:40px;
         background:transparent;
-        border: white 1px solid;
+        border: rgba(255, 255, 255, 0.381) 1px solid;
         border-radius: 6px;
         font-size: 15px;
-        padding:10px 5px;
+        padding:0px 5px;
         text-align: center;
+        color:white;
     }
     .form-button{
         width:90%;
+        height:45px;
         background: var(--color-button-v);
-        border-radius: 30px;
+        border: var(--color-button-v) 2px solid;
+        border-radius: 45px;
         text-align: center;
         margin:0 auto;
         padding:10px 0;
         color:white;
         box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
-        border:none;
         font-size:20px;
+    }
+    .form-button_dark{
+        width:90%;
+        height:45px;
+        background: transparent;
+        border: var(--color-button-v) 2px solid;
+        border-radius: 30px;
+        text-align: center;
+        margin:0 auto;
+        padding:10px 0;
+        color:var(--color-button-v);
+        box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+        font-size:20px;
+    }
+    .form-button_s{
+        width:90%;
+        background: var(--color-button-v);
+        border: var(--color-button-v) 2px solid;
+        border-radius: 30px;
+        text-align: center;
+        margin:0 auto;
+        height:35px;
+        color:white;
+        font-size:15px;
+    }
+    .form-button_s_dark{
+        width:90%;
+        background: transparent;
+        border: var(--color-button-v) 2px solid;
+        border-radius: 30px;
+        text-align: center;
+        margin:0 auto;
+        height:35px;
+        color:var(--color-button-v);
+        font-size:15px;
+
     }
 /* ------------------------------------ */
 .listPageMenuConatiner{
@@ -410,9 +449,32 @@ a{
         position:absolute;
         left:0;
         bottom:0; 
-        z-index: 1;  
+        z-index: -1;  
         pointer-events: none;
     }
+    .fullSreenCoverPopContainer_active{
+        display:inline;
+        opacity: 1;
+        pointer-events: all;
+        transition: all 0.3s;
+    }
+    .fullScreenNavConatiner{
+        z-index: 2;
+        display: flex;
+        width:100%;
+        justify-content: space-between;
+    }
+.popContentConatiner_v{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-button-v);
+    border-radius: 8px;
+    padding:24px;
+    transition:all 0.3s;
+}
 /* ============================[Signin Page]======================== */
 /* .signin-page{
     justify-content: end;
@@ -747,25 +809,18 @@ a{
 
         }
 
-.catDetail_fullScreenPicContainer_active{
-    display:inline;
-    opacity: 1;
-    pointer-events: all;
-    transition: all 0.3s;
-}
+
     .catDetail_fullScreenPic{
         width:100%;
         max-height: 75vh;
         z-index: 2;
     }
-    .catDetail_fullScreenPicNavConatiner{
-        z-index: 2;
-        display: flex;
-        width:100%;
-        justify-content: space-between;
-    }
+
 
 /* ============================[Adding Page]======================== */
+.noMargin{
+    margin:0 auto;
+}
 .adding-page > div{
     width:100%;
     height:95%;
@@ -774,39 +829,138 @@ a{
     left:0;
 }
     .adding-page > div > .pageContentContainer{
-        background:rgb(167, 150, 150);                                                     
+        background:var(--color-font-dark);                                                     
     }
-        .adding-page > div > .pageContentContainer > .container{
+    .adding_container{
             width:100%;
             display: flex;
             flex-direction: column;
-            gap:16px;   
-            align-items: center; 
-            margin-top: 40px;                                                
+            align-items: center;                                              
         }
+    .form-input-img{
+        width:100%;
+        height:20vh;
+        background:#000000;
+        border-radius: 8px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .adding_color_conatiner{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .adding_friendly_conatiner{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap:32px;
+        border:none;
+    }
+        .adding_friendly_conatiner > img{
+            width:20px
+        }
+    .adding_buttonContainer{
+        display: flex;
+        gap:16px;
+    }
 
-        .adding-page > div > .pageContentContainer > .container > .pic{
-            width:300px;
-            height:200px;
-            background:black;
-            
+.popContent_ChosseColor{
+    width:100%;
+    display:none;
+    justify-content: center;
+    gap:24px;
+    align-items: center;
+    flex-direction: column;
+}
+    .popContent_ChosseColor_active{
+        width:100%;
+        display:flex;
+    }
+    .popContent_ChosseColor_nav{
+        width:100%;
+        display:flex;
+        align-items: center;
+    }
+        .popContent_ChosseColor_nav_title{
+            flex:1;
+            font-size:15px;
             color:white;
         }
-        .adding-page > div > .pageContentContainer > .container > div{
+    .popContent_ChosseColor_lists{
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        gap:16px;
+        align-items: center;
+    }
+        .popContent_ChosseColor_colorlist{
+            width:100%;
             display: flex;
+            flex-direction: column;
+            max-height:40vh;
             gap:8px;
-
+            overflow-y:scroll;
         }
-            .adding-page > div > .pageContentContainer > .container > div >h1{
-                font-size: 15px;
+            .popContent_ChosseColor_colorlist_itemLine{
+                display:flex;
+                width: 100%;
+                gap:8px;
             }
-            .adding-page > div > .pageContentContainer > .container > div > input{
-                flex:1;
-                display: inline-block;
-                width:100%;
+                .popContent_ChosseColor_colorlist_item{
+                    display: flex;
+                    flex:1;
+                    height:35px;
+                    border-radius: 25px;
+                    border: var(--color-font-dark) 2px solid;
+                    padding:0 15px;
+                    align-items: center;
+                }
+                    .popContent_ChosseColor_colorlist_item_active{
+                        background-color: var(--color-font-dark);
+                    }
+                    .popContent_ChosseColor_colorlist_item >h1{
+                        color:white;
+                        flex:1;
+                        font-size: 15px;
+                    }
+                    .popContent_ChosseColor_colorlist_item > img{
+                        width: 15px;
+                        display: none;
+                    }
+                    .popContent_ChosseColor_colorlist_item_active > img{
+                        display: inline-block;
+                    }
+                .popContent_ChosseColor_colorlist_edit{
+                    background-color: var(--color-font-dark);
+                    width:35px;
+                    height:35px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 35px;
+                }  
+                .popContent_ChosseColor_colorlist_edit >img{
+                    width:12px;
+                } 
+        .popContent_ChosseColor_addColor{
+            width:100%;
+            display: flex;
+            height:35px;
+            border-radius: 25px;
+            border: white 1px solid;
+            padding:0 15px;
+            align-items: center;
+            justify-content: center;
+        }   
+            .popContent_ChosseColor_addColor >h1 {
+                color:white;
+                font-size:15px;
+                font-weight: 500;
             }
-
-            
 /* ============================[background]======================== */
 .backgroundContainer{
     width:100%;
