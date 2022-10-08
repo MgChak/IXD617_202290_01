@@ -100,7 +100,7 @@ $(()=>{
         renderColorPopUp(choseColorPagePosition,this)     
     })
     .on("click", ".popContent_ChosseColor_colorlist_itemLine", function() {//颜色弹出——颜色选择
-        handleColorSelect(this)      
+        handleColorSelect(choseColorPagePosition,this)      
     })
     .on("click", ".editColorListIcon", function() {//颜色弹出——编辑颜色列表
         choseColorPagePosition = 'editColorList'

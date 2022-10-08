@@ -125,18 +125,22 @@ function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页面
     }
 }
 
-function handleColorSelect(tar){ //处理颜色选择页面的点击事件
+function handleColorSelect(val,tar){ //处理颜色选择页面的点击事件
 
     let currentPage = window.location.hash //定位
 
-    $(tar).find('.popContent_ChosseColor_colorlist_item').addClass('popContent_ChosseColor_colorlist_item_active')
-    $(tar).siblings().find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')
+    if (val == 'ori'){
+        $(tar).find('.popContent_ChosseColor_colorlist_item').addClass('popContent_ChosseColor_colorlist_item_active')
+        $(tar).siblings().find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')
+        
+        var tarColor = $(tar).find('h1').text()//获取目标的文字内容
+        
+        $(currentPage).find('.editingAdding_color').val(tarColor)//将颜色赋值给表单
+            .siblings('div').text(tarColor)//将颜色显示在表单中
+        // console.log($('#adding-color').val())
+    }
+
     
-    var tarColor = $(tar).find('h1').text()//获取目标的文字内容
-    
-    $(currentPage).find('.editingAdding_color').val(tarColor)//将颜色赋值给表单
-        .siblings('div').text(tarColor)//将颜色显示在表单中
-    // console.log($('#adding-color').val())
 }
 
 function handlePagePositionChange(page,val){//处理颜色选择界面导航点击事件
