@@ -111,15 +111,15 @@ $(()=>{
         renderColorPopUp(choseColorPagePosition,this)      
     })
     .on("click", ".popContent_ChosseColor_colorlist_edit", function() {//颜色弹出——编辑颜色
-        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'ColorChange')
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'ColorChangeIconClick')
         renderColorPopUp(choseColorPagePosition,this)      
     })    
     .on("click", ".fullScreenNav_Left", function() {//颜色弹出——左icon被点击
-        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'Left')
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'LeftClick')
         renderColorPopUp(choseColorPagePosition,this)
     })
     .on("click", ".fullScreenNav_Right", function() {//颜色弹出——右icon被点击
-        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'Left')
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'RightClick')
         renderColorPopUp(choseColorPagePosition,this) 
     })
     

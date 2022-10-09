@@ -332,6 +332,23 @@ a{
         align-items: center;
         gap:8px;
     }
+    .form-button_s_white{
+        width:100%;
+        background: white;
+        border: var(--color-button-v) 2px solid;
+        font-weight: 800;
+        border-radius: 30px;
+        text-align: center;
+        margin:0 auto;
+        height:35px;
+        color:var(--color-button-v);
+        font-size:15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap:8px;
+    }
     .form_buttonContainer{
         flex:1;
         padding-bottom: 36px; 
@@ -809,9 +826,9 @@ a{
 /* ============================[Cat Detail Page]======================== */
 .cat-detail-page > div{
     width:100%;
-    /* height:30%; */
+    height:370px;
 
-    bottom:-100%;
+    bottom:-380px;
     left:0;
 }
 .catDetail_listNav{
@@ -1051,7 +1068,60 @@ a{
             flex-direction: column;
             align-items: center;                                              
         }
+/* ============================[Profile Page]======================== */
 
+.profile-page > div{
+    width:100%;
+    height:335px;
+    bottom:-350px;
+    left:0;
+}
+    .profile-page > div > .pageContentContainer{
+        background:var(--color-font-dark);                                                     
+    }
+    .profile_inforContainer{
+        width:90%;
+        margin:0 auto;
+        display: flex;
+        flex-direction: row;
+        gap:16px;
+    }
+    .userImgContainer{
+        width:150px;
+        height:150px;
+        background-image: url("../img/testCat.webp");
+        background-position: center;
+        background-size: cover;
+        border-radius: 150px;
+        flex:none
+    }
+    .userInforConatiner{
+        flex:1;
+        height:150px;
+        display:flex;
+        flex-direction: column;
+        gap:8px;
+        justify-content: center;
+    }
+        .userInforConatiner>h1{
+            color: white;
+            font-size: 20px;
+        }
+        .userInforConatiner>h2{
+            color:rgba(255, 255, 255, 0.498);
+            font-size: 15px;
+        }
+        .userInforConatiner>h3{
+            color:white;
+            font-size: 12px;
+        }
+    .prodile_buttonContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap:16px;
+        padding-top:20px;
+    }
 /* ============================[background]======================== */
 .backgroundContainer{
     width:100%;
@@ -1097,6 +1167,7 @@ a{
     background-size: cover;
     background-position: center;
 }
+
 
 /* ============================[SVG]======================== */
 svg{

@@ -144,11 +144,17 @@ function handleColorSelect(val,tar){ //处理颜色选择页面的点击事件
 }
 
 function handlePagePositionChange(page,val){//处理颜色选择界面导航点击事件
-    
+
+    // [Nav Map]
+    // ori -> editColorList -> changeColor
+    //    |-> addColor
+
+    // listPageOri ->  listPageChangeColor
+    //           |-> listPageAddColor
 
     switch(val){
 
-    case 'Left' :
+    case 'LeftClick' : //左点击
         if(page == 'ori'){
             return
         }else if(page == 'editColorList' || page == 'addColor'){
@@ -161,7 +167,7 @@ function handlePagePositionChange(page,val){//处理颜色选择界面导航点�
             page = "listPageOri"
         }
     break;
-    case 'Right' :
+    case 'RightClick' : //右点击
         if(page == 'ori'){
             return
         }else if(page == 'editColorList' || page == 'addColor'){
@@ -174,22 +180,21 @@ function handlePagePositionChange(page,val){//处理颜色选择界面导航点�
             page = "listPageOri"
         }
     break;
-    case 'ColorChange' :
+    case 'ColorChangeIconClick' : //修改单独颜色名icon被点击
         if(page == 'editColorList'){
             page = 'changeColor'
         }else if(page == "listPageOri"){
             page = "listPageChangeColor"
         }
     break;
-    case 'ColorAdd' :
+    case 'ColorAdd' : //添加颜色icon被点击
         if(page == 'ori'){
             page = 'addColor'
         }else if(page == "listPageOri"){
             page = "listPageAddColor"
         }
     break;
-    default:
-        
+  
     }
 
     return page

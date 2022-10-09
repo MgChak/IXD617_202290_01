@@ -11,7 +11,8 @@ export default function(){
         "#color-list-page",
         "#cat-list-page",
         "#cat-detail-page",
-        "#editing-page" 
+        "#editing-page",
+        "#profile-page"
     ];
 
     if (preLoginPages.some(p => p === window.location.hash)) {
