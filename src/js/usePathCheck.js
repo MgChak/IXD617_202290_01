@@ -3,9 +3,9 @@ export default function(){
     const preLoginPages = [
         "#signin-page", 
         "#signup-page", 
-        ""
     ];
     const LoginPages = [
+        "#onboarding-page",
         "#main-page", 
         "#adding-page",
         "#color-list-page",

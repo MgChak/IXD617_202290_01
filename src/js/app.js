@@ -5,10 +5,15 @@ import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} fr
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
 import{starsCtrl} from "./useAddingEditPageFunctions.js" //添加和修改页面的控制
 import{renderColorPopUp,renderPopup,handleColorSelect,handlePagePositionChange} from "./useRenderPopup.js"
-
+import {pageMove}from"./useOnBoardingSlideShow.js"
 $(()=>{
 
     let loginActionLock = false //登录行为锁
+
+
+    let onboardingActionLock = false //onboard行为锁
+
+    let onboardingSlieshowPage = 0
 
     let choseColorPagePosition = 0 //选择颜色颜面的路径记录
 
@@ -31,7 +36,7 @@ $(()=>{
         if(!loginActionLock){ //检测行为锁
             loginActionLock=true//行为锁锁定
             checkSigninForm()//检测提交
-            usePathCheck()//检测路径
+            $.mobile.navigate('#onboarding-page',{transition: "none"})
             setTimeout(()=>{loginActionLock=false},1000)//行为锁解锁
         }else{ return } //行为锁锁定，拒绝执行
     })
@@ -49,6 +54,29 @@ $(()=>{
         PageAnimationDefaultOut(tar)//执行动画函数
         setTimeout(()=>{ $.mobile.navigate(tarPage,{transition: "none"})},400)//等待400毫秒后导航到目标页面,关闭动画
         
+    })
+    //====================================================================================onbording page
+    .on("click", ".onbo_button_next", function() {//下一页被点击
+        if(!onboardingActionLock){
+            onboardingActionLock = true
+            onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"right")
+            setTimeout(()=>{onboardingActionLock = false},300 )
+        }
+        
+    })
+    .on("click", ".onbo_button_pre", function() {//上一页被点击
+        if(!onboardingActionLock){
+            onboardingActionLock = true
+            onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"left")
+            setTimeout(()=>{onboardingActionLock = false},300 )
+        }
+    })
+    .on("click", ".onbo_dot", function() {//点点被点击
+        if(!onboardingActionLock){
+            onboardingActionLock = true
+            onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"dot",this)
+            setTimeout(()=>{onboardingActionLock = false},300 )
+        }
     })
 
     //====================================================================================list page /二级菜单
