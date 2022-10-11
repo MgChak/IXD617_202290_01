@@ -729,11 +729,14 @@ a{
 
 /* ============================[Onbording Page]======================== */
 .onboarding-page{
-    position:absolute;
+    position:fixed;
     top:0;
     z-index: 1;
 }
 .onboarding-page > div{
+    position:fixed;
+    bottom: 0;
+    overflow: hidden;
     width:100%;
     height:100%;
     bottom:0;

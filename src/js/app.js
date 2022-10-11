@@ -36,13 +36,16 @@ $(()=>{
         if(!loginActionLock){ //检测行为锁
             loginActionLock=true//行为锁锁定
             checkSigninForm()//检测提交
-            $.mobile.navigate('#onboarding-page',{transition: "none"})
+            onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"reset")//重置onbording
+            $.mobile.navigate('#onboarding-page',{transition: "none"})//导航到onbording
             setTimeout(()=>{loginActionLock=false},1000)//行为锁解锁
         }else{ return } //行为锁锁定，拒绝执行
     })
-    .on("click", ".js-logout", function(e) {
-        // sessionStorage.removeItem("userId");
-        // checkUserId();
+    .on("click", ".logoutButton", function(e) {//登出
+        sessionStorage.removeItem("userId");//移除令牌
+        PageAnimationDefaultOut('#profile-page')//页面复位
+        usePathCheck()//导航
+
     })
 
     //====================================================================================a标签劫持
@@ -77,6 +80,10 @@ $(()=>{
             onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"dot",this)
             setTimeout(()=>{onboardingActionLock = false},300 )
         }
+    })
+    .on("click", ".leaveOnboPage", function() {//点点被点击
+            onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"leave")
+
     })
 
     //====================================================================================list page /二级菜单
