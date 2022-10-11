@@ -573,6 +573,13 @@
                                 <img src="./src/img/icons/edit.svg" alt="">
                                 <h1>EDIT</h1>
                             </a>
+                            <div class="popContent_ChosseColor_nav_deleteEditSwitch">
+                                <img src="./src/img/icons/edit.svg" alt="" class="popContent_ChosseColor_nav_deleteEditSwitch_edit">
+                                <div class="popContent_ChosseColor_nav_deleteEditSwitchContainer">
+                                    <div class="popContent_ChosseColor_nav_deleteEditSwitch_dot"></div>
+                                </div>
+                                <img src="./src/img/icons/trashcan.svg" alt="" class="popContent_ChosseColor_nav_deleteEditSwitch_delete">
+                            </div>
                         </div>
                         <div class="popContent_ChosseColor_lists">
                             <div class="popContent_ChosseColor_colorlist">
@@ -584,6 +591,9 @@
                                     <div class="popContent_ChosseColor_colorlist_edit">
                                         <img src="./src/img/icons/edit.svg" alt="">
                                     </div>
+                                    <div class="popContent_ChosseColor_colorlist_delete">
+                                        <img src="./src/img/icons/trashcan.svg" alt="">
+                                    </div>
                                 </div>
                                 <div class="popContent_ChosseColor_colorlist_itemLine">
                                     <div class="popContent_ChosseColor_colorlist_item">
@@ -593,6 +603,9 @@
                                     <div class="popContent_ChosseColor_colorlist_edit">
                                         <img src="./src/img/icons/edit.svg" alt="">
                                     </div>
+                                    <div class="popContent_ChosseColor_colorlist_delete">
+                                        <img src="./src/img/icons/trashcan.svg" alt="">
+                                    </div>
                                 </div>
                                 <div class="popContent_ChosseColor_colorlist_itemLine">
                                     <div class="popContent_ChosseColor_colorlist_item">
@@ -601,6 +614,9 @@
                                     </div>
                                     <div class="popContent_ChosseColor_colorlist_edit">
                                         <img src="./src/img/icons/edit.svg" alt="">
+                                    </div>
+                                    <div class="popContent_ChosseColor_colorlist_delete">
+                                        <img src="./src/img/icons/trashcan.svg" alt="">
                                     </div>
                                 </div>
                                 
@@ -612,8 +628,15 @@
                             <div class="form-control newColorInput">
                                 <label class="form-label" style="background:var(--color-button-v)">COLOR</label>
                                 <input class="form-input newColorInputSlot" type="text" data-role="none" value="">                    
-                            </div>                    
-                        </div>
+                            </div> 
+                            <div class="popContent_ChosseColor_deleteAlert">
+                                <h1>Are you sure?</h1>
+                                <h2>Once deleted, data can NEVER be recovered. You are deleting COLOR category data and the CATS data in this color</h2>
+                                <div style="width:60px;height:1px;background: white;"></div>
+                                <h3>Color: WHITE
+                                <br>Cats in this color : 10</h3>
+                            </div>                
+                        </div>      
                     </div> 
                 </div>
                 <div class="fullScreenNavConatiner">
@@ -625,6 +648,10 @@
                         <img src="./src/img/icons/check.svg" alt="">
                         <h1>COMFIRM</h1>
                     </a>
+                </div>
+                <div class="popContent_ChosseColor_deleteAlert_buttons">
+                    <div class="form-button_s_redline form-button_s_deleteTimer popContent_ChosseColor_deleteAlert_delete">DELETE</div>
+                    <div class="form-button_s popContent_ChosseColor_deleteAlert_cancel">CANCEL</div>
                 </div>
             </div>
 

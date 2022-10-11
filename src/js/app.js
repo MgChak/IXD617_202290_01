@@ -159,6 +159,19 @@ $(()=>{
         choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'RightClick')
         renderColorPopUp(choseColorPagePosition,this) 
     })
+    .on("click", ".popContent_ChosseColor_nav_deleteEditSwitch", function() {//颜色弹出——删除修改切换被点击
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'editSwitch')
+        renderColorPopUp(choseColorPagePosition,this) 
+    })
+    .on("click", ".popContent_ChosseColor_colorlist_delete", function() {//颜色弹出——颜色删除被点击
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'deletAlert')
+        renderColorPopUp(choseColorPagePosition,this) 
+    })
+    .on("click", ".popContent_ChosseColor_deleteAlert_delete, .popContent_ChosseColor_deleteAlert_cancel", function() {//从颜色警告返回
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'deletAlertBack')
+        renderColorPopUp(choseColorPagePosition,this) 
+    })
+
     
 
 

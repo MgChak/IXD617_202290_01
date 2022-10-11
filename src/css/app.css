@@ -1090,6 +1090,34 @@ a{
             font-size:15px;
             color:white;
         }
+    .popContent_ChosseColor_nav_deleteEditSwitch{
+        display: flex;
+        height:15px;
+        gap:8px
+    }
+    .popContent_ChosseColor_nav_deleteEditSwitchContainer{
+        width:35px;
+        height:15px;
+        border-radius: 15px;
+        border:white 1px solid;
+        position: relative;
+    }
+    .popContent_ChosseColor_nav_deleteEditSwitch_dot{
+        width:11px;
+        height:11px;
+        background-color: white;
+        border-radius: 15px;
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:1px;
+        margin:auto 0;
+        transition: all 0.3s linear;
+    }
+        .popContent_ChosseColor_nav_deleteEditSwitch_dot_active{
+            left:21px;
+            transition: all 0.3s linear;
+        }
     .popContent_ChosseColor_lists{
         width:100%;
         display: flex;
@@ -1143,9 +1171,20 @@ a{
                     align-items: center;
                     border-radius: 35px;
                 }  
-                .popContent_ChosseColor_colorlist_edit >img{
+                .popContent_ChosseColor_colorlist_edit >img ,
+                .popContent_ChosseColor_colorlist_delete >img{
                     width:12px;
                 } 
+                .popContent_ChosseColor_colorlist_delete{
+                    background-color: var(--color-font-alert);
+                    width:35px;
+                    height:35px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 35px;
+                } 
+
         .popContent_ChosseColor_addColor{
             width:100%;
             display: flex;
@@ -1161,6 +1200,37 @@ a{
                 font-size:15px;
                 font-weight: 500;
             }
+        .popContent_ChosseColor_deleteAlert{
+            width:100%;
+            display:flex;
+            flex-direction: column;
+            align-items:flex-start;
+            gap:16px;
+        }
+        .popContent_ChosseColor_deleteAlert> h1{
+            color:white;
+            width:100%;
+            text-align: center;
+        }
+        .popContent_ChosseColor_deleteAlert> h2{
+            color:white;
+            font-size: 13px;
+            font-weight: 500;
+            text-align: left;
+        }
+        .popContent_ChosseColor_deleteAlert> h3{
+            color:white;
+            font-size: 20px;
+            font-weight: 900;
+            text-align: left;
+        }
+        .popContent_ChosseColor_deleteAlert_buttons{
+            width: 100%;
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap:16px
+        }
 /* ============================[Editing Page]======================== */
 
 .editing-page > div{
