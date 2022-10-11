@@ -641,6 +641,18 @@ a{
         color:var(--color-font-light-v);
         text-align: center;
     }
+        .formError{
+            position:relative;
+            animation:errorShak linear 0.5s;
+        }
+        @keyframes errorShak {
+            20%{right:-10px}
+            40%{right:8px}
+            60%{right:-6px}
+            80%{right:3px}
+            100%{right:0}
+        }
+
 /* ============================[Signup Page]======================== */
 /* .signin-page{
     justify-content: end;

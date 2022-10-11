@@ -1,5 +1,5 @@
 import {PageAnimationDefaultIn,PageAnimationDefaultOut} from "./usePageAnimation.js"//页面转换的动画
-import {checkSigninForm,checkSignupForm} from "./useCheckForm.js"//表单提交与检查
+import {checkSigninForm,checkSignupForm,resetAlert} from "./useCheckForm.js"//表单提交与检查
 import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
@@ -10,6 +10,7 @@ $(()=>{
 
     let loginActionLock = false //登录行为锁
 
+    let loginTimer//登录时间锁
 
     let onboardingActionLock = false //onboard行为锁
 
@@ -37,8 +38,9 @@ $(()=>{
             loginActionLock=true//行为锁锁定
             checkSigninForm()//检测提交
             onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"reset")//重置onbording
-            $.mobile.navigate('#onboarding-page',{transition: "none"})//导航到onbording
-            setTimeout(()=>{loginActionLock=false},1000)//行为锁解锁
+            setTimeout(()=>{loginActionLock=false},500)//行为锁解锁
+            clearTimeout(loginTimer)//清除正在运行的计时器
+            loginTimer = setTimeout(resetAlert,5000)//开启计时器
         }else{ return } //行为锁锁定，拒绝执行
     })
     .on("click", ".logoutButton", function(e) {//登出
