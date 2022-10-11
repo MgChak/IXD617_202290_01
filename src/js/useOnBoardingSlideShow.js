@@ -52,3 +52,4 @@ function pageMove(page,direc,tar){
 export{
     pageMove
 }
+

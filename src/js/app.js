@@ -63,7 +63,7 @@ $(()=>{
     //====================================================================================onbording page
     .on("click", ".onbo_button_next", function() {//下一页被点击
         if(!onboardingActionLock){
-            onboardingActionLock = true
+            onboardingActionLock = true //行为锁锁定
             onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"right")
             setTimeout(()=>{onboardingActionLock = false},300 )
         }
@@ -71,14 +71,14 @@ $(()=>{
     })
     .on("click", ".onbo_button_pre", function() {//上一页被点击
         if(!onboardingActionLock){
-            onboardingActionLock = true
+            onboardingActionLock = true //行为锁锁定
             onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"left")
             setTimeout(()=>{onboardingActionLock = false},300 )
         }
     })
     .on("click", ".onbo_dot", function() {//点点被点击
         if(!onboardingActionLock){
-            onboardingActionLock = true
+            onboardingActionLock = true //行为锁锁定
             onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"dot",this)
             setTimeout(()=>{onboardingActionLock = false},300 )
         }
