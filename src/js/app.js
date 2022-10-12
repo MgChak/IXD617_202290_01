@@ -1,14 +1,18 @@
 import {PageAnimationDefaultIn,PageAnimationDefaultOut} from "./usePageAnimation.js"//页面转换的动画
-import {checkSigninForm,checkSignupForm,resetAlert} from "./useCheckForm.js"//表单提交与检查
+import {checkSigninForm,checkSignupForm,resetAlert,
+        submitSaveCatForm,submitEditCatForm,deleteCat,deleteColor} from "./useCheckSubmit.js"//表单提交与检查
 import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
 import{starsCtrl} from "./useAddingEditPageFunctions.js" //添加和修改页面的控制
 import{renderColorPopUp,renderPopup,handleColorSelect,handlePagePositionChange} from "./useRenderPopup.js"
-import {pageMove}from"./useOnBoardingSlideShow.js"
+import {pageMove}from"./useOnBoardingSlideShow.js"//onBording page slideshow Ctrl
+import {pinRender} from "./pinCtrl.js"
+import {renderComfirmation} from "./comfirmationCtrl.js"
+
 $(()=>{
 
-    let loginActionLock = false //登录行为锁
+    let submitActionLock = false //登录行为锁
 
     let loginTimer//登录时间锁
 
@@ -18,6 +22,13 @@ $(()=>{
 
     let choseColorPagePosition = 0 //选择颜色颜面的路径记录
 
+    function navToWithAnimation(tarPage){
+        var tar = window.location.hash//获取当前页面
+        PageAnimationDefaultOut(tar)//执行动画函数
+        setTimeout(()=>{ $.mobile.navigate(tarPage,{transition: "none"})},400)//等待400毫秒后导航到目标页面,关闭动画
+        console.log(tar)
+    }
+
     usePathCheck()//Ctrl background of the app: switch bettwen google map and color background
    
     $(document)
@@ -25,7 +36,8 @@ $(()=>{
     //====================================================================================生命周期
     .on("pagebeforeshow", '[data-role="page"]', function(){//页面切换后，还未展示前
         closeFullSreenPop(this)
-        usePathCheck()//   
+        usePathCheck()//检查登录状态
+        pinRender() //渲染mappin
     })
     .on("pageshow", '[data-role="page"]', function(){////页面切换后
         PageAnimationDefaultIn(this)//call page transition animation : slide in 
@@ -34,13 +46,39 @@ $(()=>{
     //====================================================================================表单提交检查/登录登出
     .on("submit", "#signin-form", function(e) {//sign in 表单提交
         e.preventDefault()
-        if(!loginActionLock){ //检测行为锁
-            loginActionLock=true//行为锁锁定
+        if(!submitActionLock){ //检测行为锁
+            submitActionLock=true//行为锁锁定
             checkSigninForm()//检测提交
             onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"reset")//重置onbording
-            setTimeout(()=>{loginActionLock=false},500)//行为锁解锁
+            setTimeout(()=>{submitActionLock=false},500)//行为锁解锁
             clearTimeout(loginTimer)//清除正在运行的计时器
             loginTimer = setTimeout(resetAlert,5000)//开启计时器
+        }else{ return } //行为锁锁定，拒绝执行
+    })
+    .on("submit", "#adding-form", function(e) {//sign in 表单提交
+        e.preventDefault()
+        if(!submitActionLock){ //检测行为锁
+            submitActionLock=true//行为锁锁定
+            var submitResult = submitSaveCatForm()//检测提交，返回结果
+                if(submitResult == 'success'){//提交返回成功时
+                    navToWithAnimation('#cat-detail-page')//导航到目标页面
+                }
+            renderComfirmation(submitResult,'Cat Save')//渲染提示
+            setTimeout(()=>{submitActionLock=false},500)//行为锁解锁
+          
+        }else{ return } //行为锁锁定，拒绝执行
+    })
+    .on("submit", "#editing-form", function(e) {//sign in 表单提交
+        e.preventDefault()
+        if(!submitActionLock){ //检测行为锁
+            submitActionLock=true//行为锁锁定
+            var submitResult = submitEditCatForm()//检测提交，返回结果
+                if(submitResult == 'success'){//提交返回成功时
+                    navToWithAnimation('#cat-detail-page')//导航到目标页面
+                }
+            renderComfirmation(submitResult,'Update')//渲染提示
+            setTimeout(()=>{submitActionLock=false},500)//行为锁解锁
+          
         }else{ return } //行为锁锁定，拒绝执行
     })
     .on("click", ".logoutButton", function(e) {//登出
@@ -130,6 +168,7 @@ $(()=>{
         openFullSreenPop(this) 
         renderPopup('delete',this)
     })
+    //====================================================================================颜色弹出
     .on("click", ".editingAdding_color_conatiner", function() {//颜色弹出——打开颜色选择popup页面
         choseColorPagePosition = 'ori' //保存定位
         openFullSreenPop(this) 
@@ -167,11 +206,25 @@ $(()=>{
         choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'deletAlert')
         renderColorPopUp(choseColorPagePosition,this) 
     })
-    .on("click", ".popContent_ChosseColor_deleteAlert_delete, .popContent_ChosseColor_deleteAlert_cancel", function() {//从颜色警告返回
+    .on("click", ".popContent_ChosseColor_deleteAlert_cancel", function() {//从颜色警告返回
         choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'deletAlertBack')
         renderColorPopUp(choseColorPagePosition,this) 
     })
-
+    .on("click", ".popContent_ChosseColor_deleteAlert_delete", function() {//最终确认删除颜色
+        var submitResult = deleteColor()
+        renderComfirmation(submitResult,'Delete Color')
+        choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'deletAlertBack')
+        renderColorPopUp(choseColorPagePosition,this) 
+    })
+    //====================================================================================确认删除弹出
+    .on("click", ".popop_delect_confirm_cat", function() {//确定删除猫猫
+        var submitResult = deleteCat()
+        renderComfirmation(submitResult,'Delete Cat')
+        if(submitResult == 'success'){//提交返回成功时
+            navToWithAnimation('#cat-list-page')//导航到目标页面
+        }
+        
+    })
     
 
 

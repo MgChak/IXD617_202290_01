@@ -1,11 +1,19 @@
 function openFullSreenPop(tar){
-    $('.fullSreenCoverPopContainer')
-        .addClass('fullSreenCoverPopContainer_active')
+    $('.fullSreenCoverPopContainer').show()
+    $('.fullSreenCoverPopBackground').show()
+    setTimeout(()=>{
+        $('.fullSreenCoverPopBackground').css('opacity','1')
+        $('.fullSreenCoverPopBox').css('top','0px')
+    },50)   
 }
 
 function closeFullSreenPop(tar){
-    $('.fullSreenCoverPopContainer')
-        .removeClass('fullSreenCoverPopContainer_active')
+    
+    $('.fullSreenCoverPopBox').css('top','-100%')
+    $('.fullSreenCoverPopBackground').css('opacity','0')
+    setTimeout(()=>{
+        $('.fullSreenCoverPopContainer').hide()
+    },300)
 }
 
 export {

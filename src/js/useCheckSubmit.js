@@ -28,6 +28,26 @@ function checkSignupForm(){
 
 }
 
+function submitSaveCatForm(){//提交保存猫的表单
+
+    return 'success' //目前默认成功
+}
+
+function submitEditCatForm(){//提交保存猫的表单
+
+    return 'success' //目前默认成功
+}
+
+function deleteCat(){//提交保存猫的表单
+
+    return 'success' //目前默认成功
+}
+
+function deleteColor(){//提交保存猫的表单
+
+    return 'success' //目前默认成功
+}
+
 function resetAlert(){
     $("#signInPageError_slot").html("Hi! Welcome to Color Cats")
         .css('color','var(--color-font-light-v)')//移除登录错误警告
@@ -36,5 +56,9 @@ function resetAlert(){
 export {
     checkSigninForm,
     checkSignupForm,
-    resetAlert
+    resetAlert,
+    submitSaveCatForm,
+    submitEditCatForm,
+    deleteCat,
+    deleteColor
 }
