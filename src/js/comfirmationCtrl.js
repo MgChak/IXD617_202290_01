@@ -20,12 +20,17 @@ function comfirmationTemplet(isSuccess,action){
 
 function renderComfirmation(isSuccess,action){
 
+    $('.comfirmationSlot').show()
     $('.comfirmationSlot').html(comfirmationTemplet(isSuccess,action))
         .css("top","20px")
 
     setTimeout(()=>{
         $('.comfirmationSlot').eq(0).css("top","-50px")
     },2000)
+    setTimeout(()=>{
+        $('.comfirmationSlot').hide()
+    },2350)
+    
 
 }
 
