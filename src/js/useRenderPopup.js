@@ -17,6 +17,12 @@ function renderPopup(val,tar){ //渲染不同的弹出页面
     }else if (val=="fullimg"){
         $(tarPage).find(".popContentConatiner_fullimg").show()
             .siblings().hide()
+    }else if (val=="profileEdit"){
+        $(tarPage).find(".popContentConatiner_profileEdit").show()
+            .siblings().hide()
+    }else if (val=="changePassword"){
+        $(tarPage).find(".popContentConatiner_changePassword").show()
+            .siblings().hide()
     }
 }
 

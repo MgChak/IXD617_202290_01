@@ -24,8 +24,8 @@ export default function(){
         checkUserId('Login')//检查token
 
     }else{
-        //其他未注册路径
-        $.mobile.navigate("#signin-page",{transition: "none"});//返回登陆界面
+        // //其他未注册路径
+        // $.mobile.navigate("#signin-page",{transition: "none"});//返回登陆界面
         
     }
 
@@ -34,7 +34,6 @@ export default function(){
         if(val == "preLogin"){// 处在登陆前页面
             if (sessionStorage.userId == 3){ //拥有正确的令牌
                 $.mobile.navigate("#main-page",{transition: "none"})//导航到主页面
-                console.log("luyou1")
             }
         }else if(val == "Login"){// 处在登陆后页面
             if (sessionStorage.userId == undefined){ //没有令牌

@@ -1,6 +1,7 @@
 import {PageAnimationDefaultIn,PageAnimationDefaultOut} from "./usePageAnimation.js"//页面转换的动画
 import {checkSigninForm,checkSignupForm,resetAlert,
-        submitSaveCatForm,submitEditCatForm,deleteCat,deleteColor} from "./useCheckSubmit.js"//表单提交与检查
+        submitSaveCatForm,submitEditCatForm,deleteCat,deleteColor,
+        editProfile,changePassword} from "./useCheckSubmit.js"//表单提交与检查
 import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
@@ -8,7 +9,7 @@ import{starsCtrl} from "./useAddingEditPageFunctions.js" //添加和修改页面
 import{renderColorPopUp,renderPopup,handleColorSelect,handlePagePositionChange} from "./useRenderPopup.js"
 import {pageMove}from"./useOnBoardingSlideShow.js"//onBording page slideshow Ctrl
 import {pinRender} from "./pinCtrl.js"
-import {renderComfirmation} from "./comfirmationCtrl.js"
+import {renderComfirmation} from "./useComfirmationCtrl.js"
 
 $(()=>{
 
@@ -167,6 +168,16 @@ $(()=>{
         openFullSreenPop(this) 
         renderPopup('delete',this)
     })
+    //====================================================================================profile page
+
+    .on("click", ".prodile_editProfile", function() {//修改用户信息被点击
+        openFullSreenPop(this) 
+        renderPopup('profileEdit',this)
+    })
+    .on("click", ".prodile_editPassword", function() {//修改密码被点击
+        openFullSreenPop(this) 
+        renderPopup('changePassword',this)
+    })
     //====================================================================================颜色弹出
     .on("click", ".editingAdding_color_conatiner", function() {//颜色弹出——打开颜色选择popup页面
         choseColorPagePosition = 'ori' //保存定位
@@ -223,6 +234,24 @@ $(()=>{
             navToWithAnimation('#cat-list-page')//导航到目标页面
         }
         
+    })
+    //====================================================================================编辑user profile弹出
+     
+    .on("click", ".popop_update_userprofile", function() {//确定更新用户资料
+        var submitResult = editProfile()
+        renderComfirmation(submitResult,'Profile Update')
+        if(submitResult == 'success'){//提交返回成功时
+            closeFullSreenPop(this)//关闭pop up
+        }
+        
+    })
+ //====================================================================================修改密码弹出
+    .on("click", ".popop_update_password", function() {//确定更新用户资料
+        var submitResult = changePassword()
+        renderComfirmation(submitResult,'Update Password')
+        if(submitResult == 'success'){//提交返回成功时
+            closeFullSreenPop(this)//关闭pop up
+        }   
     })
     
 

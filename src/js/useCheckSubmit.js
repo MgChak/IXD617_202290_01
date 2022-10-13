@@ -28,22 +28,32 @@ function checkSignupForm(){
 
 }
 
-function submitSaveCatForm(){//提交保存猫的表单
+function submitSaveCatForm(){//提交保存猫
 
     return 'success' //目前默认成功
 }
 
-function submitEditCatForm(){//提交保存猫的表单
+function submitEditCatForm(){//提交修改猫
 
     return 'success' //目前默认成功
 }
 
-function deleteCat(){//提交保存猫的表单
+function deleteCat(){//提交删除猫
 
     return 'success' //目前默认成功
 }
 
-function deleteColor(){//提交保存猫的表单
+function deleteColor(){//提交删除颜色
+
+    return 'success' //目前默认成功
+}
+
+function editProfile(){//提交修改userprofile
+
+    return 'success' //目前默认成功
+}
+
+function changePassword(){//提交修改密码
 
     return 'success' //目前默认成功
 }
@@ -60,5 +70,7 @@ export {
     submitSaveCatForm,
     submitEditCatForm,
     deleteCat,
-    deleteColor
+    deleteColor,
+    editProfile,
+    changePassword
 }

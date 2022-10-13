@@ -532,8 +532,8 @@
                     <img class="listPageMenubutton" src="./src/img/icons/upArrow.svg" alt="">
                     <div class="listPageMenuContent">
                         <div class="prodile_buttonContainer">
-                            <div class="prodile_editProfile form-button_s_white">EDIT PROFILE</div>
-                            <div class="prodile_editPassword form-button_s_white">CHANGE PASSWORD</div>
+                            <div class="prodile_editProfile form-button_s_white clossListNavIcon">EDIT PROFILE</div>
+                            <div class="prodile_editPassword form-button_s_white clossListNavIcon">CHANGE PASSWORD</div>
                         </div>
                         <div class="menuFooterConatiner">
                             <a  class="listNav clossListNavIcon colorListEditColor logoutButton">
@@ -680,6 +680,56 @@
                         <img src="./src/img/icons/close.svg"  alt="">
                         <h1>CLOSE</h1>
                     </div>
+                </div>
+            </div>
+
+            <div class="popContentConatiner_profileEdit">
+                <div class="userImgContainer"></div>
+                <div class="form-button_s"><img style="width:12px;" src="./src/img/icons/upload.svg" alt="">  SELECT PICTURE</div>
+                <div class="form-button_s"><img style="width:12px;" src="./src/img/icons/cemera.svg" alt="">TAKE PICTURE</div>
+                <div style="width:40%; height:1px; background:white;opacity: 0.8;"></div>
+                <div class="form-control" 
+                    style="background:var(--color-button-v); padding: 20px 10px; border-radius: 12px;">
+                    <label class="form-label" style="background:var(--color-button-v)">EDIT USER NAME</label>
+                    <input class="form-input" type="text" data-role="none" value="USER NAME">                    
+                </div> 
+                <div class="fullScreenNavConatiner">
+                    <div  class="listNav clossFullScreenPicIcon " >
+                        <img src="./src/img/icons/close.svg"  alt="">
+                        <h1>CANCEL</h1>
+                    </div>
+                    <a  class="listNav clossFullScreenPicIcon  popop_update_userprofile" >
+                        <img src="./src/img/icons/upload.svg" alt="">
+                        <h1>UPDATE</h1>
+                    </a>
+                </div>
+            </div>
+
+            <div class="popContentConatiner_changePassword">
+                <div class="popContentConatiner_changePassword_container">
+                    <h1>Changing Password</h1>
+                    <div class="form-control">
+                        <label class="form-label" style="background:var(--color-button-v)">Current Password</label>
+                        <input class="form-input" type="password" data-role="none" value="">                    
+                    </div> 
+                    <div class="form-control">
+                        <label class="form-label" style="background:var(--color-button-v)">New Password</label>
+                        <input class="form-input" type="password" data-role="none" value="">                    
+                    </div> 
+                    <div class="form-control">
+                        <label class="form-label" style="background:var(--color-button-v)">Re-Enter New Password</label>
+                        <input class="form-input" type="password" data-role="none" value="">                    
+                    </div> 
+                </div>
+                <div class="fullScreenNavConatiner">
+                    <div  class="listNav clossFullScreenPicIcon " >
+                        <img src="./src/img/icons/close.svg"  alt="">
+                        <h1>CANCEL</h1>
+                    </div>
+                    <a  class="listNav clossFullScreenPicIcon  popop_update_password" >
+                        <img src="./src/img/icons/upload.svg" alt="">
+                        <h1>UPDATE</h1>
+                    </a>
                 </div>
             </div>
         </div>
