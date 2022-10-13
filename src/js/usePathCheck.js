@@ -24,9 +24,9 @@ export default function(){
         checkUserId('Login')//检查token
 
     }else{
-        // //其他未注册路径
-        // $.mobile.navigate("#signin-page",{transition: "none"});//返回登陆界面
-        
+        //其他未注册路径
+        $.mobile.navigate("#signin-page",{transition: "none"});//返回登陆界面    
+        checkUserId('preLogin')
     }
 
     function checkUserId(val){//检查token

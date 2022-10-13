@@ -23,7 +23,7 @@ $(()=>{
 
     let choseColorPagePosition = 0 //选择颜色颜面的路径记录
 
-    function navToWithAnimation(tarPage){
+    function navToWithAnimation(tarPage){//手动nav
         var tar = window.location.hash//获取当前页面
         PageAnimationDefaultOut(tar)//执行动画函数
         setTimeout(()=>{ $.mobile.navigate(tarPage,{transition: "none"})},400)//等待400毫秒后导航到目标页面,关闭动画
@@ -56,7 +56,7 @@ $(()=>{
             loginTimer = setTimeout(resetAlert,5000)//开启计时器
         }else{ return } //行为锁锁定，拒绝执行
     })
-    .on("submit", "#adding-form", function(e) {
+    .on("submit", "#adding-form", function(e) {//添加猫
         e.preventDefault()
         if(!submitActionLock){ //检测行为锁
             submitActionLock=true//行为锁锁定
@@ -69,7 +69,7 @@ $(()=>{
           
         }else{ return } //行为锁锁定，拒绝执行
     })
-    .on("submit", "#editing-form", function(e) {
+    .on("submit", "#editing-form", function(e) {//修改猫
         e.preventDefault()
         if(!submitActionLock){ //检测行为锁
             submitActionLock=true//行为锁锁定
