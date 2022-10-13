@@ -21,8 +21,11 @@ function comfirmationTemplet(isSuccess,action){
 function renderComfirmation(isSuccess,action){
 
     $('.comfirmationSlot').show()
-    $('.comfirmationSlot').html(comfirmationTemplet(isSuccess,action))
-        .css("top","20px")
+    
+    setTimeout(()=>{
+        $('.comfirmationSlot').html(comfirmationTemplet(isSuccess,action))
+            .css("top","20px")
+    },10)
 
     setTimeout(()=>{
         $('.comfirmationSlot').eq(0).css("top","-50px")
@@ -31,7 +34,6 @@ function renderComfirmation(isSuccess,action){
         $('.comfirmationSlot').hide()
     },2350)
     
-
 }
 
 export{
