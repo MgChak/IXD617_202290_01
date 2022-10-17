@@ -9,4 +9,4 @@ IXD 617 Advanced Tech: Mobile Web
 - http://chakshing.com/aau/ixd617/profile
 - http://chakshing.com/aau/ixd617/csszengarden/
 - http://chakshing.com/aau/ixd617/pdfs/final_chak.pdf
-- http://chakshing.com/aau/ixd617/sreenshots/midterm
+- http://chakshing.com/aau/ixd617/screenshots/midterm
