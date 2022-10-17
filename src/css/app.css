@@ -925,7 +925,9 @@ a{
     .colorList_pic{
         width:70px;
         height:70px;
-        background:black;
+        background-image:URL('../img/testCat.webp');
+        background-size: cover;
+        background-position: center;
         border-radius: 50px;
         margin-left: 7px;
     }
@@ -950,9 +952,11 @@ a{
     .catList_pic{
         width:70px;
         height:70px;
-        background:black;
         border-radius: 50px;
         margin-left: 7px;
+        background-image:URL('../img/testCat.webp');
+        background-size: cover;
+        background-position: center;
     }
     .catList_informationContainer{
         display: flex;
