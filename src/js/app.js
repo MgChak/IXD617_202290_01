@@ -128,9 +128,9 @@ $(()=>{
             setTimeout(()=>{onboardingActionLock = false},300 )
         }
     })
-    .on("click", ".leaveOnboPage", function() {//点点被点击
+    .on("click", ".leaveOnboPage", function() {//start和skip被点击
             onboardingSlieshowPage = pageMove(onboardingSlieshowPage,"leave")
-
+            console.log('leave')
     })
 
     //====================================================================================list page /二级菜单
