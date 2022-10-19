@@ -30,11 +30,11 @@ function deleteButtonTimer(){//删除按钮的时间锁
 
     $('.form-button_s_delete_timer').css({'pointer-events':'none','opacity':'0.5'})
 
-    setTimeout(()=>{
+    let deleteTimer = setTimeout(()=>{
         $('.form-button_s_delete_timer').css({'pointer-events':'all','opacity':'1'})
     },5000)
 
-
+    return deleteTimer
 }
 
 function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页面

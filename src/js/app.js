@@ -23,6 +23,8 @@ $(()=>{
 
     let choseColorPagePosition = 0 //选择颜色颜面的路径记录
 
+    let deleteTimer
+
     function navToWithAnimation(tarPage){//手动nav
         var tar = window.location.hash//获取当前页面
         PageAnimationDefaultOut(tar)//执行动画函数
@@ -174,7 +176,8 @@ $(()=>{
     .on("click", ".deleteCat", function() {//打开删除页面
         openFullSreenPop(this) 
         renderPopup('delete',this)
-        deleteButtonTimer()
+        clearTimeout(deleteTimer)
+        deleteTimer = deleteButtonTimer()
     })
     //====================================================================================profile page
 
@@ -223,6 +226,8 @@ $(()=>{
     .on("click", ".popContent_ChosseColor_colorlist_delete", function() {//颜色弹出——颜色删除被点击
         choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'deletAlert')
         renderColorPopUp(choseColorPagePosition,this) 
+        clearTimeout(deleteTimer)
+        deleteTimer = deleteButtonTimer()
     })
     .on("click", ".popContent_ChosseColor_deleteAlert_cancel", function() {//从颜色警告返回
         choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'deletAlertBack')
