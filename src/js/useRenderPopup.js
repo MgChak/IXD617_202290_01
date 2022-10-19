@@ -26,6 +26,12 @@ function renderPopup(val,tar){ //渲染不同的弹出页面
     }
 }
 
+function deleteButtonTimer(){//删除按钮的时间锁
+
+  
+
+}
+
 function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页面
     
     if(val=='ori'){//初始界面
@@ -358,5 +364,6 @@ export{
     renderColorPopUp,
     renderPopup,
     handleColorSelect,
-    handlePagePositionChange
+    handlePagePositionChange,
+    deleteButtonTimer
 }

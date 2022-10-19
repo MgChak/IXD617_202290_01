@@ -6,7 +6,7 @@ import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
 import{starsCtrl} from "./useAddingEditPageFunctions.js" //添加和修改页面的控制
-import{renderColorPopUp,renderPopup,handleColorSelect,handlePagePositionChange} from "./useRenderPopup.js"
+import{renderColorPopUp,renderPopup,handleColorSelect,handlePagePositionChange,deleteButtonTimer} from "./useRenderPopup.js"
 import {pageMove}from"./useOnBoardingSlideShow.js"//onBording page slideshow Ctrl
 import {pinRender} from "./pinCtrl.js"
 import {renderComfirmation} from "./useComfirmationCtrl.js"
@@ -171,9 +171,10 @@ $(()=>{
         openFullSreenPop(this) 
         renderPopup('img',this)
     })
-    .on("click", ".deleteCat", function() {//删除
+    .on("click", ".deleteCat", function() {//打开删除页面
         openFullSreenPop(this) 
         renderPopup('delete',this)
+        deleteButtonTimer()
     })
     //====================================================================================profile page
 

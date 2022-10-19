@@ -333,6 +333,33 @@ a{
         align-items: center;
         gap:8px;
     }
+    .form-button_s_delete_timer{
+        width:100%;
+        background: transparent;
+        border: var(--color-font-alert) 2px solid;
+        border-radius: 30px;
+        text-align: center;
+        margin:0 auto;
+        height:35px;
+        color:var(--color-font-alert);
+        font-size:15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap:8px;
+        overflow: hidden;
+        position:relative;
+    }
+        .delete_timer{
+            height:100%;
+            width:0%;
+            background-color:var(--color-font-alert);
+            position:absolute;
+            left:-1px;
+            bottom:0;
+            transition:all 100%;
+        }
     .form-button_s_white{
         width:100%;
         background: white;
