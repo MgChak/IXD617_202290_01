@@ -28,7 +28,12 @@ function renderPopup(val,tar){ //渲染不同的弹出页面
 
 function deleteButtonTimer(){//删除按钮的时间锁
 
-  
+    $('.form-button_s_delete_timer').css({'pointer-events':'none','opacity':'0.5'})
+
+    setTimeout(()=>{
+        $('.form-button_s_delete_timer').css({'pointer-events':'all','opacity':'1'})
+    },5000)
+
 
 }
 

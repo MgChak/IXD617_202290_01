@@ -341,7 +341,7 @@ a{
         text-align: center;
         margin:0 auto;
         height:35px;
-        color:var(--color-font-alert);
+        color:white;
         font-size:15px;
         display: flex;
         flex-direction: row;
@@ -350,6 +350,8 @@ a{
         gap:8px;
         overflow: hidden;
         position:relative;
+        pointer-events: none;
+        opacity: 0.5;
     }
         .delete_timer{
             height:100%;
@@ -358,8 +360,15 @@ a{
             position:absolute;
             left:-1px;
             bottom:0;
-            transition:all 100%;
+            transition:all 5s linear;
+            animation:delete_timer 5s linear;
+            animation-fill-mode: forwards;
+            z-index: -1;
         }
+            @keyframes delete_timer {
+                from{width:0%}
+                to{width:101%}
+            }
     .form-button_s_white{
         width:100%;
         background: white;
