@@ -23,7 +23,7 @@ $(()=>{
 
     let choseColorPagePosition = 0 //选择颜色颜面的路径记录
 
-    let deleteTimer
+    let deleteTimer //删除时间锁
 
     function navToWithAnimation(tarPage){//手动nav
         var tar = window.location.hash//获取当前页面
