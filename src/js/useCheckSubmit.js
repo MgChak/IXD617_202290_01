@@ -1,11 +1,16 @@
 
-function checkSigninForm(){
+async function checkSigninForm(){
 
     const userval = $("#signin-username").val()
     const passval = $("#signin-password").val()
 
+    let founduser = await query({
+        type: 'check_signin',
+        params: [userval,passval]
+    });
 
-    if (userval === "user" && passval === "pass") {// 密码正确
+
+    if (founduser.result.length > 0) {// 密码正确 /找到至少一个用户
 
         console.log("Success")
         sessionStorage.userId = 3//存入证书
