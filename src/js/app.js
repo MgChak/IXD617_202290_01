@@ -37,7 +37,7 @@ $(()=>{
     $(document)
 
     //====================================================================================生命周期
-    .on("pagebeforeshow", '[data-role="page"]', function(){//页面切换后，还未展示前
+    .on("pagecontainerbeforeshow", function(){//页面切换后，还未展示前
         closeFullSreenPop(this)
         usePathCheck()//检查登录状态
         pinRender() //渲染mappin
