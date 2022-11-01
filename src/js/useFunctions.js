@@ -1,18 +1,17 @@
-import { query } from "./functions.js"
 
-
-export const RecentPage = async() => {}
-
-export const ListPage = async() => {
-
-    let {result:animals} = await query({
-        type:"animals_by_user_id",
-        params:[sessionStorage.userId]
+// Promise
+export const query = (options) => {
+    return fetch('data/api.php', {
+        method: 'POST',
+        body: JSON.stringify(options)
+    }).then((d)=>d.json())
+    .then((d)=>{
+        if (d.error) throw(d.error);
+        else return d;
     });
-
-    console.log(animals)
 }
 
-export const UserProfilePage = async() => {}
-
-export const AnimalProfilePage = async() => {}
+// Curried function
+export const templater = (f) => (a) => 
+    (Array.isArray(a) ? a : [a])
+    .reduce((r,o,i,a) => r+f(o,i,a), '');

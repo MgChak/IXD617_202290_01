@@ -2,7 +2,7 @@ import {PageAnimationDefaultIn,PageAnimationDefaultOut} from "./usePageAnimation
 import {checkSigninForm,checkSignupForm,resetAlert,
         submitSaveCatForm,submitEditCatForm,deleteCat,deleteColor,
         editProfile,changePassword} from "./useCheckSubmit.js"//表单提交与检查
-import { AnimalProfilePage, ListPage, RecentPage, UserProfilePage } from "./useRoutes.js"; //路由访问数据
+import { AnimalProfilePage, ColorListPage, RecentPage, UserProfilePage } from "./useRoutes.js"; //路由访问数据
 import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
@@ -38,10 +38,18 @@ $(()=>{
     $(document)
 
     //====================================================================================生命周期
-    .on("pagecontainerbeforeshow",function(){//页面切换后，还未展示前
+    .on("pagecontainerbeforeshow",function(event,ui){//页面切换后，还未展示前
         closeFullSreenPop(this)
         usePathCheck()//检查登录状态
         pinRender() //渲染mappin 
+
+        /* PAGE ROUTES ; 切换并且渲染页面 */
+        switch(ui.toPage[0].id) {
+            case "recent-page": RecentPage(); break;
+            case "color-list-page": ColorListPage(); break;
+            case "user-profile-page": UserProfilePage(); break;
+            case "animal-profile-page": AnimalProfilePage(); break;
+        }
     })
     .on("pageshow", '[data-role="page"]', function(){////页面切换后
         PageAnimationDefaultIn(this)//call page transition animation : slide in 

@@ -18,9 +18,9 @@ const getUsers = () => (new Array(10)).fill(0).map((o,i)=>{
 const getColors = () => (new Array(50)).fill(0).map((o,i)=>{
     o = {};
     o.id = i + 1;
-    o.color_id = chance.natural({min:1,max:10}); //定义对应用户
+    o.user_id = chance.natural({min:1,max:10}); //定义对应用户
     o.name = chance.first();
-    o.color = chance.pickone(['ORANGE','BLACK','WHITE','GRAY','BROWN']);
+    o.color = chance.pickone(['ORANGE','BLACK','WHITE','GRAY','BROWN','Blue','Cinnamon','Fawn','Ginger','Calico']);
     o.img = `https://via.placeholder.com/${num()}x${num()}/${hex()}/fff/?text=${o.name}`;
     o.date_create = getdate(Date.parse('2020/01/01'),Date.now());
     return o;
@@ -29,7 +29,7 @@ const getColors = () => (new Array(50)).fill(0).map((o,i)=>{
 const getLocations = () => (new Array(250)).fill(0).map((o,i)=>{
     o = {};
     o.id = i + 1;
-    o.animal_id = chance.natural({min:1,max:50}); //定义对应颜色
+    o.color_id = chance.natural({min:1,max:50}); //定义对应颜色
     o.lat = chance.latitude({min:37.711,max:37.819})
     o.lng = chance.longitude({min:-122.514,max:-122.354})
     o.friendly = chance.natural({min:1,max:5});

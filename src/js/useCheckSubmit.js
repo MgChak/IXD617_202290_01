@@ -1,3 +1,4 @@
+import { query } from "./useFunctions.js"
 
 async function checkSigninForm(){
 
@@ -13,7 +14,7 @@ async function checkSigninForm(){
     if (founduser.result.length > 0) {// 密码正确 /找到至少一个用户
 
         console.log("Success")
-        sessionStorage.userId = 3//存入证书
+        sessionStorage.userId = founduser.result[0].id;
         $("#signin-form")[0].reset()//清空input
         $.mobile.navigate('#onboarding-page',{transition: "none"})//导航到onbording
 

@@ -48,22 +48,24 @@ function makeStatement($data) {
         case "users_all":
             return makeQuery($conn, "SELECT * FROM `track_202290_users`", $params);
         case "animals_all":
-            return makeQuery($conn, "SELECT * FROM `track_202290_animals`", $params);
+            return makeQuery($conn, "SELECT * FROM `track_202290_colors`", $params);
         case "locations_all":
             return makeQuery($conn, "SELECT * FROM `track_202290_locations`", $params);
             
         case "user_by_id":
             return makeQuery($conn, "SELECT * FROM `track_202290_users` WHERE `id`=?", $params);
         case "animal_by_id":
-            return makeQuery($conn, "SELECT * FROM `track_202290_animals` WHERE `id`=?", $params);
+            return makeQuery($conn, "SELECT * FROM `track_202290_colors` WHERE `id`=?", $params);
         case "location_by_id":
             return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `id`=?", $params);
 
         
-        case "animals_by_user_id":
-            return makeQuery($conn, "SELECT * FROM `track_202290_animals` WHERE `user_id`=?", $params);        
-        case "locations_by_animal_id":
-            return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `animal_id`=?", $params);
+        case "colors_by_user_id":
+            return makeQuery($conn, "SELECT  * FROM `track_202290_colors` WHERE `user_id`=?", $params);
+        case "cats_count_by_color_id":
+            return makeQuery($conn, "SELECT COUNT(*) FROM `track_202290_locations` WHERE `color_id`=?", $params);        
+        case "locations_by_color_id":
+            return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `color_id`=?", $params);
 
         
 
