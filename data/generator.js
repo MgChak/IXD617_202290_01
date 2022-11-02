@@ -61,6 +61,8 @@ const getLocations = () => {
             return o;
         }))
 
+        console.log(thisUserId,colorIdList_underThisuserId)
+
     }
     console.log(theFinalArray)
     return theFinalArray
