@@ -18,26 +18,15 @@ export const ColorListPage = async() => {//渲染颜色列表页面
 
 
     colors.forEach((color) => { //根据颜色循环
-
         var catsnum = 0
-
         cats.forEach((cat)=>{//根据猫咪数据循环
-
             if (cat.color_id == color.id){ //确认id
-
                 color.lastUpdate = cat.date_create //循环赋值 日期
                 catsnum++ //累加计数
-
             }
-
         })
-
         color.catnum = catsnum
-
     })
-
-    console.log(colors)
-
 
     $("#color-list-page .ListContainer").html(makeAnimalList(colors))
 }
