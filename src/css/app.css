@@ -193,7 +193,7 @@ a{
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        gap:32px;
+        gap:24px;
         overflow: scroll;
         position: relative;
     }
@@ -207,6 +207,7 @@ a{
         gap: 16px;
         justify-content: flex-start;
         align-items: center;
+        padding: 4px 0;
     }
     .listItem_defult:last-child{
         margin-bottom: 150px;

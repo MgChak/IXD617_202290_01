@@ -64,7 +64,6 @@ function makeStatement($data) {
             return makeQuery($conn, "SELECT  * FROM `track_202290_colors` WHERE `user_id`=?", $params);
         case "cats_colorId_date_by_user_id":
             return makeQuery($conn, "SELECT `color_id`,`date_create` FROM `track_202290_locations` WHERE `user_id`=? ORDER BY `date_create`" ,$params);
-
         case "locations_by_color_id":
             return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `color_id`=?", $params);        
 
@@ -75,9 +74,9 @@ function makeStatement($data) {
 
 
         default:
-            return ["error"=>"No Matched Type"];
+            return ["error"=>"No Matched Type"];          
     }
-}
+} 
 
 $data = json_decode(file_get_Contents("php://input"));
 

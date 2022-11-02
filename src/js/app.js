@@ -2,7 +2,7 @@ import {PageAnimationDefaultIn,PageAnimationDefaultOut} from "./usePageAnimation
 import {checkSigninForm,checkSignupForm,resetAlert,
         submitSaveCatForm,submitEditCatForm,deleteCat,deleteColor,
         editProfile,changePassword} from "./useCheckSubmit.js"//表单提交与检查
-import { AnimalProfilePage, ColorListPage, RecentPage, UserProfilePage } from "./useRoutes.js"; //路由访问数据
+import { AnimalProfilePage, ColorListPage,CatListPage, RecentPage, UserProfilePage } from "./useRoutes.js"; //路由访问数据
 import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
@@ -47,6 +47,7 @@ $(()=>{
         switch(ui.toPage[0].id) {
             case "recent-page": RecentPage(); break;
             case "color-list-page": ColorListPage(); break;
+            case "cat-list-page": CatListPage(); break;
             case "user-profile-page": UserProfilePage(); break;
             case "animal-profile-page": AnimalProfilePage(); break;
         }
@@ -107,10 +108,10 @@ $(()=>{
     })
     //====================================================================================页面跳转目标id存储
 
-    .on("click", "[data-target-page—id]", function(e) {//代理a标签执行动画
-        let id = $(this).data("data-target-page—id");
+    .on("click", "[data-target-page—id]", function(e) {//点击存入id
+        let id = $(this).data("target-page—id");
 
-        sessionStorage.locationId = id;
+        sessionStorage.targetPageId = id;
 
     })
 
