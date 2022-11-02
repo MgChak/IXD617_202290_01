@@ -1,5 +1,5 @@
 import { query } from "./useFunctions.js"
-import { makeAnimalList } from "./usePageTemplates.js";
+import { makeColorlList, makeCatlList } from "./usePageTemplates.js";
 
 
 export const RecentPage = async() => {}
@@ -25,10 +25,10 @@ export const ColorListPage = async() => {//渲染颜色列表页面
                 catsnum++ //累加计数
             }
         })
-        color.catnum = catsnum
+        color.catnum = catsnum //插入obj
     })
 
-    $("#color-list-page .ListContainer").html(makeAnimalList(colors))
+    $("#color-list-page .ListContainer").html(makeColorlList(colors))
 }
 
 export const UserProfilePage = async() => {}

@@ -105,6 +105,14 @@ $(()=>{
         usePathCheck()//导航
 
     })
+    //====================================================================================页面跳转目标id存储
+
+    .on("click", "[data-target-page—id]", function(e) {//代理a标签执行动画
+        let id = $(this).data("data-target-page—id");
+
+        sessionStorage.locationId = id;
+
+    })
 
     //====================================================================================a标签劫持
     
@@ -116,6 +124,7 @@ $(()=>{
         setTimeout(()=>{ $.mobile.navigate(tarPage,{transition: "none"})},400)//等待400毫秒后导航到目标页面,关闭动画
         
     })
+
     //====================================================================================onbording page
     .on("click", ".onbo_button_next", function() {//下一页被点击
         if(!onboardingActionLock){
