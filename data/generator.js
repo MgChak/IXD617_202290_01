@@ -26,9 +26,10 @@ const getColors = () => (new Array(50)).fill(0).map((o,i)=>{
     return o;
 });
 
-const getLocations = () => (new Array(250)).fill(0).map((o,i)=>{
+const getLocations = () => (new Array(300)).fill(0).map((o,i)=>{
     o = {};
     o.id = i + 1;
+    o.user_id = chance.natural({min:1,max:10}); //定义对应用户
     o.color_id = chance.natural({min:1,max:50}); //定义对应颜色
     o.lat = chance.latitude({min:37.711,max:37.819})
     o.lng = chance.longitude({min:-122.514,max:-122.354})
