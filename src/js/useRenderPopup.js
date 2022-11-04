@@ -1,4 +1,4 @@
-
+import {ColorEditList} from "./useRoutes.js"
 let tarPage = $('.fullSreenCoverPopContainer')
 
 function renderPopup(val,tar){ //渲染不同的弹出页面
@@ -37,9 +37,11 @@ function deleteButtonTimer(){//删除按钮的时间锁
     return deleteTimer
 }
 
-function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页面
-    
+async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页面
+
     if(val=='ori'){//初始界面
+
+        await ColorEditList(); //请求颜色列表数据，并且渲染列表
 
         $(tarPage).find('.popContent_ChosseColor').addClass("popContent_ChosseColor_active")//基础内容
         $(tarPage).find('.editColorListIcon').show()//右上角编辑icon
@@ -179,6 +181,8 @@ function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页面
         $(tarPage).find('.newColorInputSlot').val(tarText)//颜色输入框中的内容
 
     }else if(val=="listPageOri"){//颜色列表打开的颜色编辑界面
+
+        await ColorEditList(); //请求颜色列表数据，并且渲染列表
 
         $(tarPage).find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')//取消已经选中的颜色
         $(tarPage).find('.popContent_ChosseColor').addClass("popContent_ChosseColor_active")//基础内容

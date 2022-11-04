@@ -2,7 +2,7 @@ import {PageAnimationDefaultIn,PageAnimationDefaultOut} from "./usePageAnimation
 import {checkSigninForm,checkSignupForm,resetAlert,
         submitSaveCatForm,submitEditCatForm,deleteCat,deleteColor,
         editProfile,changePassword} from "./useCheckSubmit.js"//表单提交与检查
-import { AnimalProfilePage, ColorListPage,CatListPage, RecentPage, UserProfilePage } from "./useRoutes.js"; //路由访问数据
+import { catProfilePage, ColorListPage,CatListPage, RecentPage, UserProfilePage,CatEditingPage} from "./useRoutes.js"; //路由访问数据
 import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
@@ -48,8 +48,9 @@ $(()=>{
             case "recent-page": RecentPage(); break;
             case "color-list-page": ColorListPage(); break;
             case "cat-list-page": CatListPage(); break;
-            case "user-profile-page": UserProfilePage(); break;
-            case "animal-profile-page": AnimalProfilePage(); break;
+            case "cat-detail-page": catProfilePage(); break;
+            case "editing-page": CatEditingPage(); break;
+            case "profile-page": UserProfilePage(); break;         
         }
     })
     .on("pageshow", '[data-role="page"]', function(){////页面切换后
@@ -108,10 +109,17 @@ $(()=>{
     })
     //====================================================================================页面跳转目标id存储
 
-    .on("click", "[data-target-page—id]", function(e) {//点击存入id
-        let id = $(this).data("target-page—id");
+    .on("click", "[data-nav-color—id]", function(e) {//点击存入id
+        let id = $(this).data("nav-color—id");
 
-        sessionStorage.targetPageId = id;
+        sessionStorage.Color_Id_Nav = id;
+
+    })
+
+    .on("click", "[data-nav-cat—id]", function(e) {//点击存入id
+        let id = $(this).data("nav-cat—id");
+
+        sessionStorage.Cat_Id_Nav = id;
 
     })
 

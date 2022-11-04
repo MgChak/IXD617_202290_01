@@ -9,7 +9,6 @@ function starsCtrl(tar){
 
     $(tar).parent().siblings('input').val(tarIndex) //把选中目标的序列号赋予input
 
-    console.log(tarIndex)
 
 }
 
