@@ -103,8 +103,6 @@ export const UserProfilePage = async() => {
     $("#profile-page .profile_inforContainer").html(makeUserPage(user))
 }
 
-
-
 //渲染编辑颜色列表
 export const ColorEditList = async() => {
     let {result:colors} = await query({ //请求用户数据
@@ -113,4 +111,17 @@ export const ColorEditList = async() => {
     })
 
     $(".fullSreenCoverPopContainer .popContent_ChosseColor_colorlist").html(makePopupColorlist (colors))
+}
+
+
+
+//jointest
+export const jointest = async() => {
+    let {result:test} = await query({ //请求用户数据
+        type:"user_by_id",
+        params:[sessionStorage.userId]
+    })
+    
+    console.log("jointest:")
+    console.log(test)
 }
