@@ -6,22 +6,28 @@ import { makeColorlList, makeCatlList, makeCatPage,makeUserPage,makeCatEditePage
 //创建地图
 export const CreatMap = async() => {
 
-    
-    let {result:colors} = await query({
-        type:"colors_by_user_id",
-        params:[sessionStorage.userId]
-    })
-
     let {result:cats} = await query({
         type:"all_locations_by_user_id",
         params:[sessionStorage.userId]
     })
 
+    
+
+    //制作color array
+    let colors = []
+    cats.forEach((item)=>{
+        if (colors.indexOf(item.color_id)== -1){//判断数列中是否已经存在此id
+            colors.push(item.color_id)
+        }
+    })
+
+    console.log(colors)
+
     let recentCatsPosition = [] 
     colors.forEach((color) => { //根据颜色循环
         let positionOfThisColor = { lat:0,lng:0,id:0}
         cats.forEach((cat)=>{//根据猫咪数据循环
-            if (cat.color_id == color.id){ //确认id
+            if (cat.color_id == color){ //确认id
                 positionOfThisColor.lat = cat.lat
                 positionOfThisColor.lng = cat.lng
                 positionOfThisColor.id = cat.id
