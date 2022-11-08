@@ -55,11 +55,15 @@ export const ColorListPage = async() => {
     }
     var cats = JSON.parse(sessionStorage.all_locations_by_user_id) 
 
+
     //制作color array
     var colors = []
+    var colorsIds = []
     cats.forEach((item)=>{
         
-        if (colors.indexOf(item.color_id)== -1){//判断数列中是否已经存在此id
+        if (colorsIds.indexOf(item.color_id)== -1){//判断数列中是否已经存在此id
+
+            colorsIds.push(item.color_id)
 
             var color = {}//因为需要过多信息，所以创建obj为每一个item
             color.id = item.color_id
@@ -69,6 +73,7 @@ export const ColorListPage = async() => {
             colors.push(color)
         }
     })
+    console.log(colors)
 
     colors.forEach((color) => { //根据颜色循环
         var catsnum = 0

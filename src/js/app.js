@@ -16,6 +16,8 @@ import {renderComfirmation} from "./useComfirmationCtrl.js"
 
 $(()=>{
 
+    // sessionStorage.removeItem('all_locations_by_user_id')
+
     let submitActionLock = false //登录行为锁
 
     let loginTimer//登录时间锁
