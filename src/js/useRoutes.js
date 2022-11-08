@@ -14,14 +14,12 @@ export const CreatMap = async() => {
     
 
     //制作color array
-    let colors = []
+    var colors = []
     cats.forEach((item)=>{
         if (colors.indexOf(item.color_id)== -1){//判断数列中是否已经存在此id
             colors.push(item.color_id)
         }
     })
-
-    console.log(colors)
 
     let recentCatsPosition = [] 
     colors.forEach((color) => { //根据颜色循环
@@ -44,16 +42,27 @@ export const CreatMap = async() => {
 //渲染颜色列表页面
 export const ColorListPage = async() => {
 
-    let {result:colors} = await query({
-        type:"colors_by_user_id",
-        params:[sessionStorage.userId]
-    })
-
     let {result:cats} = await query({
         type:"all_locations_by_user_id",
         params:[sessionStorage.userId]
     })
 
+    //制作color array
+    var colors = []
+    cats.forEach((item)=>{
+        
+        if (colors.indexOf(item.color_id)== -1){//判断数列中是否已经存在此id
+
+            var color = {}//因为需要过多信息，所以创建obj为每一个item
+            color.id = item.color_id
+            color.date_create = item.date_create
+            color.color = item.color
+            color.img = item.img
+            colors.push(color)
+        }
+    })
+
+    console.log(cats)
 
     colors.forEach((color) => { //根据颜色循环
         var catsnum = 0
