@@ -3,15 +3,19 @@ import { makeMap, makeMarkers } from "./useMap.js";
 import { makeColorlList, makeCatlList, makeCatPage,makeUserPage,makeCatEditePage,
     makePopupColorlist} from "./usePageTemplates.js";
 
+// all_locations_by_user_id
+
 //创建地图
 export const CreatMap = async() => {
 
-    let {result:cats} = await query({
-        type:"all_locations_by_user_id",
-        params:[sessionStorage.userId]
-    })
-
-    
+    if (!sessionStorage.all_locations_by_user_id){
+        var {result:cats} = await query({
+            type:"all_locations_by_user_id",
+            params:[sessionStorage.userId]
+        })
+        sessionStorage.all_locations_by_user_id = JSON.stringify(cats)
+    }
+    var cats = JSON.parse(sessionStorage.all_locations_by_user_id) 
 
     //制作color array
     var colors = []
@@ -42,10 +46,14 @@ export const CreatMap = async() => {
 //渲染颜色列表页面
 export const ColorListPage = async() => {
 
-    let {result:cats} = await query({
-        type:"all_locations_by_user_id",
-        params:[sessionStorage.userId]
-    })
+     if (!sessionStorage.all_locations_by_user_id){
+        var {result:cats} = await query({
+            type:"all_locations_by_user_id",
+            params:[sessionStorage.userId]
+        })
+        sessionStorage.all_locations_by_user_id = JSON.stringify(cats)
+    }
+    var cats = JSON.parse(sessionStorage.all_locations_by_user_id) 
 
     //制作color array
     var colors = []
@@ -61,8 +69,6 @@ export const ColorListPage = async() => {
             colors.push(color)
         }
     })
-
-    console.log(cats)
 
     colors.forEach((color) => { //根据颜色循环
         var catsnum = 0
@@ -81,7 +87,7 @@ export const ColorListPage = async() => {
 export const CatListPage = async() => {
 
     let {result:cats} = await query({
-        type:"locations_by_color_id_with_color_init",
+        type:"locations_list_by_color_id_with_color_init",
         params:[sessionStorage.Color_Id_Nav]
     })
 
@@ -95,18 +101,15 @@ export const CatListPage = async() => {
 //渲染猫咪页面
 export const catProfilePage = async() => {
     let {result:thecat} = await query({
-        type:"cat_by_id",
+        type:"one_location_by_color_id_with_color_init",
         params:[sessionStorage.Cat_Id_Nav]
     })
-    let {result:color} = await query({
-        type:"color_by_id",
-        params:[thecat[0].color_id]
-    })
+
     sessionStorage.Color_Id_Nav = thecat[0].color_id
 
     let catLocation = {lat:thecat[0].lat,lng:thecat[0].lng}
 
-    $("#cat-detail-page .pageTag h1").text(color[0].color) //修改tag
+    $("#cat-detail-page .pageTag h1").text(thecat[0].color) //修改tag
     $("#cat-detail-page .catDetail_inforContainer").html(makeCatPage(thecat))
 
     let map_el = await makeMap(".googleMapContainer",catLocation);

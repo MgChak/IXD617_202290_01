@@ -76,7 +76,7 @@ function makeStatement($data) {
             ORDER BY l.date_create
             ", $params);
         
-        case "locations_by_color_id_with_color_init": 
+        case "locations_list_by_color_id_with_color_init": 
             return makeQuery($conn, "SELECT * , l.id
             FROM `track_202290_locations` l
             JOIN (
@@ -85,6 +85,16 @@ function makeStatement($data) {
             ON l.color_id = c.id
             WHERE `color_id`=?
             ORDER BY l.date_create
+            ", $params);
+
+        case "one_location_by_color_id_with_color_init": 
+            return makeQuery($conn, "SELECT * , l.id
+            FROM `track_202290_locations` l
+            JOIN (
+                SELECT * FROM `track_202290_colors`
+            ) c
+            ON l.color_id = c.id
+            WHERE l.id=?
             ", $params);
     
             
