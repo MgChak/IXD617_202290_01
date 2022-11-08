@@ -41,10 +41,10 @@ return `
 })
 
 //渲染猫列表页面
-export  const makeCatlList = templater(({id,color,img,friendly,date_create})=>{
+export  const makeCatlList = templater(({id,color,photo,friendly,date_create})=>{
 return `
 <a class="listItem listItem_defult aTag" href="#cat-detail-page" data-nav-cat—id="${id}">
-    <div class="catList_pic" style="background-image:url('${img}')" ></div>
+    <div class="catList_pic" style="background-image:url('${photo}')" ></div>
     <div class="catList_informationContainer">
         <h2> Date : ${handleDate(date_create)} </h2>
         <h2> Friendly : 

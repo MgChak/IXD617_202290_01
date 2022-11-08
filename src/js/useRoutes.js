@@ -81,15 +81,13 @@ export const ColorListPage = async() => {
 export const CatListPage = async() => {
 
     let {result:cats} = await query({
-        type:"cats_by_color_id",
-        params:[sessionStorage.Color_Id_Nav]
-    })
-    let {result:color} = await query({
-        type:"color_by_id",
+        type:"locations_by_color_id_with_color_init",
         params:[sessionStorage.Color_Id_Nav]
     })
 
-    $("#cat-list-page .pageTag h1").text(color[0].color) //修改tag
+    console.log(cats)
+
+    $("#cat-list-page .pageTag h1").text(cats[0].color) //修改tag
     $("#cat-list-page .ListContainer").html(makeCatlList(cats))
     
 
