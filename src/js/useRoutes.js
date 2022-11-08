@@ -1,9 +1,39 @@
 import { query } from "./useFunctions.js"
+import { makeMap, makeMarkers } from "./useMap.js";
 import { makeColorlList, makeCatlList, makeCatPage,makeUserPage,makeCatEditePage,
     makePopupColorlist} from "./usePageTemplates.js";
 
+//创建地图
+export const CreatMap = async() => {
 
-export const RecentPage = async() => {}
+    
+    let {result:colors} = await query({
+        type:"colors_by_user_id",
+        params:[sessionStorage.userId]
+    })
+
+    let {result:cats} = await query({
+        type:"all_locations_by_user_id",
+        params:[sessionStorage.userId]
+    })
+
+    let recentCatsPosition = [] 
+    colors.forEach((color) => { //根据颜色循环
+        let positionOfThisColor = { lat:0,lng:0,id:0}
+        cats.forEach((cat)=>{//根据猫咪数据循环
+            if (cat.color_id == color.id){ //确认id
+                positionOfThisColor.lat = cat.lat
+                positionOfThisColor.lng = cat.lng
+                positionOfThisColor.id = cat.id
+            }
+        })
+        recentCatsPosition.push(positionOfThisColor)//插入obj
+    })
+
+    let map_el = await makeMap(".googleMapContainer",{lat:37.786038, lng:-122.399342});
+    makeMarkers(map_el,recentCatsPosition);
+
+}
 
 //渲染颜色列表页面
 export const ColorListPage = async() => {
@@ -46,6 +76,7 @@ export const CatListPage = async() => {
 
     $("#cat-list-page .pageTag h1").text(color[0].color) //修改tag
     $("#cat-list-page .ListContainer").html(makeCatlList(cats))
+    
 
 }
 //渲染猫咪页面
@@ -56,11 +87,17 @@ export const catProfilePage = async() => {
     })
     let {result:color} = await query({
         type:"color_by_id",
-        params:[sessionStorage.Color_Id_Nav]
+        params:[thecat[0].color_id]
     })
+    sessionStorage.Color_Id_Nav = thecat[0].color_id
+
+    let catLocation = {lat:thecat[0].lat,lng:thecat[0].lng}
 
     $("#cat-detail-page .pageTag h1").text(color[0].color) //修改tag
     $("#cat-detail-page .catDetail_inforContainer").html(makeCatPage(thecat))
+
+    let map_el = await makeMap(".googleMapContainer",catLocation);
+    makeMarkers(map_el,[catLocation]);
     
 }
 //渲染猫咪编辑页面

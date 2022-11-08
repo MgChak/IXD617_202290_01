@@ -65,7 +65,7 @@ function makeStatement($data) {
         case "cats_by_color_id":
             return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `color_id`=?", $params);
             
-        case "all_locations_by_user_id":
+        case "all_locations_by_user_id": 
             return makeQuery($conn, "SELECT *
             FROM `track_202290_colors` a
             JOIN (
@@ -73,6 +73,7 @@ function makeStatement($data) {
             ) l
             ON a.id = l.color_id
             WHERE `user_id`=?
+            ORDER BY l.date_create
             ", $params);
     
             
