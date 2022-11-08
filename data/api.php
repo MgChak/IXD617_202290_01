@@ -62,12 +62,19 @@ function makeStatement($data) {
         
         case "colors_by_user_id":
             return makeQuery($conn, "SELECT  * FROM `track_202290_colors` WHERE `user_id`=?", $params);
-        case "cats_colorId_date_by_user_id":
-            return makeQuery($conn, "SELECT `color_id`,`date_create` FROM `track_202290_locations` WHERE `user_id`=? ORDER BY `date_create`" ,$params);
         case "cats_by_color_id":
             return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `color_id`=?", $params);
             
-       
+        case "all_locations_by_user_id":
+            return makeQuery($conn, "SELECT *
+            FROM `track_202290_colors` a
+            JOIN (
+                SELECT * FROM `track_202290_locations`
+            ) l
+            ON a.id = l.color_id
+            WHERE `user_id`=?
+            ", $params);
+    
             
         case "count_colors_by_user_id":
             return makeQuery($conn, "SELECT COUNT(*) FROM `track_202290_colors` WHERE `user_id`=?", $params);  

@@ -14,7 +14,7 @@ export const ColorListPage = async() => {
     })
 
     let {result:cats} = await query({
-        type:"cats_colorId_date_by_user_id",
+        type:"all_locations_by_user_id",
         params:[sessionStorage.userId]
     })
 
