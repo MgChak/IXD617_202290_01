@@ -67,8 +67,7 @@ function makeStatement($data) {
         case "cats_by_color_id":
             return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `color_id`=?", $params);
             
-        //join test
-            
+       
             
         case "count_colors_by_user_id":
             return makeQuery($conn, "SELECT COUNT(*) FROM `track_202290_colors` WHERE `user_id`=?", $params);  

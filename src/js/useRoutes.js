@@ -115,13 +115,3 @@ export const ColorEditList = async() => {
 
 
 
-//jointest
-export const jointest = async() => {
-    let {result:test} = await query({ //请求用户数据
-        type:"user_by_id",
-        params:[sessionStorage.userId]
-    })
-    
-    console.log("jointest:")
-    console.log(test)
-}

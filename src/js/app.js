@@ -3,7 +3,7 @@ import {checkSigninForm,checkSignupForm,resetAlert,
         submitSaveCatForm,submitEditCatForm,deleteCat,deleteColor,
         editProfile,changePassword} from "./useCheckSubmit.js"//表单提交与检查
 import { catProfilePage, ColorListPage,CatListPage, RecentPage, UserProfilePage,CatEditingPage,
-        jointest} from "./useRoutes.js"; //路由访问数据
+        } from "./useRoutes.js"; //路由访问数据
 import usePathCheck from "./usePathCheck.js"//路径检测
 import {openListMenu,closeListMenu_icon,closeListMenu_background,eSortHandle} from "./useCtrlListMenu.js"//list二级菜单控制
 import {openFullSreenPop,closeFullSreenPop} from "./usePopupCtrl.js" //popup控制
@@ -53,8 +53,6 @@ $(()=>{
             case "cat-detail-page": catProfilePage(); break;
             case "editing-page": CatEditingPage(); break;
             case "profile-page": UserProfilePage(); break; 
-            
-            case "main-page": jointest(); break; 
         }
     })
     .on("pageshow", '[data-role="page"]', function(){////页面切换后
