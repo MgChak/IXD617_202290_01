@@ -64,6 +64,7 @@ $(()=>{
 
     //====================================================================================表单提交检查/登录登出
     .on("submit", "#signin-form", function(e) {//sign in 表单提交
+        sessionStorage.removeItem('all_locations_by_user_id')
         e.preventDefault()
         if(!submitActionLock){ //检测行为锁
             submitActionLock=true//行为锁锁定
