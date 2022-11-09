@@ -16,7 +16,7 @@ import {renderComfirmation} from "./useComfirmationCtrl.js"
 
 $(()=>{
 
-    // sessionStorage.removeItem('all_locations_by_user_id')
+    sessionStorage.removeItem('all_locations_by_user_id')
 
     let submitActionLock = false //登录行为锁
 
@@ -108,6 +108,7 @@ $(()=>{
     })
     .on("click", ".logoutButton", function(e) {
         sessionStorage.removeItem("userId");//移除令牌
+        sessionStorage.removeItem('all_locations_by_user_id')
         PageAnimationDefaultOut('#profile-page')//页面复位
         usePathCheck()//导航
 

@@ -5,17 +5,27 @@ import { makeColorlList, makeCatlList, makeCatPage,makeUserPage,makeCatEditePage
 
 // all_locations_by_user_id
 
-//创建地图
-export const CreatMap = async() => {
 
-    if (!sessionStorage.all_locations_by_user_id){
+const checkData = async()=>{
+
+    if (!sessionStorage.all_locations_by_user_id){//检查数据是否存在
         var {result:cats} = await query({
             type:"all_locations_by_user_id",
             params:[sessionStorage.userId]
         })
         sessionStorage.all_locations_by_user_id = JSON.stringify(cats)
     }
-    var cats = JSON.parse(sessionStorage.all_locations_by_user_id) 
+    var catsData = JSON.parse(sessionStorage.all_locations_by_user_id) 
+
+    return catsData
+}
+
+//创建地图
+export const CreatMap = async() => {
+
+    var cats = await checkData()
+
+    console.log(cats)
 
     //制作color array
     var colors = []
@@ -46,14 +56,7 @@ export const CreatMap = async() => {
 //渲染颜色列表页面
 export const ColorListPage = async() => {
 
-     if (!sessionStorage.all_locations_by_user_id){
-        var {result:cats} = await query({
-            type:"all_locations_by_user_id",
-            params:[sessionStorage.userId]
-        })
-        sessionStorage.all_locations_by_user_id = JSON.stringify(cats)
-    }
-    var cats = JSON.parse(sessionStorage.all_locations_by_user_id) 
+    var cats = await checkData()
 
 
     //制作color array
@@ -73,7 +76,6 @@ export const ColorListPage = async() => {
             colors.push(color)
         }
     })
-    console.log(colors)
 
     colors.forEach((color) => { //根据颜色循环
         var catsnum = 0
@@ -105,16 +107,23 @@ export const CatListPage = async() => {
 }
 //渲染猫咪页面
 export const catProfilePage = async() => {
-    let {result:thecat} = await query({
-        type:"one_location_by_color_id_with_color_init",
-        params:[sessionStorage.Cat_Id_Nav]
+
+    var cats = await checkData()
+
+    var thecat = cats.find((item)=>{//知道到猫咪的数据
+        var tarcat
+        if (item.id == sessionStorage.Cat_Id_Nav){
+            tarcat = item
+        }
+        return tarcat
     })
+    console.log(thecat)
 
-    sessionStorage.Color_Id_Nav = thecat[0].color_id
+    sessionStorage.Color_Id_Nav = thecat.color_id
 
-    let catLocation = {lat:thecat[0].lat,lng:thecat[0].lng}
+    let catLocation = {lat:thecat.lat,lng:thecat.lng}
 
-    $("#cat-detail-page .pageTag h1").text(thecat[0].color) //修改tag
+    $("#cat-detail-page .pageTag h1").text(thecat.color) //修改tag
     $("#cat-detail-page .catDetail_inforContainer").html(makeCatPage(thecat))
 
     let map_el = await makeMap(".googleMapContainer",catLocation);
