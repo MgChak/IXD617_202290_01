@@ -93,15 +93,19 @@ export const ColorListPage = async() => {
 //渲染猫咪列表页面
 export const CatListPage = async() => {
 
-    let {result:cats} = await query({
-        type:"locations_list_by_color_id_with_color_init",
-        params:[sessionStorage.Color_Id_Nav]
+    var cats = await checkData()
+
+    var catslist = []
+    
+    cats.forEach((item)=>{//找出所有的符合color_id的data
+        if(item.color_id==sessionStorage.Color_Id_Nav){
+            catslist.push(item)
+        }
     })
 
-    console.log(cats)
 
-    $("#cat-list-page .pageTag h1").text(cats[0].color) //修改tag
-    $("#cat-list-page .ListContainer").html(makeCatlList(cats))
+    $("#cat-list-page .pageTag h1").text(catslist[0].color) //修改tag
+    $("#cat-list-page .ListContainer").html(makeCatlList(catslist))
     
 
 }
@@ -117,7 +121,7 @@ export const catProfilePage = async() => {
         }
         return tarcat
     })
-    console.log(thecat)
+
 
     sessionStorage.Color_Id_Nav = thecat.color_id
 
