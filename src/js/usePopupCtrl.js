@@ -1,3 +1,19 @@
+
+import { catProfilePage, ColorListPage,CatListPage, UserProfilePage,CatEditingPage,
+    CreatMap} from "./useRoutes.js"; //路由访问数据
+
+function pageReresh(){
+    switch(window.location.hash) {
+        case "main-page": CreatMap(); break;
+        case "color-list-page": ColorListPage(); break;
+        case "cat-list-page": CatListPage(); break;
+        case "cat-detail-page": catProfilePage(); break;
+        case "editing-page": CatEditingPage(); break;
+        case "profile-page": UserProfilePage(); break; 
+    }
+}
+
+
 function openFullSreenPop(tar){
     $('.fullSreenCoverPopContainer').show()
     $('.fullSreenCoverPopBackground').show()
@@ -8,7 +24,7 @@ function openFullSreenPop(tar){
 }
 
 function closeFullSreenPop(tar){
-    
+    pageReresh()//刷新当前页面的内容
     $('.fullSreenCoverPopBox').css('top','-100%')
     $('.fullSreenCoverPopBackground').css('opacity','0')
     setTimeout(()=>{
