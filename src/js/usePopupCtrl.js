@@ -4,13 +4,14 @@ import { catProfilePage, ColorListPage,CatListPage, UserProfilePage,CatEditingPa
 
 function pageReresh(){
     switch(window.location.hash) {
-        case "main-page": CreatMap(); break;
-        case "color-list-page": ColorListPage(); break;
-        case "cat-list-page": CatListPage(); break;
-        case "cat-detail-page": catProfilePage(); break;
-        case "editing-page": CatEditingPage(); break;
-        case "profile-page": UserProfilePage(); break; 
+        case "#main-page": CreatMap(); break;
+        case "#color-list-page": ColorListPage(); break;
+        case "#cat-list-page": CatListPage(); break;
+        case "#cat-detail-page": catProfilePage(); break;
+        case "#editing-page": CatEditingPage(); break;
+        case "#profile-page": UserProfilePage(); break; 
     }
+    console.log(window.location.hash)
 }
 
 
