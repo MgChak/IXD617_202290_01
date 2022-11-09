@@ -36,30 +36,42 @@ function checkSignupForm(){
 
 function submitSaveCatForm(){//提交保存猫
 
+    sessionStorage.removeItem('all_locations_by_user_id')
+
     return 'success' //目前默认成功
 }
 
 function submitEditCatForm(){//提交修改猫
+
+    sessionStorage.removeItem('all_locations_by_user_id')
 
     return 'success' //目前默认成功
 }
 
 function deleteCat(){//提交删除猫
 
+    sessionStorage.removeItem('all_locations_by_user_id')
+
     return 'success' //目前默认成功
 }
 
 function deleteColor(){//提交删除颜色
+
+    sessionStorage.removeItem('all_locations_by_user_id')
 
     return 'success' //目前默认成功
 }
 
 function editProfile(){//提交修改userprofile
 
+    sessionStorage.removeItem('all_locations_by_user_id')
+
     return 'success' //目前默认成功
 }
 
 function changePassword(){//提交修改密码
+
+    sessionStorage.removeItem('all_locations_by_user_id')
 
     return 'success' //目前默认成功
 }

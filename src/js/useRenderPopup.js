@@ -69,6 +69,8 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
 
     }else if(val=='editColorList'){//编辑颜色界面
 
+        await ColorEditList();
+
         $(tarPage).find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')//取消已经选中的颜色
         $(tarPage).find('.popContent_ChosseColor').addClass("popContent_ChosseColor_active")//基础内容
         $(tarPage).find('.editColorListIcon').hide()//右上角编辑icon
@@ -96,6 +98,8 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
             .siblings('h1').text('COMFIRM')//文字内容
 
     }else if(val=="editColorListDelet"){//颜色删除页面
+
+        await ColorEditList();
 
         $(tarPage).find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')//取消已经选中的颜色
         $(tarPage).find('.popContent_ChosseColor').addClass("popContent_ChosseColor_active")//基础内容
@@ -127,6 +131,8 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
 
     }else if(val=='addColor' || val=='listPageAddColor'){//添加颜色界面
 
+        await ColorEditList();
+
         $(tarPage).find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')//取消已经选中的颜色
         $(tarPage).find('.popContent_ChosseColor').addClass("popContent_ChosseColor_active")//基础内容
         $(tarPage).find('.editColorListIcon').hide()//右上角编辑icon
@@ -152,6 +158,7 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
         $(tarPage).find('.newColorInputSlot').val('')//颜色输入框中的内容
 
     }else if(val=='changeColor' || val=='listPageChangeColor'){//修改颜色界面-输入
+
 
         var tarText = $(tar).siblings('.popContent_ChosseColor_colorlist_item')
             .find('h1').text()
@@ -212,6 +219,8 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
         $(tarPage).find('.newColorInputSlot').val(tarText)//颜色输入框中的内容
 
     }else if(val=="listPageDelete"){//颜色列表打开的颜色删除界面
+
+        await ColorEditList();
 
         $(tarPage).find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')//取消已经选中的颜色
         $(tarPage).find('.popContent_ChosseColor').addClass("popContent_ChosseColor_active")//基础内容

@@ -108,11 +108,11 @@ $(()=>{
         }else{ return } //行为锁锁定，拒绝执行
     })
     .on("click", ".logoutButton", function(e) {
-        sessionStorage.removeItem("userId");//移除令牌
-        sessionStorage.removeItem('all_locations_by_user_id')
+        sessionStorage.removeItem("userId")//移除令牌
         PageAnimationDefaultOut('#profile-page')//页面复位
-        usePathCheck()//导航
-
+        navToWithAnimation('#signin-page')
+        sessionStorage.removeItem('all_locations_by_user_id')
+        
     })
     //====================================================================================页面跳转目标id存储
 
