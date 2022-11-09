@@ -58,9 +58,9 @@ return `
 })
 
 //渲染猫咪页面
-export  const makeCatPage = templater(({id,friendly,img,date_create,description})=>{
+export  const makeCatPage = templater(({id,friendly,photo,date_create,description})=>{
 return `
-<div class="catDetail_pic" style="background-image:url('${img}')">
+<div class="catDetail_pic" style="background-image:url('${photo}')">
     <img class="catDetail_fullScreenIcon" src="./src/img/icons/fullSreen.svg" alt="">
 </div>
 <div class="catDetail_inforBox">
