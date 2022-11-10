@@ -20,9 +20,7 @@ const checkData = async()=>{
     return catsData
 }
 
-const sortByDate = (list)=>{
-
-}
+//sort list 所使用的所有function===============================
 const sortByStars_sM_L = (a,b)=>{
     if(a.friendly > b.friendly){
         return -1
@@ -99,6 +97,7 @@ const sortList = (theList)=>{
             break;
             default:
                 theList.sort(sortByStars_N_O)
+                sessionStorage.listSortby = 'N_O'
             break;
         }
 
@@ -120,6 +119,7 @@ const sortList = (theList)=>{
             break;
             default:
                 theList.sort(sortByStars_N_O)
+                sessionStorage.listSortby = 'N_O'
             break;
         }
        
@@ -127,6 +127,8 @@ const sortList = (theList)=>{
     }
     return theList
 }
+//=======================================================
+
 
 //创建地图
 export const CreatMap = async() => {
