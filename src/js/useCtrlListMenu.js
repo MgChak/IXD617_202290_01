@@ -1,3 +1,14 @@
+import { catProfilePage, ColorListPage,CatListPage, UserProfilePage,CatEditingPage,
+    CreatMap} from "./useRoutes.js"; //路由访问数据
+
+function pageReresh(){
+    switch(window.location.hash) {
+        case "#color-list-page": ColorListPage(); break;
+        case "#cat-list-page": CatListPage(); break;
+    }
+}
+
+
 let isMenuOpen = false
 
 function openListMenu(tar){
@@ -37,10 +48,15 @@ function closeListMenu_background(tar){
     setTimeout(()=>{isMenuOpen = false},300)//打开行为锁
 }
 
-function eSortHandle(tar){
+function eSortHandle(tar){//控制sort点击
 
     $(tar).addClass("sortItem_active")
         .siblings().removeClass("sortItem_active")
+
+    var sort = $(tar).attr("data-sortBy")
+
+    sessionStorage.listSortby = sort
+
 }
 
 export{
