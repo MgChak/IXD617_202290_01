@@ -28,6 +28,7 @@ function openListMenu(tar){
 }
 function closeListMenu_icon(tar){
 
+        pageReresh()
         $(tar).parents(".listPageMenuConatiner")
             .removeClass("listPageMenuConatiner_active")
             .find(".listPageMenuContent").removeClass("listPageMenuContent_active")
@@ -56,6 +57,7 @@ function eSortHandle(tar){//控制sort点击
     var sort = $(tar).attr("data-sortBy")
 
     sessionStorage.listSortby = sort
+
 
 }
 

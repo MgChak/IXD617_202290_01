@@ -25,14 +25,14 @@ let handleDate = (date)=>date.slice(0,10)
 
 
 //渲染颜色列表页面
-export  const makeColorlList = templater(({id,color,img,lastUpdate,catnum})=>{
+export  const makeColorlList = templater(({id,color,img,date_create,catnum})=>{
 return `
 <a class="listItem listItem_defult aTag" href="#cat-list-page" data-nav-color—id="${id}">
     <div class="colorList_pic" style="background-image:url('${img}')"></div>
     <div class="colorList_informationContainer">
         <h1> ${color}</h1>
         <h2 class="catAmountSlot" data-solot-id="${id}"> Amount : ${catnum} cats</h2>
-        <h2>Last Update : ${handleDate(lastUpdate)} </h2>
+        <h2>Last Update : ${handleDate(date_create)} </h2>
     </div>
     <div style="flex:1"></div>
     <img src="./src/img/icons/arrow.svg" alt="" style="margin-right:24px; opacity:0.3">

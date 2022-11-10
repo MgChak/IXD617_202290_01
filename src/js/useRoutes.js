@@ -20,6 +20,114 @@ const checkData = async()=>{
     return catsData
 }
 
+const sortByDate = (list)=>{
+
+}
+const sortByStars_sM_L = (a,b)=>{
+    if(a.friendly > b.friendly){
+        return -1
+    }else if (a.friendly < b.friendly){
+        return 1
+    }else if(a.friendly = b.friendly){
+        return 0
+    }
+}
+const sortByStars_sL_M = (a,b)=>{
+    if(a.friendly > b.friendly){
+        return 1
+    }else if (a.friendly < b.friendly){
+        return -1
+    }else if(a.friendly = b.friendly){
+        return 0
+    }
+}
+const sortByStars_N_O = (a,b)=>{
+    if(a.date_create > b.date_create){
+        return -1
+    }else if (a.date_create < b.date_create){
+        return 1
+    }else if(a.date_create = b.date_create){
+        return 0
+    }
+}
+const sortByStars_O_N = (a,b)=>{
+    if(a.date_create > b.date_create){
+        return 1
+    }else if (a.date_create < b.date_create){
+        return -1
+    }else if(a.date_create = b.date_create){
+        return 0
+    }
+}
+
+const sortByStars_M_L = (a,b)=>{
+    if(a.catnum > b.catnum){
+        return -1
+    }else if (a.catnum < b.catnum){
+        return 1
+    }else if(a.catnum = b.catnum){
+        return 0
+    }
+}
+const sortByStars_L_M = (a,b)=>{
+    if(a.catnum > b.catnum){
+        return 1
+    }else if (a.catnum < b.catnum){
+        return -1
+    }else if(a.catnum = b.catnum){
+        return 0
+    }
+}
+
+const sortList = (theList)=>{
+
+    let pageNow = window.location.hash
+
+    if(pageNow == '#cat-list-page'){//猫猫列表页面
+        switch (sessionStorage.listSortby ){
+            case 'sM_L':
+                theList.sort(sortByStars_sM_L)
+            break;
+            case 'sL_M':
+                theList.sort(sortByStars_sL_M)
+            break;
+            case 'N_O':
+                theList.sort(sortByStars_N_O)
+            break;
+            case 'O_N':
+                theList.sort(sortByStars_O_N)
+            break;
+            default:
+                theList.sort(sortByStars_N_O)
+            break;
+        }
+
+
+    }else if(pageNow == '#color-list-page'){//颜色列表页面
+        console.log('HI')
+        switch (sessionStorage.listSortby ){
+            case 'M_L':
+                theList.sort(sortByStars_M_L)
+            break;
+            case 'L_M':
+                theList.sort(sortByStars_L_M)
+            break;
+            case 'N_O':
+                theList.sort(sortByStars_N_O)
+            break;
+            case 'O_N':
+                theList.sort(sortByStars_O_N)
+            break;
+            default:
+                theList.sort(sortByStars_N_O)
+            break;
+        }
+       
+
+    }
+    return theList
+}
+
 //创建地图
 export const CreatMap = async() => {
 
@@ -81,12 +189,14 @@ export const ColorListPage = async() => {
         var catsnum = 0
         cats.forEach((cat)=>{//根据猫咪数据循环
             if (cat.color_id == color.id){ //确认id
-                color.lastUpdate = cat.date_create //循环赋值 日期
+                color.date_create = cat.date_create //循环赋值 日期
                 catsnum++ //累加计数
             }
         })
         color.catnum = catsnum //插入obj
     })
+
+    colors = sortList(colors)
 
     $("#color-list-page .ListContainer").html(makeColorlList(colors))
 }
@@ -102,6 +212,8 @@ export const CatListPage = async() => {
             catslist.push(item)
         }
     })
+
+    catslist = sortList(catslist)
 
 
     $("#cat-list-page .pageTag h1").text(catslist[0].color) //修改tag
