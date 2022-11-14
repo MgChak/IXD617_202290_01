@@ -19,6 +19,7 @@ export const makeMap = async(target, center) => {
             center,
             zoom: 12,
             disableDefaultUI: true,
+            mapId:'317e492ff59adc76'	
         })
     });}else{//如果已经存在地图，就用panTo()移动中心点到新的位置
         let a = map_el.data()

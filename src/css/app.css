@@ -105,6 +105,30 @@ textarea{
     padding:1px 10px;
     
 }
+    .pageTag_c{
+
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: -65px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: var(--color-pageTage-background);
+        border: var(--color-pageTage-border) 2px solid;
+        border-radius: 50px;
+        padding: 1px 10px;
+        
+    }
+    .pageTag_c>img{
+        width:20px;
+        transition: all 0.3s;
+        transform: rotate(180deg);
+    }
     .pageTag > h1{
         font-size: 15px;
         color:var(--color-page-dark);

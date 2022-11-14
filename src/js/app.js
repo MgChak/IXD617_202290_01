@@ -29,6 +29,8 @@ $(()=>{
     let choseColorPagePosition = 0 //选择颜色颜面的路径记录
 
     let deleteTimer //删除时间锁
+    
+    let catListPageStatus = 'close' // 猫猫页面状态（close/open）
 
     function navToWithAnimation(tarPage){//手动nav
         var tar = window.location.hash//获取当前页面
@@ -52,8 +54,8 @@ $(()=>{
         switch(ui.toPage[0].id) {
             case "main-page": CreatMap(); break;
             case "color-list-page": ColorListPage(); break;
-            case "cat-list-page": CatListPage(); break;
-            case "cat-detail-page": catProfilePage(); break;
+            case "cat-list-page": CatListPage(); catListPageStatus = 'close'; $(".pageTag_c img").css('transform','rotate(180deg)'); break;
+            case "cat-detail-page": catProfilePage();  break;
             case "editing-page": CatEditingPage(); break;
             case "profile-page": UserProfilePage(); break; 
         }
@@ -187,6 +189,17 @@ $(()=>{
         openFullSreenPop(this) 
         renderPopup('colors',this)
         renderColorPopUp(choseColorPagePosition,this)
+    })
+    .on("click", ".pageTag_c", function() {//猫猫列表页面开关点击
+        if(catListPageStatus == 'close'){
+            $('#cat-list-page > .animation-default').css('bottom','-70%')
+                .find(".pageTag_c img").css('transform','rotate(0deg)')
+            catListPageStatus = 'open'
+        }else if(catListPageStatus == 'open'){
+            $('#cat-list-page > .animation-default').css('bottom','0')
+                .find(".pageTag_c img").css('transform','rotate(180deg)')
+            catListPageStatus = 'close'
+        }
     })
 
     //====================================================================================detail page 
