@@ -208,10 +208,15 @@ export const CatListPage = async() => {
     var cats = await checkData()
 
     var catslist = []
+
+    var catsLocationList = []
+
     
     cats.forEach((item)=>{//找出所有的符合color_id的data
         if(item.color_id==sessionStorage.Color_Id_Nav){
             catslist.push(item)
+
+            catsLocationList.push({lat:item.lat,lng:item.lng,id:item.id})
         }
     })
 
@@ -221,6 +226,8 @@ export const CatListPage = async() => {
     $("#cat-list-page .pageTag h1").text(catslist[0].color) //修改tag
     $("#cat-list-page .ListContainer").html(makeCatlList(catslist))
     
+    let map_el = await makeMap(".googleMapContainer",catsLocationList[0]);
+    makeMarkers(map_el,catsLocationList);
 
 }
 //渲染猫咪页面
