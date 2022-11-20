@@ -45,25 +45,25 @@ function makeStatement($data) {
     $params = @$data->params;
 
     switch($type) {
-        case "users_all":
-            return makeQuery($conn, "SELECT * FROM `track_202290_users`", $params);
-        case "animals_all":
-            return makeQuery($conn, "SELECT * FROM `track_202290_colors`", $params);
-        case "locations_all":
-            return makeQuery($conn, "SELECT * FROM `track_202290_locations`", $params);
+        // case "users_all":
+        //     return makeQuery($conn, "SELECT * FROM `track_202290_users`", $params);
+        // case "animals_all":
+        //     return makeQuery($conn, "SELECT * FROM `track_202290_colors`", $params);
+        // case "locations_all":
+        //     return makeQuery($conn, "SELECT * FROM `track_202290_locations`", $params);
             
-        case "user_by_id":
-            return makeQuery($conn, "SELECT * FROM `track_202290_users` WHERE `id`=?", $params);
-        case "color_by_id":
-            return makeQuery($conn, "SELECT * FROM `track_202290_colors` WHERE `id`=?", $params);
-        case "cat_by_id":
-            return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `id`=?", $params);
+        // case "user_by_id":
+        //     return makeQuery($conn, "SELECT * FROM `track_202290_users` WHERE `id`=?", $params);
+        // case "color_by_id":
+        //     return makeQuery($conn, "SELECT * FROM `track_202290_colors` WHERE `id`=?", $params);
+        // case "cat_by_id":
+        //     return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `id`=?", $params);
 
         
-        case "colors_by_user_id":
-            return makeQuery($conn, "SELECT  * FROM `track_202290_colors` WHERE `user_id`=?", $params);
-        case "cats_by_color_id":
-            return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `color_id`=?", $params);
+        // case "colors_by_user_id":
+        //     return makeQuery($conn, "SELECT  * FROM `track_202290_colors` WHERE `user_id`=?", $params);
+        // case "cats_by_color_id":
+        //     return makeQuery($conn, "SELECT * FROM `track_202290_locations` WHERE `color_id`=?", $params);
             
         case "all_locations_by_user_id": 
             return makeQuery($conn, "SELECT *
@@ -76,26 +76,26 @@ function makeStatement($data) {
             ORDER BY l.date_create
             ", $params);
         
-        case "locations_list_by_color_id_with_color_init": 
-            return makeQuery($conn, "SELECT * , l.id
-            FROM `track_202290_locations` l
-            JOIN (
-                SELECT * FROM `track_202290_colors`
-            ) c
-            ON l.color_id = c.id
-            WHERE `color_id`=?
-            ORDER BY l.date_create
-            ", $params);
+        // case "locations_list_by_color_id_with_color_init": 
+        //     return makeQuery($conn, "SELECT * , l.id
+        //     FROM `track_202290_locations` l
+        //     JOIN (
+        //         SELECT * FROM `track_202290_colors`
+        //     ) c
+        //     ON l.color_id = c.id
+        //     WHERE `color_id`=?
+        //     ORDER BY l.date_create
+        //     ", $params);
 
-        case "one_location_by_color_id_with_color_init": 
-            return makeQuery($conn, "SELECT * , l.id
-            FROM `track_202290_locations` l
-            JOIN (
-                SELECT * FROM `track_202290_colors`
-            ) c
-            ON l.color_id = c.id
-            WHERE l.id=?
-            ", $params);
+        // case "one_location_by_color_id_with_color_init": 
+        //     return makeQuery($conn, "SELECT * , l.id
+        //     FROM `track_202290_locations` l
+        //     JOIN (
+        //         SELECT * FROM `track_202290_colors`
+        //     ) c
+        //     ON l.color_id = c.id
+        //     WHERE l.id=?
+        //     ", $params);
     
             
         case "count_colors_by_user_id":

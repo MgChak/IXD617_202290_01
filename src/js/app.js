@@ -77,11 +77,10 @@ $(()=>{
             loginTimer = setTimeout(resetAlert,5000)//开启计时器
         }else{ return } //行为锁锁定，拒绝执行
     })
-    .on("submit", "#signup-form", function(e) {//sign in 表单提交
+    .on("submit", "#signup-form", function(e) {//sign up 表单提交
         e.preventDefault()
         if(!submitActionLock){ //检测行为锁
-
-            alert('Sorry, You can not signup right now, coming soon : D')
+            checkSignupForm()
         }else{ return } //行为锁锁定，拒绝执行
     })
     .on("submit", "#adding-form", function(e) {//添加猫

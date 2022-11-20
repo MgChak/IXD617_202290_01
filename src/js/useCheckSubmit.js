@@ -24,13 +24,31 @@ async function checkSigninForm(){
         sessionStorage.removeItem("userId")//清空证书
         $("#signin-form")[0].reset()//清空input
         $("#signInPageError_slot").html("Incorrect user name or password").css('color','var(--color-font-alert)').parent('.signIn-note').addClass('formError')//插入错误警告
-        setTimeout(()=>{$("#signInPageError_slot").parent('.signIn-note').removeClass('formError');},500)//移除错误警告
+        setTimeout(()=>{$("#signInPageError_slot").parent('.signIn-note').removeClass('formError');},3000)//移除错误警告
     
     }
 
 }
 
-function checkSignupForm(){
+async function checkSignupForm(){
+  
+    let SignupForm = {username:'',password:'',password_re:''}
+
+    SignupForm.username = $('#signup-username').val()
+    SignupForm.password = $('#signup-password').val()
+    SignupForm.password_re = $('#signup-repassword').val()
+
+    if (SignupForm.password == SignupForm.password_re){
+
+        console.log(SignupForm)
+
+    }else if(SignupForm.username == undefined || SignupForm.username == ' ' || SignupForm.password == undefined || SignupForm.password == ' '){
+        $(".signUp-note h1").html("The user name or password is not entered").css('color','var(--color-font-alert)').addClass('formError')//插入错误警告
+        setTimeout(()=>{$(".signUp-note h1").html('Hi! Welcome to Color Cats.').css('color','var(--color-font-light-v)').removeClass('formError');},3000)//移除错误警告
+    }else{
+        $(".signUp-note h1").html("The password does not match").css('color','var(--color-font-alert)').addClass('formError')//插入错误警告
+        setTimeout(()=>{$(".signUp-note h1").html('Hi! Welcome to Color Cats.').css('color','var(--color-font-light-v)').removeClass('formError');},3000)//移除错误警告
+    }
 
 }
 
@@ -80,6 +98,10 @@ function resetAlert(){
     $("#signInPageError_slot").html("Hi! Welcome to Color Cats")
         .css('color','var(--color-font-light-v)')//移除登录错误警告
 }
+
+
+
+
 
 export {
     checkSigninForm,
