@@ -32,8 +32,8 @@ async function checkSigninForm(){
 
 async function checkSignupForm(){
   
-    let SignupForm = {username:'',password:'',password_re:''}
-
+    let SignupForm = {name:'',username:'',password:'',password_re:''}
+    SignupForm.name = $('#signup-name').val()
     SignupForm.username = $('#signup-username').val()
     SignupForm.password = $('#signup-password').val()
     SignupForm.password_re = $('#signup-repassword').val()
@@ -42,7 +42,12 @@ async function checkSignupForm(){
 
         console.log(SignupForm)
 
-    }else if(SignupForm.username == undefined || SignupForm.username == ' ' || SignupForm.password == undefined || SignupForm.password == ' '){
+        let founduser = await query({
+            type: 'signup',
+            params: [SignupForm.name,SignupForm.username,SignupForm.password,' ',' ']
+        });
+
+    }else if(SignupForm.name == undefined || SignupForm.name == ' ' || SignupForm.username == undefined || SignupForm.username == ' ' || SignupForm.password == undefined || SignupForm.password == ' '){
         $(".signUp-note h1").html("The user name or password is not entered").css('color','var(--color-font-alert)').addClass('formError')//插入错误警告
         setTimeout(()=>{$(".signUp-note h1").html('Hi! Welcome to Color Cats.').css('color','var(--color-font-light-v)').removeClass('formError');},3000)//移除错误警告
     }else{

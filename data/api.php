@@ -98,10 +98,10 @@ function makeStatement($data) {
         //     ", $params);
     
             
-        case "count_colors_by_user_id":
-            return makeQuery($conn, "SELECT COUNT(*) FROM `track_202290_colors` WHERE `user_id`=?", $params);  
-        case "count_cats_by_user_id":
-            return makeQuery($conn, "SELECT COUNT(*) FROM `track_202290_locations` WHERE `user_id`=?", $params);  
+        // case "count_colors_by_user_id":
+        //     return makeQuery($conn, "SELECT COUNT(*) FROM `track_202290_colors` WHERE `user_id`=?", $params);  
+        // case "count_cats_by_user_id":
+        //     return makeQuery($conn, "SELECT COUNT(*) FROM `track_202290_locations` WHERE `user_id`=?", $params);  
 
         
 
@@ -109,6 +109,13 @@ function makeStatement($data) {
             return makeQuery($conn, "SELECT `id` FROM `track_202290_users` WHERE `username`=? AND `password` = md5(?)", $params);
 
 
+
+
+
+        case "signup":
+            return makeQuery($conn, "INSERT INTO `track_202290_users` (`name`, `username`, `password`, `email`, `img`, `date_create`) VALUES(?,?,md5(?),?,?,NOW())", $params);
+
+        
         default:
             return ["error"=>"No Matched Type"];          
     }
