@@ -257,19 +257,19 @@ export const catProfilePage = async() => {
 }
 //渲染猫咪编辑页面
 export const CatEditingPage = async() => {
-    let {result:catedit} = await query({
-        type:"cat_by_id",
-        params:[sessionStorage.Cat_Id_Nav]
-    })
-    let {result:color} = await query({
-        type:"color_by_id",
-        params:[sessionStorage.Color_Id_Nav]
+    
+    var cats = await checkData()
+
+    var thecat = cats.find((item)=>{//知道到猫咪的数据
+        var tarcat
+        if (item.id == sessionStorage.Cat_Id_Nav){
+            tarcat = item
+        }
+        return tarcat
     })
 
-    catedit[0].color = color[0].color
-
-    console.log(catedit)
-    $("#editing-page .ListContainer_default").html(makeCatEditePage(catedit))
+    console.log(thecat)
+    $("#editing-page .ListContainer_default").html(makeCatEditePage(thecat))
     
 }
 //渲染user页面
@@ -317,6 +317,8 @@ export const ColorEditList = async() => {
 
     $(".fullSreenCoverPopContainer .popContent_ChosseColor_colorlist").html(makePopupColorlist (colors))
 }
+
+
 
 
 

@@ -4,17 +4,17 @@ import { templater,query } from "./useFunctions.js";
 let handleFriendlyData = (friendly)=>{
         
     let friendlyArray = [ //默认为0，全空
-        '<img src="./src/img/icons/starUnactive.svg" alt="">',
-        '<img src="./src/img/icons/starUnactive.svg" alt="">',
-        '<img src="./src/img/icons/starUnactive.svg" alt="">',
-        '<img src="./src/img/icons/starUnactive.svg" alt="">',
-        '<img src="./src/img/icons/starUnactive.svg" alt="">'
+        ' <img class="friendlyStar" src="./src/img/icons/starUnactive.svg" alt="">',
+        ' <img class="friendlyStar" src="./src/img/icons/starUnactive.svg" alt="">',
+        ' <img class="friendlyStar" src="./src/img/icons/starUnactive.svg" alt="">',
+        ' <img class="friendlyStar" src="./src/img/icons/starUnactive.svg" alt="">',
+        ' <img class="friendlyStar" src="./src/img/icons/starUnactive.svg" alt="">'
     ]
 
     var i = 0
 
     for(i=0; i < friendly; i++){ //根据friendly数据循环次数，依次替换成激活状态
-        friendlyArray[i] = '<img src="./src/img/icons/starActive.svg" alt="">'
+        friendlyArray[i] = '<img class="friendlyStar" src="./src/img/icons/starActive.svg" alt="">'
     }
 
     return friendlyArray.join().replace(/,/g,' ')
@@ -74,26 +74,26 @@ return `
 })
 
 //渲染猫咪编辑页面
-export  const makeCatEditePage = templater(({id,color,friendly,img,date_create,description})=>{
+export  const makeCatEditePage = templater(({id,color,color_id,friendly,photo,date_create,description})=>{
     return `
     <form class="form noMargin" id="editing-form" data-ajax="false">
                     
         <div class="form-control">
             <input type="hidden" id="editing-img" data-role="none" value="">
-            <div class="form-input-img" style="background-image:url('${img}')">
+            <div class="form-input-img" style="background-image:url('${photo}')">
                 <img src="./src/img/icons/addPicture.svg" alt="">
             </div>
         </div>
 
         <div class="form-control">
             <label class="form-label" for="editing-color" >COLOR</label>
-            <input type="hidden" class="editingAdding_color" id="editing-color" data-role="none" value="${color}">
+            <input type="hidden" class="editingAdding_color" id="editing-color" data-role="none" value="${color_id}">
             <div class="form-input editingAdding_color_conatiner">${color}</div>
         </div>
 
         <div class="form-control">
             <label class="form-label" for="editing-friendly" >FRIENDLY</label>
-            <input type="hidden" id="editing-friendly" data-role="none" value="">
+            <input type="hidden" id="editing-friendly" data-role="none" value="${friendly}">
             <div class="form-input editingAdding_friendly_conatiner"> 
                 ${handleFriendlyData(friendly)}
             </div>                     

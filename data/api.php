@@ -114,6 +114,31 @@ function makeStatement($data) {
 
         case "signup":
             return makeQuery($conn, "INSERT INTO `track_202290_users` (`name`, `username`, `password`, `email`, `img`, `date_create`) VALUES(?,?,md5(?),?,?,NOW())", $params);
+        
+             /* UPDATE */
+        case "update_animal":
+            $result = makeQuery($conn,"UPDATE
+            `track_202290_locations`
+            SET
+                `photo` = ?,
+                `color_id` = ?,
+                `friendly` = ?,
+                `description` = ?
+            WHERE `id` = ?
+            ",$params,false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+        case "update_color":
+            $result = makeQuery($conn,"UPDATE
+            `track_202290_colors`
+            SET
+                `color` = ?,
+            WHERE `id` = ?
+            ",$params,false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
 
         
         default:

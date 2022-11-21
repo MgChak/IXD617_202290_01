@@ -283,10 +283,13 @@ function handleColorSelect(val,tar){ //处理颜色选择页面的点击事件
     if (val == 'ori'){
         $(tar).find('.popContent_ChosseColor_colorlist_item').addClass('popContent_ChosseColor_colorlist_item_active')
         $(tar).siblings().find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')
+
+        var color_id = $(tar).data('color-id')
+        console.log(color_id)
         
         var tarColor = $(tar).find('h1').text()//获取目标的文字内容
         
-        $(currentPage).find('.editingAdding_color').val(tarColor)//将颜色赋值给表单
+        $(currentPage).find('.editingAdding_color').val(color_id)//将颜色赋值给表单
             .siblings('div').text(tarColor)//将颜色显示在表单中
         // console.log($('#adding-color').val())
     }

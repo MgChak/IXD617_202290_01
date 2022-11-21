@@ -8,7 +8,7 @@ function pageReresh(){
         case "#color-list-page": ColorListPage(); break;
         case "#cat-list-page": CatListPage(); break;
         case "#cat-detail-page": catProfilePage(); break;
-        case "#editing-page": CatEditingPage(); break;
+        // case "#editing-page": CatEditingPage(); break;
         case "#profile-page": UserProfilePage(); break; 
     }
     console.log(window.location.hash)
@@ -25,6 +25,7 @@ function openFullSreenPop(tar){
 }
 
 function closeFullSreenPop(tar){
+
     pageReresh()//刷新当前页面的内容
     $('.fullSreenCoverPopBox').css('top','-100%')
     $('.fullSreenCoverPopBackground').css('opacity','0')

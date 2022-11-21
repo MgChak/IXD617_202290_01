@@ -30,7 +30,7 @@ async function checkSigninForm(){
 
 }
 
-async function checkSignupForm(){
+async function checkSignupForm(){//注册表格
   
     let SignupForm = {name:'',username:'',password:'',password_re:''}
     SignupForm.name = $('#signup-name').val()
@@ -66,9 +66,30 @@ function submitSaveCatForm(){//提交保存猫
 
 function submitEditCatForm(){//提交修改猫
 
-    sessionStorage.removeItem('all_locations_by_user_id')
+    var photo = $("#editing-img").val();
+    var color_id = $("#editing-color").val();
+    var friendly = $("#editing-friendly").val();
+    var description = $("#editing-note").val();
+    
+    console.log(description)
 
-    return 'success' //目前默认成功
+    query({
+        type: 'update_animal',
+        params: [
+            photo,
+            color_id,
+            friendly,
+            description,
+            sessionStorage.Cat_Id_Nav
+        ]
+    }).then((data)=>{
+        if (data.error) {
+            throw(data.error);
+        } 
+    })
+
+    sessionStorage.removeItem('all_locations_by_user_id')
+    return 'success'
 }
 
 function deleteCat(){//提交删除猫
