@@ -1,4 +1,4 @@
-import {ColorEditList} from "./useRoutes.js"
+import {ColorEditList,colorDelteComfirm} from "./useRoutes.js"
 import {addColor,changeColor,deleteColor,} from "./useCheckSubmit.js"
 let tarPage = $('.fullSreenCoverPopContainer')
 
@@ -64,9 +64,9 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
         $(tarPage).find('.fullScreenNav_Left').addClass('clossFullScreenPicIcon')//右导航,添加关闭窗口class
             .find('img').attr('src',"./src/img/icons/close.svg")//切换图标
             .siblings('h1').text('CLOSE')//文字内容
-        $(tarPage).find('.fullScreenNav_Right').addClass('clossFullScreenPicIcon').removeClass('clossFullScreenPicIcon updateColorname addNewColorname')//左导航,添加关闭窗口class
-            .find('img').attr('src',"./src/img/icons/check.svg")//切换图标
-            .siblings('h1').text('COMFIRM')//文字内容
+        $(tarPage).find('.fullScreenNav_Right').addClass('clossFullScreenPicIcon').removeClass('updateColorname addNewColorname')//左导航,添加关闭窗口class
+            .find('img').attr('src',"./src/img/icons/check.svg").show()//切换图标
+            .siblings('h1').text('COMFIRM').show()//文字内容
 
     }else if(val=='editColorList'){//编辑颜色界面
 
@@ -95,8 +95,8 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
             .find('img').attr('src',"./src/img/icons/back.svg")//切换图标
             .siblings('h1').text('BACK')//文字内容
         $(tarPage).find('.fullScreenNav_Right').removeClass('clossFullScreenPicIcon updateColorname addNewColorname')//左导航,添加关闭窗口class
-            .find('img').attr('src',"./src/img/icons/check.svg")//切换图标
-            .siblings('h1').text('COMFIRM')//文字内容
+            .find('img').attr('src',"./src/img/icons/check.svg").hide()//切换图标
+            .siblings('h1').text('COMFIRM').hide()//文字内容
 
     }else if(val=="editColorListDelet"){//颜色删除页面
 
@@ -127,8 +127,8 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
             .find('img').attr('src',"./src/img/icons/back.svg")//切换图标
             .siblings('h1').text('BACK')//文字内容
         $(tarPage).find('.fullScreenNav_Right').removeClass('clossFullScreenPicIcon updateColorname addNewColorname')//左导航,添加关闭窗口class
-            .find('img').attr('src',"./src/img/icons/check.svg")//切换图标
-            .siblings('h1').text('COMFIRM')//文字内容
+            .find('img').attr('src',"./src/img/icons/check.svg").hide()//切换图标
+            .siblings('h1').text('COMFIRM').hide()//文字内容
 
     }else if(val=='addColor' || val=='listPageAddColor'){//添加颜色界面
 
@@ -154,8 +154,8 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
             .find('img').attr('src',"./src/img/icons/back.svg")//切换图标
             .siblings('h1').text('BACK')//文字内容
         $(tarPage).find('.fullScreenNav_Right').removeClass('clossFullScreenPicIcon updateColorname').addClass('addNewColorname')//左导航,添加关闭窗口class
-            .find('img').attr('src',"./src/img/icons/check.svg")//切换图标
-            .siblings('h1').text('SAVE')//文字内容
+            .find('img').attr('src',"./src/img/icons/check.svg").show()//切换图标
+            .siblings('h1').text('SAVE').show()//文字内容
         $(tarPage).find('.newColorInputSlot').val('')//颜色输入框中的内容
 
     }else if(val=='changeColor' || val=='listPageChangeColor'){//修改颜色界面-输入
@@ -185,8 +185,8 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
             .find('img').attr('src',"./src/img/icons/back.svg")//切换图标
             .siblings('h1').text('BACK')//文字内容
         $(tarPage).find('.fullScreenNav_Right').removeClass('clossFullScreenPicIcon addNewColorname').addClass('updateColorname').attr('color-id',tarId)//左导航,添加关闭窗口class
-            .find('img').attr('src',"./src/img/icons/check.svg")//切换图标
-            .siblings('h1').text('SAVE')//文字内容
+            .find('img').attr('src',"./src/img/icons/check.svg").show()//切换图标
+            .siblings('h1').text('SAVE').show()//文字内容
         $(tarPage).find('.newColorInputSlot').val(tarText)//颜色输入框中的内容
 
         console.log(tarId)
@@ -218,8 +218,8 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
             .find('img').attr('src',"./src/img/icons/back.svg")//切换图标
             .siblings('h1').text('BACK')//文字内容
         $(tarPage).find('.fullScreenNav_Right').addClass('clossFullScreenPicIcon').removeClass('clossFullScreenPicIcon updateColorname addNewColorname')//左导航,添加关闭窗口class
-            .find('img').attr('src',"./src/img/icons/check.svg")//切换图标
-            .siblings('h1').text('SAVE')//文字内容
+            .find('img').attr('src',"./src/img/icons/check.svg").hide()//切换图标
+            .siblings('h1').text('SAVE').hide()//文字内容
         $(tarPage).find('.newColorInputSlot').val(tarText)//颜色输入框中的内容
 
     }else if(val=="listPageDelete"){//颜色列表打开的颜色删除界面
@@ -249,17 +249,19 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
             .find('img').attr('src',"./src/img/icons/back.svg")//切换图标
             .siblings('h1').text('BACK')//文字内容
         $(tarPage).find('.fullScreenNav_Right').addClass('clossFullScreenPicIcon').removeClass('clossFullScreenPicIcon updateColorname addNewColorname')//左导航,添加关闭窗口class
-            .find('img').attr('src',"./src/img/icons/check.svg")//切换图标
-            .siblings('h1').text('SAVE')//文字内容
+            .find('img').attr('src',"./src/img/icons/check.svg").hide()//切换图标
+            .siblings('h1').text('SAVE').hide()//文字内容
         $(tarPage).find('.newColorInputSlot').val(tarText)//颜色输入框中的内容
 
     }else if(val=="listPageDelete_deleteAlert" || val=="editColorListDelet_deleteAlert" ){//删除颜色的确认界面
 
+        var tarId= $(tar).parent('[data-color-id]').data('color-id')
+        var tarColor = await colorDelteComfirm(tarId);
         var tarText = $(tar).siblings('.popContent_ChosseColor_colorlist_item')
         .find('h1').text()//获取目标的颜色
 
         $('.popContent_ChosseColor_deleteAlert').find('h3') //为删除提醒赋值
-            .html('Color: '+ tarText + '<br>Cats in this color : 10')
+            .html('Color: '+ tarColor.color + '<br>Cats in this color : ' + tarColor.count)
 
         $(tarPage).find('.popContent_ChosseColor_colorlist_item').removeClass('popContent_ChosseColor_colorlist_item_active')//取消已经选中的颜色
         $(tarPage).find('.popContent_ChosseColor').addClass("popContent_ChosseColor_active")//基础内容
@@ -283,6 +285,7 @@ async function renderColorPopUp(val,tar){//渲染颜色选择页面中的子页�
 function handleColorSelect(val,tar){ //处理颜色选择页面的点击事件
 
     let currentPage = window.location.hash //定位
+    
 
     if (val == 'ori'){
         $(tar).find('.popContent_ChosseColor_colorlist_item').addClass('popContent_ChosseColor_colorlist_item_active')
@@ -302,6 +305,7 @@ function handleColorSelect(val,tar){ //处理颜色选择页面的点击事件
 }
 
 function handlePagePositionChange(page,val){//处理颜色选择界面导航点击事件
+    
 
     // [Nav Map]
     // ori -> editColorList -> changeColor
@@ -348,7 +352,7 @@ function handlePagePositionChange(page,val){//处理颜色选择界面导航点�
     case 'ColorAdd' : //添加颜色icon被点击
         if(page == 'ori'){
             page = 'addColor'
-        }else if(page == "listPageOri"){
+        }else if(page == "listPageOri" || page == "listPageDelete"){
             page = "listPageAddColor"
         }
     break;
@@ -376,7 +380,7 @@ function handlePagePositionChange(page,val){//处理颜色选择界面导航点�
         }else if(page == "listPageDelete_deleteAlert"){
             page = "listPageDelete"
     }
-break;
+    break;
   
     }
     console.log(page)

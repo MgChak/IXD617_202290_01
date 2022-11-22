@@ -68,10 +68,10 @@ function makeStatement($data) {
         case "all_locations_by_user_id": 
             return makeQuery($conn, "SELECT *
             FROM `track_202290_colors` a
-            JOIN (
+            LEFT JOIN  (
                 SELECT * FROM `track_202290_locations`
             ) l
-            ON a.id = l.color_id
+            ON a.cid = l.color_id
             WHERE `user_id`=?
             ORDER BY l.date_create
             ", $params);
@@ -115,7 +115,7 @@ function makeStatement($data) {
         case "signup":
             return makeQuery($conn, "INSERT INTO `track_202290_users` (`name`, `username`, `password`, `email`, `img`, `date_create`) VALUES(?,?,md5(?),?,?,NOW())", $params);
         
-             /* UPDATE */
+        /* UPDATE */
         case "update_animal":
             $result = makeQuery($conn,"UPDATE
             `track_202290_locations`
@@ -129,17 +129,60 @@ function makeStatement($data) {
 
             if (isset($result['error'])) return $result;
             return ["result"=>"Success"];
+
+
         case "update_color":
             $result = makeQuery($conn,"UPDATE
             `track_202290_colors`
             SET
-                `color` = ?,
-            WHERE `id` = ?
+                `color` = ?
+            WHERE `cid` = ?
             ",$params,false);
 
             if (isset($result['error'])) return $result;
             return ["result"=>"Success"];
+        
+        /* INSERT */
+        case "insert_color":
+            $result = makeQuery($conn, "INSERT INTO
+            `track_202290_colors`
+            (
+                `user_id`,
+                `color`,
+                `img`,
+                `date_create`
+            )
+            VALUES
+            (
+                ?,
+                ?,
+                'https://via.placeholder.com/400/?text=ANIMAL',
+                NOW()
+            )
+            ", $params, false);
 
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+        
+        /* DELETE */
+        case "delete_color":
+            $result = makeQuery($conn, "DELETE FROM
+            `track_202290_colors`
+            WHERE `cid` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
+        case "delete_locations_by_color":
+            $result = makeQuery($conn, "DELETE FROM
+            `track_202290_locations`
+            WHERE `color_id` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+    
         
         default:
             return ["error"=>"No Matched Type"];          

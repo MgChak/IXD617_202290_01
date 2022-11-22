@@ -5,8 +5,8 @@ import { makeColorlList, makeCatlList, makeCatPage,makeUserPage,makeCatEditePage
 
 // all_locations_by_user_id
 
-
-const checkData = async()=>{
+let emptyColors
+export const checkData = async()=>{
 
     if (!sessionStorage.all_locations_by_user_id){//检查数据是否存在
         var {result:cats} = await query({
@@ -17,7 +17,18 @@ const checkData = async()=>{
     }
     var catsData = JSON.parse(sessionStorage.all_locations_by_user_id) 
 
-    return catsData
+    var allCats = []
+    emptyColors = []
+
+    catsData.forEach((item)=>{
+        if (item.id == null){
+            emptyColors.push(item)
+        }else{
+            allCats.push(item)
+        }
+    })
+
+    return allCats
 }
 
 //sort list 所使用的所有function===============================
@@ -198,9 +209,13 @@ export const ColorListPage = async() => {
         color.catnum = catsnum //插入obj
     })
 
-    colors = sortList(colors)
+    var thecolors = colors.concat(emptyColors)
 
-    $("#color-list-page .ListContainer").html(makeColorlList(colors))
+    thecolors = sortList(thecolors)
+
+    console.log(emptyColors)
+
+    $("#color-list-page .ListContainer").html(makeColorlList(thecolors))
 }
 //渲染猫咪列表页面
 export const CatListPage = async() => {
@@ -314,10 +329,36 @@ export const ColorEditList = async() => {
             colors.push(color)
         }
     })
+    emptyColors.forEach((item)=>{
+        var a ={}
+        a.id = item.cid
+        a.color = item.color
+        colors.push(a)
+    })
 
     $(".fullSreenCoverPopContainer .popContent_ChosseColor_colorlist").html(makePopupColorlist (colors))
 }
+//返回删除目标颜色的数据
+export const colorDelteComfirm = async(id) => {
 
+    sessionStorage.DeleteTarId = id
+    
+    var cats = await checkData()
+   var tarColor = {count:0}
+   emptyColors.forEach((item)=>{
+    if(item.cid == id){
+        tarColor.color = item.color
+        tarColor.count = 0
+    }
+   })
+    cats.forEach((item)=>{
+    if(item.color_id == id){
+        tarColor.color = item.color
+        tarColor.count++
+    }
+   })
+   return tarColor
+}
 
 
 

@@ -1,7 +1,7 @@
 import {PageAnimationDefaultIn,PageAnimationDefaultOut} from "./usePageAnimation.js"//页面转换的动画
 import {checkSigninForm,checkSignupForm,resetAlert,
-        submitSaveCatForm,submitEditCatForm,deleteCat,deleteColor,
-        editProfile,changePassword} from "./useCheckSubmit.js"//表单提交与检查
+        submitSaveCatForm,submitEditCatForm,deleteCat,addColor,changeColor,
+        deleteColor,editProfile,changePassword} from "./useCheckSubmit.js"//表单提交与检查
 import { catProfilePage, ColorListPage,CatListPage, UserProfilePage,CatEditingPage,
     CreatMap} from "./useRoutes.js"; //路由访问数据
 import usePathCheck from "./usePathCheck.js"//路径检测
@@ -263,6 +263,7 @@ $(()=>{
     })
     .on("click", ".fullScreenNav_Right", function() {//颜色弹出——右icon被点击
         choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'RightClick')
+        console.log("you")
         renderColorPopUp(choseColorPagePosition,this) 
     })
     .on("click", ".popContent_ChosseColor_nav_deleteEditSwitch", function() {//颜色弹出——删除修改切换被点击
@@ -280,16 +281,21 @@ $(()=>{
         renderColorPopUp(choseColorPagePosition,this) 
     })
     .on("click", ".popContent_ChosseColor_deleteAlert_delete", function() {//最终确认删除颜色
-        var submitResult = deleteColor()
+        var submitResult = deleteColor(choseColorPagePosition)
         renderComfirmation(submitResult,'Delete Color')
         choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'deletAlertBack')
         renderColorPopUp(choseColorPagePosition,this) 
     })
     .on("click", ".updateColorname", function() {//更新颜色点击
        console.log('gengxin')
+       var submitResult = changeColor(choseColorPagePosition)
+    //    renderColorPopUp(choseColorPagePosition,this) 
+        renderComfirmation(submitResult,'Change Color')
     })
     .on("click", ".addNewColorname", function() {//添加颜色点击
         console.log('tianjia')
+        var submitResult = addColor(choseColorPagePosition)
+        renderComfirmation(submitResult,'Add New Color')
      })
     //====================================================================================确认删除弹出
     .on("click", ".popop_delect_confirm_cat", function() {//确定删除猫猫

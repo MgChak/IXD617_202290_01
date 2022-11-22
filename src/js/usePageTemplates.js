@@ -26,18 +26,34 @@ let handleDate = (date)=>date.slice(0,10)
 
 //渲染颜色列表页面
 export  const makeColorlList = templater(({id,color,img,date_create,catnum})=>{
-return `
-<a class="listItem listItem_defult aTag" href="#cat-list-page" data-nav-color—id="${id}">
-    <div class="colorList_pic" style="background-image:url('${img}')"></div>
-    <div class="colorList_informationContainer">
-        <h1> ${color}</h1>
-        <h2 class="catAmountSlot" data-solot-id="${id}"> Amount : ${catnum} cats</h2>
-        <h2>Last Update : ${handleDate(date_create)} </h2>
-    </div>
-    <div style="flex:1"></div>
-    <img src="./src/img/icons/arrow.svg" alt="" style="margin-right:24px; opacity:0.3">
-</a>
-`
+if (id == null){
+    return `
+    <a class="listItem listItem_defult aTag" href="#adding-page" ">
+        <div class="colorList_pic" style="background-image:url('${img}')"></div>
+        <div class="colorList_informationContainer">
+            <h1> ${color}</h1>
+            <h2 class="catAmountSlot" data-solot-id="${id}">No cat yet, lets add one!</h2>
+        </div>
+        <div style="flex:1"></div>
+        <img src="./src/img/icons/arrow.svg" alt="" style="margin-right:24px; opacity:0.3">
+    </a>
+    `
+
+}else{
+    return `
+    <a class="listItem listItem_defult aTag" href="#cat-list-page" data-nav-color—id="${id}">
+        <div class="colorList_pic" style="background-image:url('${img}')"></div>
+        <div class="colorList_informationContainer">
+            <h1> ${color}</h1>
+            <h2 class="catAmountSlot" data-solot-id="${id}"> Amount : ${catnum} cats</h2>
+            <h2>Last Update : ${handleDate(date_create)} </h2>
+        </div>
+        <div style="flex:1"></div>
+        <img src="./src/img/icons/arrow.svg" alt="" style="margin-right:24px; opacity:0.3">
+    </a>
+    `
+}
+
 })
 
 //渲染猫列表页面
@@ -130,7 +146,7 @@ return `
 
 
 //渲染popup 颜色列表页面
-export  const makePopupColorlist = templater(({id,color})=>{
+export  const makePopupColorlist = templater(({id,color,color_id})=>{
     return `
     <div class="popContent_ChosseColor_colorlist_itemLine" data-color-id="${id}">
         <div class="popContent_ChosseColor_colorlist_item">

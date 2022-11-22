@@ -1,4 +1,6 @@
 import { query } from "./useFunctions.js"
+import {checkData} from"./useRoutes.js"
+import {renderColorPopUp} from "./useRenderPopup.js"
 
 async function checkSigninForm(){
 
@@ -99,24 +101,89 @@ function deleteCat(){//提交删除猫
     return 'success' //目前默认成功
 }
 
-function addColor(){//提交添加颜色
-    
+async function addColor(choseColorPagePosition){//提交添加颜色
+
     sessionStorage.removeItem('all_locations_by_user_id')
+
+    var theColor = $('.newColorInputSlot').val()
+
+    await query({
+        type: 'insert_color',
+        params: [
+            sessionStorage.userId,
+            theColor,
+        ]
+    }).then((data)=>{
+        renderColorPopUp(choseColorPagePosition,this)
+        if (data.error) {
+            throw(data.error);
+        } 
+    })
+
+
+    return 'success' //目前默认成功
+
+}
+
+async function changeColor(choseColorPagePosition){//提交修改颜色
+
+    sessionStorage.removeItem('all_locations_by_user_id')
+
+    var theId = $('.fullScreenNav_Right').attr('color-id')
+    var theColor = $('.newColorInputSlot').val()
+
+    console.log(theId,theColor)
+
+    await query({
+        type: 'update_color',
+        params: [
+            theColor,
+            theId
+        ]
+    }).then((data)=>{
+        renderColorPopUp(choseColorPagePosition,this)
+        if (data.error) {
+            throw(data.error);
+        } 
+    })
 
     return 'success' //目前默认成功
 }
 
-function changeColor(){//提交修改颜色
+function deleteColor(choseColorPagePosition){//提交删除颜色
 
     sessionStorage.removeItem('all_locations_by_user_id')
 
-    return 'success' //目前默认成功
-}
-
-function deleteColor(){//提交删除颜色
-
     sessionStorage.removeItem('all_locations_by_user_id')
 
+    var theId = $('.fullScreenNav_Right').attr('color-id')
+    var theColor = $('.newColorInputSlot').val()
+
+    console.log(theId,theColor)
+
+    query({
+        type: 'delete_color',
+        params: [
+            sessionStorage.DeleteTarId
+        ]
+    }).then((data)=>{
+        // renderColorPopUp(choseColorPagePosition,this)
+        if (data.error) {
+            throw(data.error);
+        } 
+    })
+    query({
+        type: 'delete_locations_by_color',
+        params: [
+            sessionStorage.DeleteTarId
+        ]
+    }).then((data)=>{
+        // renderColorPopUp(choseColorPagePosition,this)
+        if (data.error) {
+            throw(data.error);
+        } 
+    })
+   
     return 'success' //目前默认成功
 }
 
