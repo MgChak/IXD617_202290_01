@@ -99,6 +99,20 @@ function deleteCat(){//提交删除猫
     return 'success' //目前默认成功
 }
 
+function addColor(){//提交添加颜色
+    
+    sessionStorage.removeItem('all_locations_by_user_id')
+
+    return 'success' //目前默认成功
+}
+
+function changeColor(){//提交修改颜色
+
+    sessionStorage.removeItem('all_locations_by_user_id')
+
+    return 'success' //目前默认成功
+}
+
 function deleteColor(){//提交删除颜色
 
     sessionStorage.removeItem('all_locations_by_user_id')
@@ -136,6 +150,8 @@ export {
     submitSaveCatForm,
     submitEditCatForm,
     deleteCat,
+    addColor,
+    changeColor,
     deleteColor,
     editProfile,
     changePassword

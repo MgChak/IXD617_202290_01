@@ -285,6 +285,12 @@ $(()=>{
         choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'deletAlertBack')
         renderColorPopUp(choseColorPagePosition,this) 
     })
+    .on("click", ".updateColorname", function() {//更新颜色点击
+       console.log('gengxin')
+    })
+    .on("click", ".addNewColorname", function() {//添加颜色点击
+        console.log('tianjia')
+     })
     //====================================================================================确认删除弹出
     .on("click", ".popop_delect_confirm_cat", function() {//确定删除猫猫
         var submitResult = deleteCat()
