@@ -31,6 +31,19 @@ export const checkData = async()=>{
     return allCats
 }
 
+const checkUserData = async()=>{
+    if (!sessionStorage.user_data || JSON.parse(sessionStorage.user_data).id != sessionStorage.userId){//检查数据是否存在
+        var {result:user} = await query({ //请求用户数据
+            type:"user_by_id",
+            params:[sessionStorage.userId]
+        })
+        sessionStorage.user_data = JSON.stringify(user)
+    }
+    var userData = JSON.parse(sessionStorage.user_data) 
+
+    return userData
+}
+
 //sort list 所使用的所有function===============================
 const sortByStars_sM_L = (a,b)=>{
     if(a.friendly > b.friendly){
@@ -289,22 +302,27 @@ export const CatEditingPage = async() => {
 }
 //渲染user页面
 export const UserProfilePage = async() => {
-    let {result:user} = await query({ //请求用户数据
-        type:"user_by_id",
-        params:[sessionStorage.userId]
-    })
-    let {result:countCats} = await query({ //请求猫咪的总数
-        type:"count_cats_by_user_id",
-        params:[sessionStorage.userId]
-    })
-    let {result:countColors} = await query({ //请求颜色的总数
-        type:"count_colors_by_user_id",
-        params:[sessionStorage.userId]
-    })
+    
+    var user = await checkUserData()
+
+    var cats = await checkData()
 
 
-    user[0].countCats = countCats[0]['COUNT(*)'] //增加新的attr to user obj
-    user[0].countColors = countColors[0]['COUNT(*)']
+    //制作color array
+    var colorsIds = []
+    cats.forEach((item)=>{
+        if (colorsIds.indexOf(item.color_id)== -1){//判断数列中是否已经存在此id
+            colorsIds.push(item.color_id)
+        }
+    })
+
+    var thecolors = colorsIds.concat(emptyColors)
+
+    console.log(cats,thecolors)
+    user[0].cats = cats.length
+    user[0].colors = thecolors.length
+    // user[0].countCats = countCats[0]['COUNT(*)'] //增加新的attr to user obj
+    // user[0].countColors = countColors[0]['COUNT(*)']
 
 
     $("#profile-page .profile_inforContainer").html(makeUserPage(user))

@@ -220,6 +220,7 @@ $(()=>{
         renderPopup('img',this)
     })
     .on("click", ".deleteCat", function() {//打开删除页面
+        sessionStorage.catDeleteTar = $(this).data("tar-cat-id")
         openFullSreenPop(this) 
         renderPopup('delete',this)
         clearTimeout(deleteTimer)
@@ -299,6 +300,7 @@ $(()=>{
      })
     //====================================================================================确认删除弹出
     .on("click", ".popop_delect_confirm_cat", function() {//确定删除猫猫
+        
         var submitResult = deleteCat()
         renderComfirmation(submitResult,'Delete Cat')
         if(submitResult == 'success'){//提交返回成功时

@@ -121,7 +121,7 @@ export  const makeCatEditePage = templater(({id,color,color_id,friendly,photo,da
         </div>
         <!-- <div class="form-plactake"></div> -->
         <div class="form_buttonContainer_line1">
-            <a class="form-button_s_redline deleteCat " style="line-height: 30px;width:42px" ><img style="width:20px;height:20px;" src="./src/img/icons/trashcan_red.svg" alt=""></a>
+            <a class="form-button_s_redline deleteCat " style="line-height: 30px;width:42px" data-tar-cat-id="${id}"><img style="width:20px;height:20px;" src="./src/img/icons/trashcan_red.svg" alt=""></a>
             <input type="submit" class="form-button_s" value="UPDATE" data-role="none">
         </div>               
     </form>
@@ -130,13 +130,13 @@ export  const makeCatEditePage = templater(({id,color,color_id,friendly,photo,da
     
 
 //渲染用户页面
-export  const makeUserPage = templater(({id,img,name,username,countCats,countColors})=>{
+export  const makeUserPage = templater(({id,img,name,username,cats,colors})=>{
 return `
 <div class="userImgContainer" style="background-image:url('${img}')" ></div>
 <div class="userInforConatiner">
     <h1>${name}</h1>
     <h2>ID : ${username}</h2>
-    <h3>CATS : ${countCats} ; COLORS : ${countColors}</h3>
+    <h3>CATS : ${cats} ; COLORS : ${colors}</h3>
 </div>
 `
 })

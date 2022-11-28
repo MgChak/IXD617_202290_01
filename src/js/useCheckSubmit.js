@@ -62,6 +62,7 @@ async function checkSignupForm(){//注册表格
 function submitSaveCatForm(){//提交保存猫
 
     sessionStorage.removeItem('all_locations_by_user_id')
+    sessionStorage.removeItem('user_data')
 
     return 'success' //目前默认成功
 }
@@ -91,19 +92,32 @@ function submitEditCatForm(){//提交修改猫
     })
 
     sessionStorage.removeItem('all_locations_by_user_id')
+    sessionStorage.removeItem('user_data')
     return 'success'
 }
 
 function deleteCat(){//提交删除猫
 
     sessionStorage.removeItem('all_locations_by_user_id')
+    sessionStorage.removeItem('user_data')
 
+    query({
+        type: 'delete_locations_by_id',
+        params: [
+            sessionStorage.catDeleteTar
+        ]
+    }).then((data)=>{
+        if (data.error) {
+            throw(data.error);
+        } 
+    })
     return 'success' //目前默认成功
 }
 
 async function addColor(choseColorPagePosition){//提交添加颜色
 
     sessionStorage.removeItem('all_locations_by_user_id')
+    sessionStorage.removeItem('user_data')
 
     var theColor = $('.newColorInputSlot').val()
 
@@ -128,6 +142,7 @@ async function addColor(choseColorPagePosition){//提交添加颜色
 async function changeColor(choseColorPagePosition){//提交修改颜色
 
     sessionStorage.removeItem('all_locations_by_user_id')
+    sessionStorage.removeItem('user_data')
 
     var theId = $('.fullScreenNav_Right').attr('color-id')
     var theColor = $('.newColorInputSlot').val()
@@ -154,7 +169,7 @@ function deleteColor(choseColorPagePosition){//提交删除颜色
 
     sessionStorage.removeItem('all_locations_by_user_id')
 
-    sessionStorage.removeItem('all_locations_by_user_id')
+    sessionStorage.removeItem('user_data')
 
     var theId = $('.fullScreenNav_Right').attr('color-id')
     var theColor = $('.newColorInputSlot').val()
@@ -190,6 +205,7 @@ function deleteColor(choseColorPagePosition){//提交删除颜色
 function editProfile(){//提交修改userprofile
 
     sessionStorage.removeItem('all_locations_by_user_id')
+    sessionStorage.removeItem('user_data')
 
     return 'success' //目前默认成功
 }
@@ -197,6 +213,7 @@ function editProfile(){//提交修改userprofile
 function changePassword(){//提交修改密码
 
     sessionStorage.removeItem('all_locations_by_user_id')
+    sessionStorage.removeItem('user_data')
 
     return 'success' //目前默认成功
 }

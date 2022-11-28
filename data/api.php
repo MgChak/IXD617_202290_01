@@ -52,8 +52,8 @@ function makeStatement($data) {
         // case "locations_all":
         //     return makeQuery($conn, "SELECT * FROM `track_202290_locations`", $params);
             
-        // case "user_by_id":
-        //     return makeQuery($conn, "SELECT * FROM `track_202290_users` WHERE `id`=?", $params);
+        case "user_by_id":
+            return makeQuery($conn, "SELECT `id`,`name`,`email`,`username`,`img`,`date_create`  FROM `track_202290_users` WHERE `id`=?", $params);
         // case "color_by_id":
         //     return makeQuery($conn, "SELECT * FROM `track_202290_colors` WHERE `id`=?", $params);
         // case "cat_by_id":
@@ -182,8 +182,16 @@ function makeStatement($data) {
 
             if (isset($result['error'])) return $result;
             return ["result"=>"Success"];
-    
-        
+
+        case "delete_locations_by_id":
+            $result = makeQuery($conn, "DELETE FROM
+            `track_202290_locations`
+            WHERE `id` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
         default:
             return ["error"=>"No Matched Type"];          
     }
