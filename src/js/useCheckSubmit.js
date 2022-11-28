@@ -1,6 +1,7 @@
 import { query } from "./useFunctions.js"
 import {checkData} from"./useRoutes.js"
 import {renderColorPopUp} from "./useRenderPopup.js"
+import {pageReresh} from ".//usePopupCtrl.js"
 
 async function checkSigninForm(){
 
@@ -202,11 +203,25 @@ function deleteColor(choseColorPagePosition){//提交删除颜色
     return 'success' //目前默认成功
 }
 
-function editProfile(){//提交修改userprofile
+async function editProfile(){//提交修改userprofile
 
+    var username = $("#editUserName").val();
+    var img = $("#editing-note").val();
+
+    await query({
+        type: 'update_user',
+        params: [
+            username,
+            sessionStorage.userId
+        ]
+    }).then((data)=>{
+        if (data.error) {
+            throw(data.error);
+        } 
+    })
     sessionStorage.removeItem('all_locations_by_user_id')
     sessionStorage.removeItem('user_data')
-
+    pageReresh()
     return 'success' //目前默认成功
 }
 

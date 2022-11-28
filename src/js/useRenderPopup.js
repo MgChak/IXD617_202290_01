@@ -21,6 +21,10 @@ function renderPopup(val,tar){ //渲染不同的弹出页面
     }else if (val=="profileEdit"){
         $(tarPage).find(".popContentConatiner_profileEdit").show()
             .siblings().hide()
+        var user= JSON.parse(sessionStorage.user_data)
+        $("#editUserName").val(user[0].name )
+        $(".userImgContainer").css("background-image",`url('${user[0].img}')`)
+       
     }else if (val=="changePassword"){
         $(tarPage).find(".popContentConatiner_changePassword").show()
             .siblings().hide()

@@ -2,7 +2,7 @@
 import { catProfilePage, ColorListPage,CatListPage, UserProfilePage,CatEditingPage,
     CreatMap} from "./useRoutes.js"; //路由访问数据
 
-function pageReresh(){
+export function pageReresh(){
     switch(window.location.hash) {
         case "#main-page": CreatMap(); break;
         case "#color-list-page": ColorListPage(); break;
