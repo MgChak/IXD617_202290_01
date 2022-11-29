@@ -152,6 +152,17 @@ function makeStatement($data) {
 
             if (isset($result['error'])) return $result;
             return ["result"=>"Success"];
+
+        case "update_password":
+            $result = makeQuery($conn,"UPDATE
+            `track_202290_users`
+            SET
+                `password` = md5(?)
+            WHERE `id` = ?
+            ",$params,false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
         
         /* INSERT */
         case "insert_color":

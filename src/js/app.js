@@ -319,11 +319,12 @@ $(()=>{
         
     })
  //====================================================================================修改密码弹出
-    .on("click", ".popop_update_password", function() {//确定更新用户资料
-        var submitResult = changePassword()
-        renderComfirmation(submitResult,'Update Password')
+    .on("click", ".popop_update_password", async function() {//确定更新用户资料
+        var submitResult = await changePassword()
         if(submitResult == 'success'){//提交返回成功时
             closeFullSreenPop(this)//关闭pop up
+            renderComfirmation(submitResult,'Update Password')
+            console.log("called")
         }   
     })
     

@@ -225,12 +225,55 @@ async function editProfile(){//提交修改userprofile
     return 'success' //目前默认成功
 }
 
-function changePassword(){//提交修改密码
+async function changePassword(){//提交修改密码
 
-    sessionStorage.removeItem('all_locations_by_user_id')
-    sessionStorage.removeItem('user_data')
+    const userval = JSON.parse(sessionStorage.user_data)[0].username
+    const passval = $("#changePassWord_c").val()
 
-    return 'success' //目前默认成功
+    const newpass1 = $("#changePassWord_n").val()
+    const newpass2 = $("#changePassWord_nr").val()
+
+    let founduser = await query({
+        type: 'check_signin',
+        params: [userval,passval]
+    });
+
+    console.log(userval,passval)
+    var result
+    if (founduser.result.length > 0) {// 密码正确 /找到至少一个用户
+
+        if(newpass1 == newpass2){
+            console.log("Success")
+            sessionStorage.userId = founduser.result[0].id;
+            result =  'success' //目前默认成功
+
+            await query({
+                type: 'update_password',
+                params: [
+                    newpass1,
+                    sessionStorage.userId
+                ]
+            }).then((data)=>{
+                if (data.error) {
+                    throw(data.error);
+                } 
+            })
+
+            sessionStorage.removeItem('all_locations_by_user_id')
+            sessionStorage.removeItem('user_data')
+        } else{
+            console.log("Failure_r0")
+            $(".popContentConatiner_changePassword_container h1").text("Two Passwords Dosn't Match").css('color','var(--color-font-alert)').addClass('formError')//插入错误警告
+        }
+    } else {// 密码不正确
+        console.log("Failure_r")
+        $(".popContentConatiner_changePassword_container h1").text("Incorrect Current password").css('color','var(--color-font-alert)').addClass('formError')//插入错误警告
+        
+    }
+
+    
+
+   return result
 }
 
 function resetAlert(){
