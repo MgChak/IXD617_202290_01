@@ -214,6 +214,18 @@ function makeStatement($data) {
             if (isset($result['error'])) return $result;
             return ["result"=>"Success"];
 
+            
+        /* UPLOAD */
+        case "update_user_photo":
+            $result = makeQuery($conn, "UPDATE
+            `track_202290_users`
+            SET `img` = ?
+            WHERE `id` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
         default:
             return ["error"=>"No Matched Type"];          
     }
