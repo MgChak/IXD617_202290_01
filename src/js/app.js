@@ -91,9 +91,9 @@ $(()=>{
             var submitResult = submitSaveCatForm()//检测提交，返回结果
                 if(submitResult == 'success'){//提交返回成功时
                     navToWithAnimation('#cat-detail-page')//导航到目标页面
-                    renderComfirmation(submitResult,'Cat Save')//渲染提示
-                    setTimeout(()=>{submitActionLock=false},500)//行为锁解锁
+                    renderComfirmation(submitResult,'Cat Save')//渲染提示 
                 }
+                setTimeout(()=>{submitActionLock=false},500)//行为锁解锁
         }else{ return } //行为锁锁定，拒绝执行
     })
     .on("submit", "#editing-form", function(e) {//修改猫

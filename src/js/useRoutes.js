@@ -27,8 +27,8 @@ export const checkData = async()=>{
             allCats.push(item)
         }
     })
-
     return allCats
+    
 }
 
 const checkUserData = async()=>{
@@ -216,6 +216,7 @@ export const ColorListPage = async() => {
         cats.forEach((cat)=>{//根据猫咪数据循环
             if (cat.color_id == color.id){ //确认id
                 color.date_create = cat.date_create //循环赋值 日期
+                color.img = cat.photo
                 catsnum++ //累加计数
             }
         })

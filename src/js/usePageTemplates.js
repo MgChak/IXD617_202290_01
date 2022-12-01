@@ -76,7 +76,7 @@ return `
 //渲染猫咪页面
 export  const makeCatPage = templater(({id,friendly,photo,date_create,description})=>{
 return `
-<div class="catDetail_pic" style="background-image:url('${photo}')">
+<div class="catDetail_pic" style="background-image:url('${photo}')" data-photo='${photo}'>
     <img class="catDetail_fullScreenIcon" src="./src/img/icons/fullSreen.svg" alt="">
 </div>
 <div class="catDetail_inforBox">
@@ -95,7 +95,7 @@ export  const makeCatEditePage = templater(({id,color,color_id,friendly,photo,da
     <form class="form noMargin" id="editing-form" data-ajax="false">
                     
         <div class="form-control">
-            <input type="hidden" id="editing-img" data-role="none" value="">
+            <input type="hidden" id="editing-img" data-role="none" value="${photo}">
             <label class="form-input-img" style="background-image:url('${photo}')">
                 <img src="./src/img/icons/addPicture.svg" alt="">
                 <input type="file" id="cat-photo-input" data-role="none" style="display:none">

@@ -16,8 +16,11 @@ function renderPopup(val,tar){ //渲染不同的弹出页面
         $(tarPage).find(".popContentConatiner_delete").show()
             .siblings().hide()
     }else if (val=="fullimg"){
+        var photo = $(tar).parent().data('photo')
+        $('.popContentConatiner_fullimg').children('img').attr('src',photo)
         $(tarPage).find(".popContentConatiner_fullimg").show()
             .siblings().hide()
+
     }else if (val=="profileEdit"){
         $(tarPage).find(".popContentConatiner_profileEdit").show()
             .siblings().hide()
