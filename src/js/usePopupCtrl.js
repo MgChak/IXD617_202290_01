@@ -11,7 +11,6 @@ export function pageReresh(){
         // case "#editing-page": CatEditingPage(); break;
         case "#profile-page": UserProfilePage(); break; 
     }
-    console.log(window.location.hash)
 }
 
 

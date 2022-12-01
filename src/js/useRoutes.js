@@ -127,7 +127,7 @@ const sortList = (theList)=>{
 
 
     }else if(pageNow == '#color-list-page'){//颜色列表页面
-        console.log('HI')
+    
         switch (sessionStorage.listSortby ){
             case 'M_L':
                 theList.sort(sortByStars_M_L)
@@ -159,7 +159,7 @@ export const CreatMap = async() => {
 
     var cats = await checkData()
 
-    console.log(cats)
+    // console.log(cats)
 
     //制作color array
     var colors = []
@@ -226,7 +226,6 @@ export const ColorListPage = async() => {
 
     thecolors = sortList(thecolors)
 
-    console.log(emptyColors)
 
     $("#color-list-page .ListContainer").html(makeColorlList(thecolors))
 }

@@ -96,9 +96,10 @@ export  const makeCatEditePage = templater(({id,color,color_id,friendly,photo,da
                     
         <div class="form-control">
             <input type="hidden" id="editing-img" data-role="none" value="">
-            <div class="form-input-img" style="background-image:url('${photo}')">
+            <label class="form-input-img" style="background-image:url('${photo}')">
                 <img src="./src/img/icons/addPicture.svg" alt="">
-            </div>
+                <input type="file" id="cat-photo-input" data-role="none" style="display:none">
+            </label>
         </div>
 
         <div class="form-control">

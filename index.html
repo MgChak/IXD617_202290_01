@@ -400,12 +400,16 @@
                 </div>
                 <div class="ListContainer_default">
                     <form class="form noMargin" id="adding-form" data-ajax="false">
+
+                        <input type="hidden" id="adding-lat" data-role="none" value="">
+                        <input type="hidden" id="adding-lng" data-role="none" value="">
                     
                         <div class="form-control">
                             <input type="hidden" id="adding-img" data-role="none" value="">
-                            <div class="form-input-img">
+                            <label class="form-input-img" >
                                 <img src="./src/img/icons/addPicture.svg" alt="">
-                            </div>
+                                <input type="file" id="cat-photo-input" data-role="none" style="display:none">
+                            </label>
                         </div>
 
                         <div class="form-control">
@@ -427,14 +431,10 @@
                         </div>
 
                         <div class="form-control">
-                            <label class="form-label" for="adding-date" >DATE</label>
-                            <input class="form-input" type="date" id="adding-date" data-role="none" value="">                    
+                            <label class="form-label" for="adding-note" >Note</label>
+                            <textarea class="form-input" type="textarea" id="adding-note" data-role="none" style="height:100px;padding-top: 15px;"> </textarea>              
                         </div>
-
-                        <div class="form-control">
-                            <label class="form-label" for="adding-location" >Location</label>
-                            <input class="form-input" type="text" id="adding-location" data-role="none" value="">                    
-                        </div>
+                       
 
                         <div class="form_buttonContainer">
                             <div class="form_buttonContainer_line1">
@@ -477,6 +477,10 @@
                             <div class="form-input-img" style="background-image:url('./src/img/testCat.webp')">
                                 <img src="./src/img/icons/addPicture.svg" alt="">
                             </div>
+                            <label class="form-button_s imagepicker_user"><img style="width:12px;" src="./src/img/icons/upload.svg" alt="">EDIT PICTURE
+                                <input type="file" id="user-edit-photo-input" data-role="none" style="display:none">
+                            </label>
+                            
                         </div>
 
                         <div class="form-control">

@@ -37,7 +37,7 @@ $(()=>{
         var tar = window.location.hash//获取当前页面
         PageAnimationDefaultOut(tar)//执行动画函数
         setTimeout(()=>{ $.mobile.navigate(tarPage,{transition: "none"})},400)//等待400毫秒后导航到目标页面,关闭动画
-        console.log(tar)
+    
     }
 
     usePathCheck()//Ctrl background of the app: switch bettwen google map and color background
@@ -91,10 +91,9 @@ $(()=>{
             var submitResult = submitSaveCatForm()//检测提交，返回结果
                 if(submitResult == 'success'){//提交返回成功时
                     navToWithAnimation('#cat-detail-page')//导航到目标页面
+                    renderComfirmation(submitResult,'Cat Save')//渲染提示
+                    setTimeout(()=>{submitActionLock=false},500)//行为锁解锁
                 }
-            renderComfirmation(submitResult,'Cat Save')//渲染提示
-            setTimeout(()=>{submitActionLock=false},500)//行为锁解锁
-          
         }else{ return } //行为锁锁定，拒绝执行
     })
     .on("submit", "#editing-form", function(e) {//修改猫
@@ -216,16 +215,27 @@ $(()=>{
         starsCtrl(this)
     })
     
-    .on("click", ".form-input-img", function() {//上传/修改图片，被点击
-        openFullSreenPop(this) 
-        renderPopup('img',this)
-    })
+    // .on("click", ".form-input-img", function() {//上传/修改图片，被点击
+    //     openFullSreenPop(this) 
+    //     renderPopup('img',this)
+    // })
     .on("click", ".deleteCat", function() {//打开删除页面
         sessionStorage.catDeleteTar = $(this).data("tar-cat-id")
         openFullSreenPop(this) 
         renderPopup('delete',this)
         clearTimeout(deleteTimer)
         deleteTimer = deleteButtonTimer()
+    })
+    .on("change", "#cat-photo-input", function(e) {
+        checkUpload(this.files[0])
+        .then((d) => {
+            console.log(d);
+            let filename = `uploads/${d.result}`;
+            $(this).parent().prev().val(filename);
+            $(this).parent().css({
+                "background-image": `url('${filename}')`
+            })
+        })
     })
     //====================================================================================profile page
 

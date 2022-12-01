@@ -199,6 +199,33 @@ function makeStatement($data) {
 
             if (isset($result['error'])) return $result;
             return ["result"=>"Success"];
+
+        case "insert_cat":
+                $result = makeQuery($conn, "INSERT INTO
+                `track_202290_locations`
+                (
+                    `lat`,
+                    `lng`,
+                    `photo`,
+                    `color_id`,
+                    `friendly`,
+                    `description`,
+                    `date_create`
+                )
+                VALUES
+                (
+                    ?,
+                    ?,
+                    ?,
+                    ?,
+                    ?,
+                    ?,
+                    NOW()
+                )
+                ", $params, false);
+    
+        if (isset($result['error'])) return $result;
+        return ["result"=>"Success"];
         
         /* DELETE */
         case "delete_color":

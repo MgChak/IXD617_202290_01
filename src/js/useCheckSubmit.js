@@ -1,7 +1,7 @@
 import { query } from "./useFunctions.js"
 import {checkData} from"./useRoutes.js"
 import {renderColorPopUp} from "./useRenderPopup.js"
-import {pageReresh} from ".//usePopupCtrl.js"
+import {pageReresh} from "./usePopupCtrl.js"
 
 async function checkSigninForm(){
 
@@ -62,10 +62,51 @@ async function checkSignupForm(){//注册表格
 
 function submitSaveCatForm(){//提交保存猫
 
+   let result
+
+   if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        console.log(pos)
+        var photo = $("#adding-img").val();
+        var color_id = $("#adding-color").val();
+        var friendly = $("#adding-friendly").val();
+        var description = $("#adding-note").val();
+        var lat = pos.lat
+        var lng = pos.lng
+        
+        console.log(lat,lng)
+        query({
+            type: 'insert_cat',
+            params: [
+                lat,
+                lng,
+                photo,
+                color_id,
+                friendly,
+                description
+            ]
+        }).then((data)=>{
+            if (data.error) {
+                throw(data.error);
+            } 
+        })
+        result = 'success'
+      }
+    );
+  } else {
+    alert("stop")
+    result = 'fail'
+  }
+
+
     sessionStorage.removeItem('all_locations_by_user_id')
     sessionStorage.removeItem('user_data')
-
-    return 'success' //目前默认成功
+    return result
 }
 
 function submitEditCatForm(){//提交修改猫
