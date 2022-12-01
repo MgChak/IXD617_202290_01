@@ -206,12 +206,14 @@ function deleteColor(choseColorPagePosition){//提交删除颜色
 async function editProfile(){//提交修改userprofile
 
     var username = $("#editUserName").val();
-    var img = $("#editing-note").val();
+    var userimg = $("#user-edit-photo-image").val();
+    console.log(userimg)
 
     await query({
         type: 'update_user',
         params: [
             username,
+            userimg,
             sessionStorage.userId
         ]
     }).then((data)=>{

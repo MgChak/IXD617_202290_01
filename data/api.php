@@ -39,6 +39,19 @@ function makeQuery($conn,$prep,$params,$makeResults=true) {
     }
 }
 
+function makeUpload($file, $folder) {
+    $filename = microtime(true) . "_" . $_FILES[$file]['name'];
+
+    if (@move_uploaded_file(
+        $_FILES[$file]['tmp_name'],
+        $folder.$filename
+    )) return ["result"=>$filename];
+    else return [
+        "error"=>"File Upload Failed",
+        "filename"=>$filename
+    ];
+}
+
 function makeStatement($data) {
     $conn = makeConn();
     $type = @$data->type;
@@ -146,7 +159,8 @@ function makeStatement($data) {
             $result = makeQuery($conn,"UPDATE
             `track_202290_users`
             SET
-                `name` = ?
+                `name` = ?,
+                `img` = ?
             WHERE `id` = ?
             ",$params,false);
 
@@ -214,7 +228,7 @@ function makeStatement($data) {
             if (isset($result['error'])) return $result;
             return ["result"=>"Success"];
 
-            
+
         /* UPLOAD */
         case "update_user_photo":
             $result = makeQuery($conn, "UPDATE
@@ -230,6 +244,11 @@ function makeStatement($data) {
             return ["error"=>"No Matched Type"];          
     }
 } 
+
+if (!empty($_FILES)) {
+    $result = makeUpload("image","../uploads/");
+    die(json_encode($result));
+}
 
 $data = json_decode(file_get_Contents("php://input"));
 

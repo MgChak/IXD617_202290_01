@@ -12,6 +12,7 @@ import{renderColorPopUp,renderPopup,handleColorSelect,handlePagePositionChange,d
 import {pageMove}from"./useOnBoardingSlideShow.js"//onBording page slideshow Ctrl
 import {pinRender} from "./pinCtrl.js"
 import {renderComfirmation} from "./useComfirmationCtrl.js"
+import {checkUpload} from "./useFunctions.js"
 
 
 $(()=>{
@@ -316,7 +317,20 @@ $(()=>{
         if(submitResult == 'success'){//提交返回成功时
             closeFullSreenPop(this)//关闭pop up
         }
-        
+
+    })
+
+    .on("change", ".imagepicker_user input", function(e) {
+        checkUpload(this.files[0])
+        .then((d) => {
+            console.log(d);
+            let filename = `uploads/${d.result}`;
+            $('#user-edit-photo-image').val(filename);
+            $('.userImgContainer').css({
+                "background-image": `url('${filename}')`
+            })
+            console.log($('#user-edit-photo-image').val());
+        })
     })
  //====================================================================================修改密码弹出
     .on("click", ".popop_update_password", async function() {//确定更新用户资料
