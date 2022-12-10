@@ -82,6 +82,7 @@ $(()=>{
         e.preventDefault()
         if(!submitActionLock){ //检测行为锁
             checkSignupForm()
+            $.mobile.navigate('#signin-page',{transition: "none"})
         }else{ return } //行为锁锁定，拒绝执行
     })
     .on("submit", "#adding-form", function(e) {//添加猫
@@ -90,7 +91,7 @@ $(()=>{
             submitActionLock=true//行为锁锁定
             var submitResult = submitSaveCatForm()//检测提交，返回结果
                 if(submitResult == 'success'){//提交返回成功时
-                    navToWithAnimation('#cat-detail-page')//导航到目标页面
+                    navToWithAnimation('#main-page')//导航到目标页面
                     renderComfirmation(submitResult,'Cat Save')//渲染提示 
                 }
                 setTimeout(()=>{submitActionLock=false},500)//行为锁解锁
@@ -294,7 +295,7 @@ $(()=>{
     })
     .on("click", ".popContent_ChosseColor_deleteAlert_delete", function() {//最终确认删除颜色
         var submitResult = deleteColor(choseColorPagePosition)
-        renderComfirmation(submitResult,'Delete Color')
+        renderComfirmation('success','Delete Color')
         choseColorPagePosition = handlePagePositionChange(choseColorPagePosition,'deletAlertBack')
         renderColorPopUp(choseColorPagePosition,this) 
     })
@@ -307,13 +308,13 @@ $(()=>{
     .on("click", ".addNewColorname", function() {//添加颜色点击
         console.log('tianjia')
         var submitResult = addColor(choseColorPagePosition)
-        renderComfirmation(submitResult,'Add New Color')
+        renderComfirmation('success','Add New Color')
      })
     //====================================================================================确认删除弹出
     .on("click", ".popop_delect_confirm_cat", function() {//确定删除猫猫
         
         var submitResult = deleteCat()
-        renderComfirmation(submitResult,'Delete Cat')
+        renderComfirmation('success','Delete Cat')
         if(submitResult == 'success'){//提交返回成功时
             navToWithAnimation('#cat-list-page')//导航到目标页面
         }

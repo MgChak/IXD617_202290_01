@@ -181,8 +181,16 @@ export const CreatMap = async() => {
         })
         recentCatsPosition.push(positionOfThisColor)//插入obj
     })
+    
 
-    let map_el = await makeMap(".googleMapContainer",{lat:37.786038, lng:-122.399342});
+    let center 
+    if (recentCatsPosition.length == 0){
+        center={lat:37.786038, lng:-122.399342}
+    }else{
+        center = recentCatsPosition[0]
+    }
+
+    let map_el = await makeMap(".googleMapContainer",center);
     makeMarkers(map_el,recentCatsPosition);
 
 }

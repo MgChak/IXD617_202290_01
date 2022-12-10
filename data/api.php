@@ -126,7 +126,7 @@ function makeStatement($data) {
 
 
         case "signup":
-            return makeQuery($conn, "INSERT INTO `track_202290_users` (`name`, `username`, `password`, `email`, `img`, `date_create`) VALUES(?,?,md5(?),?,?,NOW())", $params);
+            return makeQuery($conn, "INSERT INTO `track_202290_users` (`name`, `username`, `password`, `email`, `img`, `date_create`) VALUES(?,?,md5(?),?,'https://via.placeholder.com/400/?text=USER',NOW())", $params);
         
         /* UPDATE */
         case "update_animal":

@@ -62,11 +62,11 @@ async function checkSignupForm(){//注册表格
 
 function submitSaveCatForm(){//提交保存猫
 
-   let result
+   let result = 'success'
 
    if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      (position) => {
+        (position) => {
         const pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -93,16 +93,24 @@ function submitSaveCatForm(){//提交保存猫
         }).then((data)=>{
             if (data.error) {
                 throw(data.error);
-            } 
+            }
+            $("#adding-form")[0].reset()
+            $("#adding-img").val('').siblings().css('background-image','none')
+            $("#adding-color").val('').siblings('div').text('...')
+            $("#adding-friendly").val(3).siblings('div').html(`
+            <img class="friendlyStar" src="./src/img/icons/starActive.svg" alt="">
+            <img class="friendlyStar" src="./src/img/icons/starActive.svg" alt="">
+            <img class="friendlyStar" src="./src/img/icons/starActive.svg" alt="">
+            <img class="friendlyStar" src="./src/img/icons/starUnactive.svg" alt="">
+            <img class="friendlyStar" src="./src/img/icons/starUnactive.svg" alt="">
+            `)
+            $("#adding-note").val('')
         })
-        result = 'success'
       }
     );
   } else {
     alert("stop")
-    result = 'fail'
   }
-
 
     sessionStorage.removeItem('all_locations_by_user_id')
     sessionStorage.removeItem('user_data')
@@ -163,6 +171,8 @@ async function addColor(choseColorPagePosition){//提交添加颜色
 
     var theColor = $('.newColorInputSlot').val()
 
+    var result
+
     await query({
         type: 'insert_color',
         params: [
@@ -172,12 +182,14 @@ async function addColor(choseColorPagePosition){//提交添加颜色
     }).then((data)=>{
         renderColorPopUp(choseColorPagePosition,this)
         if (data.error) {
+            result = 'success'
+
             throw(data.error);
         } 
     })
 
 
-    return 'success' //目前默认成功
+    return result //目前默认成功
 
 }
 
