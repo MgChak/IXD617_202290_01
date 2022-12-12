@@ -47,7 +47,7 @@ async function checkSignupForm(){//注册表格
 
         let founduser = await query({
             type: 'signup',
-            params: [SignupForm.name,SignupForm.username,SignupForm.password,' ',' ']
+            params: [SignupForm.name,SignupForm.username,SignupForm.password,' ']
         });
 
     }else if(SignupForm.name == undefined || SignupForm.name == ' ' || SignupForm.username == undefined || SignupForm.username == ' ' || SignupForm.password == undefined || SignupForm.password == ' '){
